@@ -1,0 +1,17 @@
+.section {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  padding: 0px 30px;
+
+  .heading {
+    font-weight: 100;
+    padding: 0px 10px;
+    margin: 50px 0 0 0;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

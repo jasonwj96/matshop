@@ -1,0 +1,59 @@
+@keyframes show {
+  0% {
+    right: -400px;
+  }
+  100% {
+    right: 0px;
+  }
+}
+
+.container {
+  display: flex;
+  bottom: 10px;
+  // right: -400px;
+  right: 0px;
+  width: auto;
+  height: auto;
+  position: fixed;
+  float: right;
+  border-radius: 3px 0px 0px 3px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px #0000007a;
+  padding: 5px 20px;
+  overflow: hidden;
+  justify-items: center;
+
+  .icon {
+    margin-right: 20px;
+    font-size: 2em;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+    color: #0059ff;
+  }
+
+  .message {
+    display: flex;
+    flex-flow: column;
+
+    p {
+      margin: 5px;
+      padding: 0;
+    }
+
+    .notification-title {
+      font-size: 1em;
+      color: #111;
+      width: 300px;
+    }
+
+    .notification-desc {
+      font-size: 0.8em;
+      color: #111;
+      max-width: 300px;
+      max-height: 40px;
+      margin-bottom: 10px;
+    }
+  }
+}
