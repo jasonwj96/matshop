@@ -10,10 +10,10 @@ export default class Landing extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("https://localhost:5001/api/Home")
-      .then(response => response.json())
-      .then(products => this.setState({ products }));
+  async componentDidMount() {
+    const response = await fetch("https://localhost:5001/api/landing");
+    const products = await response.json();
+    this.setState({ products });
   }
 
   render() {
@@ -25,18 +25,38 @@ export default class Landing extends Component {
             <div className="cover-section">It's nice to meet you</div>
           </div>
         </div>
-        <LandingSection
-          heading={"What's hot right now"}
-          products={this.state.products}
-        />
-        <LandingSection
-          heading={"Men's clothing"}
-          products={this.state.products}
-        />
-        <LandingSection
-          heading={"The latest in tech"}
-          products={this.state.products}
-        />
+        {this.state.products.length === 0 ? (
+          <div className="spinner">
+            <i className="fas fa-spinner" />
+          </div>
+        ) : (
+          <LandingSection
+            heading={"What's hot right now"}
+            products={this.state.products}
+          />
+        )}
+
+        {this.state.products.length === 0 ? (
+          <div className="spinner">
+            <i className="fas fa-spinner" />
+          </div>
+        ) : (
+          <LandingSection
+            heading={"Men's clothing"}
+            products={this.state.products}
+          />
+        )}
+
+        {this.state.products.length === 0 ? (
+          <div className="spinner">
+            <i className="fas fa-spinner" />
+          </div>
+        ) : (
+          <LandingSection
+            heading={"Latest in tech"}
+            products={this.state.products}
+          />
+        )}
       </div>
     );
   }
