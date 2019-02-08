@@ -1,0 +1,136 @@
+@import "../styles/styles";
+
+@mixin icon-size {
+  font-size: 1.5em;
+}
+
+@keyframes expand {
+  from {
+    height: 60px;
+  }
+
+  to {
+    height: 230px;
+  }
+}
+
+@keyframes collapse {
+  from {
+    height: 230px;
+  }
+
+  to {
+    height: 60px;
+  }
+}
+
+.expand {
+  animation-name: expand;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.collapse {
+  animation-name: collapse;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.statusbar {
+  #statusbar-container {
+    @include card();
+    display: flex;
+    box-sizing: border-box;
+    flex-flow: column;
+    margin: 20px 20px 0 0px;
+    background-color: #fff;
+    z-index: 3;
+    height: 60px;
+    width: auto;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    align-content: center;
+    justify-items: baseline;
+    justify-content: space-between;
+
+    a {
+      text-decoration: none;
+      padding: 10px;
+    }
+
+    .profile-img {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+      background-color: $profile-img-bg;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin: 0;
+        padding: 0;
+        color: #fff;
+      }
+    }
+
+    .link {
+      width: 100%;
+      padding: 15px;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+
+      i {
+        color: $icon-color;
+      }
+
+      &:hover {
+        background-color: $icon-hover;
+        i {
+          color: #fff;
+        }
+      }
+    }
+
+    .wishlist-icon {
+      align-self: center;
+
+      i {
+        color: $icon-color;
+        transition: 0.2s color ease-in-out;
+        cursor: pointer;
+        @include icon-size();
+
+        font-size: 1.5em;
+      }
+    }
+
+    .settings-icon {
+      align-self: center;
+      i {
+        color: $icon-color;
+        transition: 0.2s color ease-in-out;
+        cursor: pointer;
+
+        @include icon-size();
+      }
+    }
+
+    .signout-icon {
+      align-self: center;
+      i {
+        color: $icon-color;
+        transition: 0.2s color ease-in-out;
+        cursor: pointer;
+
+        @include icon-size();
+      }
+    }
+  }
+}

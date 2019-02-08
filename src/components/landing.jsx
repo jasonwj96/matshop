@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./landing.scss";
 import LandingSection from "./landingSection";
+import apiPath from "../config";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class Landing extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch("https://localhost:5001/api/landing");
+    const response = await fetch(`${apiPath}/Landing`);
     const products = await response.json();
     this.setState({ products });
   }

@@ -3,3 +3,14 @@
 // Navbar
 $nav-menu-bg: #ffffff;
 $nav-menu-color: #000000;
+
+@mixin card {
+  background-color: #ffffff;
+  box-shadow: #0000004d 1px 1px 3px 1px;
+  border-radius: 5px;
+}
+
+//Statusbar
+$profile-img-bg: #777777;
+$icon-color: #eb5d24;
+$icon-hover: #eb5d24;

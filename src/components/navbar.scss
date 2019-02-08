@@ -1,91 +1,130 @@
 @import "../styles/_styles";
 
-#container {
-  width: 180px;
-  height: 50px;
-  flex-flow: column;
-  overflow: hidden;
-  border-radius: 5px;
-  position: fixed;
-  margin: 20px 0px 0px 20px;
-  box-shadow: #0000004d 1px 1px 3px 1px;
-  z-index: 3;
-
-  .nav-menu {
-    display: flex;
-    background-color: $nav-menu-bg;
+@keyframes expand-nav {
+  from {
+    height: 275px;
     width: 250px;
+  }
+
+  to {
     height: 50px;
-    color: $nav-menu-color;
+    width: 180px;
+  }
+}
 
-    button {
-      min-width: 50px;
-      min-height: 50px;
-      background: transparent;
-      border: none;
-      background-color: #ffffff;
-      cursor: pointer;
-      outline: none;
+@keyframes collapse-nav {
+  from {
+    height: 50px;
+    width: 180px;
+  }
 
-      div {
-        display: flex;
-        flex-flow: column;
-        padding: 0;
-        margin: 0;
+  to {
+    height: 275px;
+    width: 250px;
+  }
+}
+
+.expand-nav {
+  animation-name: expand-nav;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.collapse-nav {
+  animation-name: collapse-nav;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+
+.navbar {
+  #navbar-container {
+    @include card();
+    width: 180px;
+    height: 50px;
+    flex-flow: column;
+    overflow: hidden;
+    position: fixed;
+    margin: 20px 0px 0px 20px;
+    top: 0;
+    left: 0;
+    z-index: 3;
+
+    .nav-menu {
+      display: flex;
+      background-color: $nav-menu-bg;
+      width: 250px;
+      height: 50px;
+      color: $nav-menu-color;
+
+      button {
+        min-width: 50px;
+        min-height: 50px;
+        background: transparent;
+        border: none;
+        background-color: #ffffff;
+        cursor: pointer;
+        outline: none;
 
         div {
-          align-self: center;
-          width: 25px;
-          height: 3px;
-          background-color: #333;
-          margin: 2px 0px;
-          border-radius: 3px;
+          display: flex;
+          flex-flow: column;
+          padding: 0;
+          margin: 0;
+
+          div {
+            align-self: center;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 2px 0px;
+            border-radius: 3px;
+          }
+        }
+      }
+
+      .logo {
+        font-family: "Poppins";
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        border: #111 2px solid;
+        height: 15px;
+        padding: 5px;
+        font-weight: bold;
+        align-self: center;
+        letter-spacing: 4px;
+
+        div {
+          color: #ff7300;
         }
       }
     }
 
-    .logo {
-      font-family: "Poppins";
-      font-size: 1em;
-      display: flex;
-      align-items: center;
-      border: #111 2px solid;
-      height: 15px;
-      padding: 5px;
-      font-weight: bold;
-      align-self: center;
-      letter-spacing: 4px;
-
-      div {
-        color: #ff7300;
-      }
-    }
-  }
-
-  ul {
-    list-style: none;
-    height: auto;
-    width: auto;
-    padding: 0px;
-    margin: 0;
-
-    li {
-      cursor: pointer;
-      color: #000000;
-      padding: 5px 20px;
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
+    ul {
+      list-style: none;
+      height: auto;
       width: auto;
-      background-color: #ffffff;
-      font-size: 1em;
-      height: 35px;
-      transition: 0.2s all ease-in-out;
+      padding: 0px;
+      margin: 0;
 
-      &:hover {
-        background-color: #eb5d24;
-        color: #ffffff;
-        // height: 60px;
+      li {
+        cursor: pointer;
+        color: #000000;
+        padding: 5px 20px;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        width: auto;
+        background-color: #ffffff;
+        font-size: 1em;
+        height: 35px;
+        transition: 0.2s all ease-in-out;
+
+        &:hover {
+          background-color: #eb5d24;
+          color: #ffffff;
+          // height: 60px;
+        }
       }
     }
   }
