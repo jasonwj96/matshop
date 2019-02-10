@@ -12,9 +12,15 @@ export default class Navbar extends Component {
 
   showMenu = () => {
     const container = document.getElementById("navbar-container");
-    this.state.showMenu
-      ? (container.className = "expand-nav")
-      : (container.className = "collapse-nav");
+    const button = document.getElementById("nav-btn");
+
+    if (this.state.showMenu) {
+      container.className = "expand-nav";
+      button.className = "show-arrow";
+    } else {
+      container.className = "collapse-nav";
+      button.className = "hide-arrow";
+    }
 
     this.setState({ showMenu: !this.state.showMenu });
   };
@@ -24,13 +30,15 @@ export default class Navbar extends Component {
       <div className="navbar">
         <div id="navbar-container">
           <div className="nav-menu">
-            <button onClick={this.showMenu}>
+            <button id="nav-btn" onClick={this.showMenu}>
               <div>
-                <div />
-                <div />
-                <div />
+                <div className="bar" />
+                <div className="bar" />
+                <div className="bar" />
+                <span />
               </div>
             </button>
+
             <div className="logo">Matshop</div>
           </div>
           <div />

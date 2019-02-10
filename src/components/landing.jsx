@@ -12,9 +12,19 @@ export default class Landing extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch(`${apiPath}/Landing`);
-    const products = await response.json();
-    this.setState({ products });
+    try {
+      const response = await fetch(`${apiPath}/Landing`);
+
+      if (!response.ok)
+        throw new Error(
+          "There was an error while trying fetching the products."
+        );
+
+      const products = await response.json();
+      this.setState({ products });
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 
   render() {
