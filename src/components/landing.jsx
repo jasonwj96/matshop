@@ -15,10 +15,7 @@ export default class Landing extends Component {
     try {
       const response = await fetch(`${apiPath}/Landing`);
 
-      if (!response.ok)
-        throw new Error(
-          "There was an error while trying fetching the products."
-        );
+      if (!response.ok) throw new Error("The products are gone ¯\\_(ツ)_/¯.");
 
       const products = await response.json();
       this.setState({ products });
