@@ -13,7 +13,7 @@ export default class Landing extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`${apiPath}/Landing`);
+      const response = await fetch(`${apiPath}/Home`);
 
       if (!response.ok) throw new Error("The products are gone ¯\\_(ツ)_/¯.");
 

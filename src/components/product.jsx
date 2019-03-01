@@ -11,7 +11,14 @@ export default class Product extends Component {
 
   render() {
     const images = require.context("../assets/img", true);
-    const { url, title, desc, alt, price, rating } = this.props.product;
+    const {
+      imageUrl,
+      title,
+      description,
+      alt,
+      price,
+      rating
+    } = this.props.product;
 
     return (
       <div className="product">
@@ -19,9 +26,9 @@ export default class Product extends Component {
           <a href="/">{title}</a>
         </div>
         <div className="picture">
-          <img src={images(`${url}`)} alt={alt} />
+          <img src={images(`${imageUrl}`)} alt={alt} />
         </div>
-        <div className="description">{desc.slice(0, 90) + "..."}</div>
+        <div className="description">{description.slice(0, 90) + "..."}</div>
         <div className="productFooter">
           <div className="rating">
             {rating >= this.state.ratingThreshold ? (
