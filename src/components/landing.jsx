@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "./landing.scss";
 import LandingSection from "./landingSection";
 import apiPath from "../config";
+import Navbar from "./navbar";
+import Statusbar from "./statusbar";
+import Footer from "./footer";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -26,45 +29,50 @@ export default class Landing extends Component {
 
   render() {
     return (
-      <div className="landing">
-        <div className="cover">
-          <div className="overlay">
-            <div className="cover-section">Welcome to Matshop!</div>
-            <div className="cover-section">It's nice to meet you</div>
+      <div>
+        <Navbar />
+        <Statusbar />
+        <div className="landing">
+          <div className="cover">
+            <div className="overlay">
+              <div className="cover-section">Welcome to Matshop!</div>
+              <div className="cover-section">It's nice to meet you</div>
+            </div>
           </div>
+          {this.state.products.length === 0 ? (
+            <div className="spinner">
+              <i className="fas fa-spinner" />
+            </div>
+          ) : (
+            <LandingSection
+              heading={"What's hot right now"}
+              products={this.state.products}
+            />
+          )}
+
+          {this.state.products.length === 0 ? (
+            <div className="spinner">
+              <i className="fas fa-spinner" />
+            </div>
+          ) : (
+            <LandingSection
+              heading={"Men's clothing"}
+              products={this.state.products}
+            />
+          )}
+
+          {this.state.products.length === 0 ? (
+            <div className="spinner">
+              <i className="fas fa-spinner" />
+            </div>
+          ) : (
+            <LandingSection
+              heading={"Latest in tech"}
+              products={this.state.products}
+            />
+          )}
         </div>
-        {this.state.products.length === 0 ? (
-          <div className="spinner">
-            <i className="fas fa-spinner" />
-          </div>
-        ) : (
-          <LandingSection
-            heading={"What's hot right now"}
-            products={this.state.products}
-          />
-        )}
-
-        {this.state.products.length === 0 ? (
-          <div className="spinner">
-            <i className="fas fa-spinner" />
-          </div>
-        ) : (
-          <LandingSection
-            heading={"Men's clothing"}
-            products={this.state.products}
-          />
-        )}
-
-        {this.state.products.length === 0 ? (
-          <div className="spinner">
-            <i className="fas fa-spinner" />
-          </div>
-        ) : (
-          <LandingSection
-            heading={"Latest in tech"}
-            products={this.state.products}
-          />
-        )}
+        <Footer />
       </div>
     );
   }

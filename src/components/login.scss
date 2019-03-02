@@ -1,1 +1,105 @@
 @import "../styles/styles";
+
+body {
+  background: linear-gradient(135deg, #3d6899 0%, #c6098e 100%);
+  // background-color: #f3f3f3;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
+  .login-panel {
+    box-sizing: border-box;
+    display: flex;
+    padding: 20px 10px 10px 10px;
+    align-content: center;
+    flex-flow: column;
+    border-radius: 5px;
+    margin: 10px;
+    width: 100%;
+    max-width: 400px;
+    height: 450px;
+    background-color: #fff;
+    box-shadow: #00000052 0.5px 0.5px 1px 1.5px;
+    justify-content: space-between;
+
+    transition: 0.2s box-shadow ease-in-out;
+
+    .logo {
+      width: 110px;
+      font-family: "Poppins";
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      border: #111 3px solid;
+      height: 15px;
+      padding: 10px;
+      font-weight: bold;
+      align-self: center;
+      letter-spacing: 4px;
+    }
+
+    form {
+      padding: 0px 20px;
+      display: flex;
+      flex-flow: column;
+      width: auto;
+
+      label {
+        font-family: "Poppins";
+        font-size: 0.8em;
+      }
+
+      input {
+        font-family: "Poppins";
+        width: auto;
+        height: 40px;
+        border: #b6b6b6 2px solid;
+        margin: 10px 0px;
+        border-radius: 5px;
+        outline: none;
+        padding: 5px 10px;
+        box-sizing: border-box;
+      }
+    }
+
+    .login-footer {
+      padding: 10px;
+      display: flex;
+      // justify-content: space-between;
+      justify-content: center;
+
+      .register {
+        background-color: #e4e4e4;
+        color: #111;
+
+        &:hover {
+          background-color: #a5a5a5;
+        }
+      }
+
+      .login {
+        background-color: #eb5d24;
+        color: #fff;
+      }
+
+      button {
+        cursor: pointer;
+        font-family: "Poppins";
+        margin: 10px;
+        width: 100%;
+        height: auto;
+        border: none;
+        outline: none;
+        border-radius: 3px;
+        padding: 10px;
+        font-weight: bold;
+        transition: 0.2s background-color ease-in-out;
+      }
+    }
+  }
+}
