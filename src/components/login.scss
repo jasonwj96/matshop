@@ -1,11 +1,8 @@
 @import "../styles/styles";
 
-body {
-  background: linear-gradient(135deg, #3d6899 0%, #c6098e 100%);
-  // background-color: #f3f3f3;
-}
-
 .login-container {
+  background: linear-gradient(135deg, #3d6899 0%, #c6098e 100%);
+
   display: flex;
   align-items: center;
   justify-content: center;
