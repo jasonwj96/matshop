@@ -31,15 +31,6 @@
   }
 }
 
-@keyframes show-arrow {
-  to {
-  }
-}
-@keyframes hide-arrow {
-  to {
-  }
-}
-
 link {
   text-decoration: none;
 }
@@ -66,7 +57,7 @@ link {
     flex-flow: column;
     overflow: hidden;
     position: fixed;
-    margin: 20px 0px 0px 20px;
+    margin: 15px 0px 0px 15px;
     top: 0;
     left: 0;
     z-index: 3;
@@ -127,6 +118,7 @@ link {
       margin: 0;
 
       .link {
+        font-family: "Poppins";
         cursor: pointer;
         color: #000000;
         padding: 5px 20px;

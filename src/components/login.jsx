@@ -9,16 +9,19 @@ export default class Login extends Component {
       <div className="login-container">
         <div className="login-panel">
           <div className="logo">Matshop</div>
-          <form onSubmit={this.loginUser}>
+          <form>
             <label htmlFor="email">Email</label>
             <input type="email" name="email" />
-
             <label htmlFor="password">Password</label>
             <input type="password" name="password" />
+            <a href="/"> Forgot your password?</a>
           </form>
+
           <div className="login-footer">
-            {/* <button className="register">Register</button> */}
-            <button className="login">Login</button>
+            <button onClick={this.loginUser}>Login</button>
+            <p>
+              Need an account?<a href="/home"> Click Here</a>
+            </p>
           </div>
         </div>
       </div>

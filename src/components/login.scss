@@ -1,7 +1,7 @@
 @import "../styles/styles";
 
 .login-container {
-  background: linear-gradient(135deg, #3d6899 0%, #c6098e 100%);
+  background-color: #f1f1f1;
 
   display: flex;
   align-items: center;
@@ -16,12 +16,12 @@
     align-content: center;
     flex-flow: column;
     border-radius: 5px;
-    margin: 10px;
+    margin: 20px;
     width: 100%;
     max-width: 400px;
     height: 450px;
     background-color: #fff;
-    box-shadow: #00000052 0.5px 0.5px 1px 1.5px;
+    box-shadow: #00000052 1px 1px 1px 1px;
     justify-content: space-between;
 
     transition: 0.2s box-shadow ease-in-out;
@@ -56,46 +56,61 @@
         width: auto;
         height: 40px;
         border: #b6b6b6 2px solid;
+        // border: #00bb00 2px solid;
+        // border: #eb0000 2px solid;
         margin: 10px 0px;
         border-radius: 5px;
         outline: none;
         padding: 5px 10px;
         box-sizing: border-box;
       }
+
+      a {
+        text-decoration: none;
+        color: #111;
+        font-size: 0.8em;
+        text-align: right;
+
+        &:hover {
+          color: #eb5d24;
+        }
+      }
     }
 
     .login-footer {
       padding: 10px;
       display: flex;
-      // justify-content: space-between;
+      flex-flow: column;
       justify-content: center;
-
-      .register {
-        background-color: #e4e4e4;
-        color: #111;
-
-        &:hover {
-          background-color: #a5a5a5;
-        }
-      }
-
-      .login {
-        background-color: #eb5d24;
-        color: #fff;
-      }
 
       button {
         cursor: pointer;
         font-family: "Poppins";
-        margin: 10px;
+        margin: 10px 0px 0px 0px;
         width: 100%;
-        height: auto;
+        height: 40px;
         border: none;
         outline: none;
         border-radius: 3px;
         padding: 10px;
         font-weight: bold;
         transition: 0.2s background-color ease-in-out;
+        background-color: #eb5d24;
+        color: #fff;
+
+        &:hover {
+          background-color: #c04f22;
+        }
+      }
+
+      p {
+        font-size: 0.8em;
+        text-align: right;
+
+        a {
+          color: #eb5d24;
+          text-decoration: none;
+        }
       }
     }
   }

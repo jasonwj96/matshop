@@ -38,7 +38,7 @@ export default class Statusbar extends Component {
           <a href="/" className="settings-icon link">
             <i className="fas fa-cog" />
           </a>
-          <a href="/" className="signout-icon link">
+          <a href="/login" className="signout-icon link">
             <i className="fas fa-sign-out-alt" />
           </a>
         </div>
