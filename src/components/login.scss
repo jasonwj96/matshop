@@ -2,6 +2,7 @@
 
 .login-container {
   background-color: #f1f1f1;
+  // background: url("../assets/img/cover.jpg");
 
   display: flex;
   align-items: center;
@@ -68,6 +69,7 @@
         outline: none;
         padding: 5px 10px;
         box-sizing: border-box;
+        transition: 0.2s border ease-in-out;
       }
 
       a {

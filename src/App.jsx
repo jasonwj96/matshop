@@ -11,8 +11,8 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" component={Landing} exact />
-        <Route path="/Home" component={Landing} />
-        <Route path="/Login" component={Login} />
+        <Route path="/home" component={Landing} />
+        <Route path="/login" component={Login} />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>

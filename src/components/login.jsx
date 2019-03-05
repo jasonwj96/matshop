@@ -1,22 +1,65 @@
 import React, { Component } from "react";
 import "./login.scss";
+import { Link } from "react-router-dom";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      emailRegex: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       emailIsValid: false,
-      passwordIsValid: true
+      passwordIsValid: false,
+      email: "",
+      password: "",
+      emailInputStyle: {
+        borderColor: ""
+      },
+      passwordInputStyle: {
+        borderColor: ""
+      }
     };
   }
 
+  //These method will make an http request for validation
   verifyEmail = () => {
+    if (this.state.emailRegex.test(this.state.email)) {
+      this.setState({
+        emailIsValid: !this.state.emailIsValid
+      });
+    } else {
+      alert("Please insert a valid email format");
+    }
+  };
+
+  //These method will make an http request for validation
+  loginUser = () => {};
+
+  handleEmailChange = event => {
     this.setState({
-      emailIsValid: !this.state.emailIsValid
+      email: event.target.value
+    });
+
+    if (this.state.emailRegex.test(this.state.email)) {
+      this.setState({
+        emailInputStyle: {
+          borderColor: "#00bb00"
+        }
+      });
+    } else {
+      this.setState({
+        emailInputStyle: {
+          borderColor: "#eb0000"
+        }
+      });
+    }
+  };
+
+  handlePasswordChange = event => {
+    this.setState({
+      password: event.target.value
     });
   };
-  verifyPassword = () => alert("Logged in succesfully");
 
   render() {
     return (
@@ -28,17 +71,28 @@ export default class Login extends Component {
               <div>
                 <label htmlFor="email">Email</label>
                 <input
+                  id="emailInput"
                   type="email"
                   name="email"
                   placeholder="brucewayne@gmail.com"
+                  value={this.state.email}
+                  onChange={this.handleEmailChange}
+                  style={this.state.emailInputStyle}
                 />
-                <a href="/"> Forgot your email?</a>
+                <Link to="/"> Forgot your email?</Link>
               </div>
             ) : (
               <div>
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" />
-                <a href="/"> Forgot your password?</a>
+                <input
+                  id="passwordInput"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handlePasswordChange}
+                  style={this.state.passwordInputStyle}
+                />
+                <Link to="/"> Forgot your password?</Link>
               </div>
             )}
           </form>
@@ -53,11 +107,11 @@ export default class Login extends Component {
                 <button className="back-btn" onClick={this.verifyEmail}>
                   Back
                 </button>
-                <button onClick={this.verifyPassword}>Login</button>
+                <button onClick={this.loginUser}>Login</button>
               </div>
             )}
             <p>
-              Need an account?<a href="/home"> Click Here</a>
+              Need an account?<Link to="/Register"> click here</Link>
             </p>
           </div>
         </div>
