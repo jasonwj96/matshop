@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./landing.scss";
 import LandingSection from "./landingSection";
-import apiPath from "../config";
+import configuration from "../config";
 import Navbar from "./navbar";
 import Statusbar from "./statusbar";
 import Footer from "./footer";
@@ -16,7 +16,7 @@ export default class Landing extends Component {
 
   async componentDidMount() {
     try {
-      const response = await fetch(`${apiPath}/Home`);
+      const response = await fetch(`${configuration.apiPath}/Home`);
 
       if (!response.ok) throw new Error("The products are gone ¯\\_(ツ)_/¯.");
 

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./login.scss";
 import { Link } from "react-router-dom";
+import configuration from "../config";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      emailRegex: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       emailIsValid: false,
       passwordIsValid: false,
       email: "",
@@ -21,9 +21,11 @@ export default class Login extends Component {
     };
   }
 
+  loginUser = () => {};
+
   //These method will make an http request for validation
   verifyEmail = () => {
-    if (this.state.emailRegex.test(this.state.email)) {
+    if (configuration.emailRegex.test(this.state.email)) {
       this.setState({
         emailIsValid: !this.state.emailIsValid
       });
@@ -33,23 +35,22 @@ export default class Login extends Component {
   };
 
   //These method will make an http request for validation
-  loginUser = () => {};
 
   handleEmailChange = event => {
     this.setState({
       email: event.target.value
     });
 
-    if (this.state.emailRegex.test(this.state.email)) {
+    if (configuration.emailRegex.test(this.state.email.toLowerCase())) {
       this.setState({
         emailInputStyle: {
-          borderColor: "#00bb00"
+          borderColor: "#00bb00" //green
         }
       });
     } else {
       this.setState({
         emailInputStyle: {
-          borderColor: "#eb0000"
+          borderColor: "#eb0000" //red
         }
       });
     }
@@ -59,6 +60,21 @@ export default class Login extends Component {
     this.setState({
       password: event.target.value
     });
+    if (configuration.passwordRegex.test(this.state.password.toLowerCase())) {
+      this.setState({
+        passwordInputStyle: {
+          //green
+          borderColor: "#00bb00"
+        }
+      });
+    } else {
+      this.setState({
+        //red
+        passwordInputStyle: {
+          borderColor: "#eb0000"
+        }
+      });
+    }
   };
 
   render() {
