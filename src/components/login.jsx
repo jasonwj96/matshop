@@ -23,20 +23,44 @@ export default class Login extends Component {
 
   loginUser = () => {};
 
-  verifyEmail = () => {
+  verifyEmail = async () => {
     if (configuration.emailRegex.test(this.state.email)) {
-      this.setState({
-        emailIsValid: !this.state.emailIsValid
-      });
+      try {
+        const response = await fetch(
+          `${configuration.apiPath}/account/validate`,
+          {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({ email: this.state.email })
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.accountExists) {
+          this.setState({
+            emailIsValid: !this.state.emailIsValid
+          });
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        alert("The email doesn't exist");
+      }
     } else {
       alert("Please insert a valid email format");
     }
   };
 
+  //configures style input validation given a regex and an input value
   handleInputChange = (regex, validStyle, errorStyle, inputValue) => {
-    regex.test(inputValue)
-      ? this.setState(validStyle)
-      : this.setState(errorStyle);
+    if (regex.test(inputValue)) {
+      this.setState(validStyle);
+    } else {
+      this.setState(errorStyle);
+    }
   };
 
   handleEmailChange = event => {
@@ -71,15 +95,13 @@ export default class Login extends Component {
 
     const validStyle = {
       passwordInputStyle: {
-        //green
-        borderColor: "#00bb00"
+        borderColor: "#00bb00" //green
       }
     };
 
     const errorStyle = {
-      //red
       passwordInputStyle: {
-        borderColor: "#eb0000"
+        borderColor: "#eb0000" //red
       }
     };
 
