@@ -23,7 +23,6 @@ export default class Login extends Component {
 
   loginUser = () => {};
 
-  //These method will make an http request for validation
   verifyEmail = () => {
     if (configuration.emailRegex.test(this.state.email)) {
       this.setState({
@@ -34,47 +33,62 @@ export default class Login extends Component {
     }
   };
 
-  //These method will make an http request for validation
+  handleInputChange = (regex, validStyle, errorStyle, inputValue) => {
+    regex.test(inputValue)
+      ? this.setState(validStyle)
+      : this.setState(errorStyle);
+  };
 
   handleEmailChange = event => {
     this.setState({
       email: event.target.value
     });
 
-    if (configuration.emailRegex.test(this.state.email.toLowerCase())) {
-      this.setState({
-        emailInputStyle: {
-          borderColor: "#00bb00" //green
-        }
-      });
-    } else {
-      this.setState({
-        emailInputStyle: {
-          borderColor: "#eb0000" //red
-        }
-      });
-    }
+    const validStyle = {
+      emailInputStyle: {
+        borderColor: "#00bb00" //green
+      }
+    };
+
+    const errorStyle = {
+      emailInputStyle: {
+        borderColor: "#eb0000" //red
+      }
+    };
+
+    this.handleInputChange(
+      configuration.emailRegex,
+      validStyle,
+      errorStyle,
+      this.state.email
+    );
   };
 
   handlePasswordChange = event => {
     this.setState({
       password: event.target.value
     });
-    if (configuration.passwordRegex.test(this.state.password.toLowerCase())) {
-      this.setState({
-        passwordInputStyle: {
-          //green
-          borderColor: "#00bb00"
-        }
-      });
-    } else {
-      this.setState({
-        //red
-        passwordInputStyle: {
-          borderColor: "#eb0000"
-        }
-      });
-    }
+
+    const validStyle = {
+      passwordInputStyle: {
+        //green
+        borderColor: "#00bb00"
+      }
+    };
+
+    const errorStyle = {
+      //red
+      passwordInputStyle: {
+        borderColor: "#eb0000"
+      }
+    };
+
+    this.handleInputChange(
+      configuration.passwordRegex,
+      validStyle,
+      errorStyle,
+      this.state.password
+    );
   };
 
   render() {
