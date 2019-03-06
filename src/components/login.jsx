@@ -21,7 +21,29 @@ export default class Login extends Component {
     };
   }
 
-  loginUser = () => {};
+  loginUser = async () => {
+    if (configuration.passwordRegex.test(this.state.password)) {
+      try {
+        const response = await fetch(`${configuration.apiPath}/account/login`, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify({ password: this.state.password })
+        });
+
+        const data = await response.json();
+
+        if (data.userLoggedIn) {
+          alert("The password is correct.");
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        alert("The password is incorrect.");
+      }
+    }
+  };
 
   verifyEmail = async () => {
     if (configuration.emailRegex.test(this.state.email)) {
