@@ -12,11 +12,13 @@ export default class Login extends Component {
       passwordIsValid: false,
       email: "",
       password: "",
-      emailInputStyle: {
-        borderColor: ""
+      errors: {
+        email: true,
+        password: true
       },
-      passwordInputStyle: {
-        borderColor: ""
+      classNames: {
+        email: "pristine",
+        password: "pristine"
       }
     };
   }
@@ -66,33 +68,14 @@ export default class Login extends Component {
             emailIsValid: !this.state.emailIsValid
           });
         } else {
-          throw new Error();
+          throw new Error("The email doesn't exist");
         }
       } catch (error) {
-        alert("The email doesn't exist");
+        alert(error.message);
       }
     } else {
       alert("Please insert a valid email format");
     }
-  };
-
-  //configures style input validation given a regex and an input value
-  handleInputChange = (regex, inputValue) => {
-    const validStyle = {
-      emailInputStyle: {
-        borderColor: "#00bb00" //green
-      }
-    };
-
-    const errorStyle = {
-      emailInputStyle: {
-        borderColor: "#eb0000" //red
-      }
-    };
-
-    regex.test(inputValue)
-      ? this.setState(validStyle)
-      : this.setState(errorStyle);
   };
 
   handleEmailChange = event => {
@@ -100,7 +83,28 @@ export default class Login extends Component {
       email: event.target.value
     });
 
-    this.handleInputChange(configuration.emailRegex, this.state.email);
+    const regex = configuration.emailRegex;
+    const valid = regex.test(this.state.email);
+
+    if (valid) {
+      this.setState({
+        classNames: {
+          email: "valid"
+        }
+      });
+    } else {
+      this.setState({
+        classNames: {
+          email: "error"
+        }
+      });
+    }
+
+    this.setState({
+      errors: {
+        email: valid
+      }
+    });
   };
 
   handlePasswordChange = event => {
@@ -108,7 +112,28 @@ export default class Login extends Component {
       password: event.target.value
     });
 
-    this.handleInputChange(configuration.passwordRegex, this.state.password);
+    const regex = configuration.passwordRegex;
+    const valid = regex.test(this.state.password);
+
+    if (valid) {
+      this.setState({
+        classNames: {
+          password: "valid"
+        }
+      });
+    } else {
+      this.setState({
+        classNames: {
+          password: "error"
+        }
+      });
+    }
+
+    this.setState({
+      errors: {
+        password: valid
+      }
+    });
   };
 
   render() {
@@ -122,12 +147,13 @@ export default class Login extends Component {
                 <label htmlFor="email">Email</label>
                 <input
                   id="emailInput"
+                  className={this.state.classNames.email}
                   type="email"
                   name="email"
                   placeholder="brucewayne@gmail.com"
                   value={this.state.email}
                   onChange={this.handleEmailChange}
-                  style={this.state.emailInputStyle}
+                  onClick={this.handleEmailChange}
                 />
                 <Link to="/"> Forgot your email?</Link>
               </div>
@@ -136,11 +162,12 @@ export default class Login extends Component {
                 <label htmlFor="password">Password</label>
                 <input
                   id="passwordInput"
+                  className={this.state.classNames.password}
                   type="password"
                   name="password"
                   value={this.state.password}
                   onChange={this.handlePasswordChange}
-                  style={this.state.passwordInputStyle}
+                  onClick={this.handlePasswordChange}
                 />
                 <Link to="/"> Forgot your password?</Link>
               </div>
