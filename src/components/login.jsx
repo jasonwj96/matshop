@@ -77,12 +77,22 @@ export default class Login extends Component {
   };
 
   //configures style input validation given a regex and an input value
-  handleInputChange = (regex, validStyle, errorStyle, inputValue) => {
-    if (regex.test(inputValue)) {
-      this.setState(validStyle);
-    } else {
-      this.setState(errorStyle);
-    }
+  handleInputChange = (regex, inputValue) => {
+    const validStyle = {
+      emailInputStyle: {
+        borderColor: "#00bb00" //green
+      }
+    };
+
+    const errorStyle = {
+      emailInputStyle: {
+        borderColor: "#eb0000" //red
+      }
+    };
+
+    regex.test(inputValue)
+      ? this.setState(validStyle)
+      : this.setState(errorStyle);
   };
 
   handleEmailChange = event => {
@@ -90,24 +100,7 @@ export default class Login extends Component {
       email: event.target.value
     });
 
-    const validStyle = {
-      emailInputStyle: {
-        borderColor: "#00bb00" //green
-      }
-    };
-
-    const errorStyle = {
-      emailInputStyle: {
-        borderColor: "#eb0000" //red
-      }
-    };
-
-    this.handleInputChange(
-      configuration.emailRegex,
-      validStyle,
-      errorStyle,
-      this.state.email
-    );
+    this.handleInputChange(configuration.emailRegex, this.state.email);
   };
 
   handlePasswordChange = event => {
@@ -115,24 +108,7 @@ export default class Login extends Component {
       password: event.target.value
     });
 
-    const validStyle = {
-      passwordInputStyle: {
-        borderColor: "#00bb00" //green
-      }
-    };
-
-    const errorStyle = {
-      passwordInputStyle: {
-        borderColor: "#eb0000" //red
-      }
-    };
-
-    this.handleInputChange(
-      configuration.passwordRegex,
-      validStyle,
-      errorStyle,
-      this.state.password
-    );
+    this.handleInputChange(configuration.passwordRegex, this.state.password);
   };
 
   render() {
@@ -140,7 +116,7 @@ export default class Login extends Component {
       <div className="login-container">
         <div className="login-panel">
           <div className="logo">Matshop</div>
-          <form>
+          <form onSubmit={e => e.preventDefault()}>
             {!this.state.emailIsValid ? (
               <div>
                 <label htmlFor="email">Email</label>

@@ -80,6 +80,14 @@
           color: #eb5d24;
         }
       }
+
+      .error {
+        border-color: #eb0000;
+      }
+
+      .valid {
+        border-color: #00bb00;
+      }
     }
 
     .login-footer {
