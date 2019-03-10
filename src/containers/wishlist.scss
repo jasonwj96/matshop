@@ -4,24 +4,39 @@
   flex-flow: column;
   align-items: center;
   width: 100%;
-  padding: 100px 0 50px 0;
+  min-width: 600px;
+  padding: 100px;
+  box-sizing: border-box;
 
   .wishlist {
-    width: auto;
+    width: 100%;
     overflow: hidden;
-    border-radius: 5px;
-
+    border-radius: 3px;
     height: auto;
     box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000001f;
 
     .header {
       display: flex;
-      justify-content: space-around;
+      height: 40px;
+      justify-content: flex-end;
       box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000001f;
       background-color: #eb5d24;
-      border-radius: 5px 5px 0px 0px;
+      border-radius: 3px 3px 0px 0px;
       overflow: hidden;
       color: #fff;
+
+      p {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+
+      .quantity-title {
+        margin-right: 100px;
+      }
+
+      .price-title {
+        margin-right: 80px;
+      }
     }
 
     .footer {
@@ -42,7 +57,7 @@
         color: #fff;
         background-color: #eb5d24;
         border: none;
-        border-radius: 5px;
+        border-radius: 3px;
         font-size: 1em;
         transition: 0.2s background-color ease-in-out;
 

@@ -95,10 +95,8 @@ export default class Wishlist extends Component {
         <Statusbar />
         <div className="wishlist">
           <div className="header">
-            <p>Image</p>
-            <p>Title</p>
-            <p>quantity</p>
-            <p>Price</p>
+            <p className="quantity-title">Quantity</p>
+            <p className="price-title">Price</p>
           </div>
           <div>
             {this.state.items.length > 0 ? (

@@ -6,7 +6,7 @@
 .wishlistitem {
   display: flex;
   background-color: #fff;
-  width: 800px;
+  width: 100%;
   height: 60px;
   padding: 10px;
   justify-content: space-around;
@@ -20,10 +20,13 @@
       border-radius: 50%;
       border: #e2e2e2 2px solid;
     }
+    margin: 0 20px;
   }
 
   .info {
     @include flex-center();
+    margin: 0 20px;
+    width: auto;
 
     .title {
       text-align: center;
@@ -33,9 +36,11 @@
   }
   .quantity {
     @include flex-center();
+    margin: 0 20px;
   }
 
   .price {
     @include flex-center();
+    margin: 0 20px;
   }
 }
