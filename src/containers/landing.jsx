@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./landing.scss";
-import LandingSection from "./landingSection";
+import LandingSection from "../components/landingSection";
 import configuration from "../config";
-import Navbar from "./navbar";
-import Statusbar from "./statusbar";
-import Footer from "./footer";
+import Navbar from "../components/navbar";
+import Statusbar from "../components/statusbar";
+import Footer from "../components/footer";
 
 export default class Landing extends Component {
   constructor(props) {

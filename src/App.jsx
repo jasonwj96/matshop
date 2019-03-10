@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.scss";
 import { Router, Route, Switch } from "react-router-dom";
-import Landing from "./components/landing";
+import Landing from "./containers/landing";
 import createBrowserHistory from "history/createBrowserHistory";
-import Login from "./components/login";
-import NotFound from "./components/notfound";
+import Login from "./containers/login";
+import NotFound from "./containers/notfound";
 
 const customHistory = createBrowserHistory();
 
@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/" component={Login} exact />
         <Route path="/home" component={Landing} />
         <Route path="/login" component={Login} />
+        {/* <Route path="/wishlist" component={Wishlist} /> */}
         <Route component={NotFound} />
       </Switch>
     </Router>
