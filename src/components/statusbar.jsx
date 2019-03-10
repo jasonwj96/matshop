@@ -1,14 +1,49 @@
 import React, { Component } from "react";
 import "./statusbar.scss";
 import { Link } from "react-router-dom";
+import configuration from "../config";
 
 export default class Statusbar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showMenu: true
+      showMenu: true,
+      userData: {
+        userEmail: localStorage.getItem("userEmail"),
+        firstName: ""
+      }
     };
+  }
+
+  async componentDidMount() {
+    this.fetchUserData();
+  }
+
+  async fetchUserData() {
+    try {
+      const response = await fetch(`${configuration.apiPath}/Home/userdata`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({ userEmail: this.state.userData.userEmail })
+      });
+
+      const data = await response.json();
+
+      if (data.firstName) {
+        this.setState({
+          userData: {
+            firstName: data.firstName
+          }
+        });
+      } else {
+        throw new Error("Error while fetching user data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   showMenu = () => {
@@ -30,7 +65,7 @@ export default class Statusbar extends Component {
         >
           <Link to="/profile">
             <div className="profile-img">
-              <p>J</p>
+              <p>{this.state.userData.firstName.substring(0, 1)}</p>
             </div>
           </Link>
           <Link to="/wishlist" className="wishlist-icon link">

@@ -37,6 +37,7 @@ export default class Login extends Component {
         const data = await response.json();
 
         if (data.userLoggedIn) {
+          localStorage.setItem("userEmail", this.state.email);
           this.props.history.push("/home");
         } else {
           throw new Error();
