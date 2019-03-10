@@ -7,8 +7,6 @@ export default class Product extends Component {
     ratingThreshold: 50
   };
 
-  renderRating() {}
-
   render() {
     const images = require.context("../assets/img", true);
     const {

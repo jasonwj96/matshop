@@ -1,0 +1,41 @@
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+}
+
+.wishlistitem {
+  display: flex;
+  background-color: #fff;
+  width: 800px;
+  height: 60px;
+  padding: 10px;
+  justify-content: space-around;
+  box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000001f;
+  border-bottom: #e2e2e2 1px solid;
+
+  .image {
+    img {
+      width: auto;
+      height: 100%;
+      border-radius: 50%;
+      border: #e2e2e2 2px solid;
+    }
+  }
+
+  .info {
+    @include flex-center();
+
+    .title {
+      text-align: center;
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+  .quantity {
+    @include flex-center();
+  }
+
+  .price {
+    @include flex-center();
+  }
+}
