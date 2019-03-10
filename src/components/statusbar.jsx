@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./statusbar.scss";
+import { Link } from "react-router-dom";
 
 export default class Statusbar extends Component {
   constructor(props) {
@@ -27,20 +28,20 @@ export default class Statusbar extends Component {
           onMouseEnter={this.showMenu}
           onMouseLeave={this.showMenu}
         >
-          <a href="/">
+          <Link to="/profile">
             <div className="profile-img">
               <p>J</p>
             </div>
-          </a>
-          <a href="/" className="wishlist-icon link">
+          </Link>
+          <Link to="/wishlist" className="wishlist-icon link">
             <i className="fas fa-shopping-bag" />
-          </a>
-          <a href="/" className="settings-icon link">
+          </Link>
+          <Link to="/preferences" className="settings-icon link">
             <i className="fas fa-cog" />
-          </a>
-          <a href="/login" className="signout-icon link">
+          </Link>
+          <Link to="/login" className="signout-icon link">
             <i className="fas fa-sign-out-alt" />
-          </a>
+          </Link>
         </div>
       </div>
     );

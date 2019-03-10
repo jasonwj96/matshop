@@ -37,7 +37,7 @@ export default class Login extends Component {
         const data = await response.json();
 
         if (data.userLoggedIn) {
-          alert("User logged in.");
+          this.props.history.push("/home");
         } else {
           throw new Error();
         }

@@ -24,6 +24,14 @@
   }
 }
 
+link {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .expand {
   animation-name: expand;
   animation-duration: 0.2s;
@@ -57,16 +65,11 @@
     justify-items: baseline;
     justify-content: space-between;
 
-    a {
-      text-decoration: none;
-      padding: 10px;
-    }
-
     .profile-img {
       display: flex;
       width: 40px;
       height: 40px;
-      margin-bottom: 10px;
+      margin: 10px;
       background-color: $profile-img-bg;
       border-radius: 50%;
       justify-content: center;
@@ -76,6 +79,7 @@
         margin: 0;
         padding: 0;
         color: #fff;
+        text-decoration: none;
       }
     }
 
@@ -85,6 +89,7 @@
       display: flex;
       flex-flow: column;
       align-items: center;
+      text-decoration: none;
 
       i {
         color: $icon-color;
