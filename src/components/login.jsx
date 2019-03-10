@@ -37,7 +37,7 @@ export default class Login extends Component {
         const data = await response.json();
 
         if (data.userLoggedIn) {
-          alert("The password is correct.");
+          alert("User logged in.");
         } else {
           throw new Error();
         }
@@ -79,61 +79,67 @@ export default class Login extends Component {
   };
 
   handleEmailChange = event => {
-    this.setState({
-      email: event.target.value
-    });
+    this.setState(
+      {
+        email: event.target.value
+      },
+      () => {
+        const regex = configuration.emailRegex;
+        const valid = regex.test(this.state.email);
 
-    const regex = configuration.emailRegex;
-    const valid = regex.test(this.state.email);
-
-    if (valid) {
-      this.setState({
-        classNames: {
-          email: "valid"
+        if (valid) {
+          this.setState({
+            classNames: {
+              email: "valid"
+            }
+          });
+        } else {
+          this.setState({
+            classNames: {
+              email: "error"
+            }
+          });
         }
-      });
-    } else {
-      this.setState({
-        classNames: {
-          email: "error"
-        }
-      });
-    }
 
-    this.setState({
-      errors: {
-        email: valid
+        this.setState({
+          errors: {
+            email: valid
+          }
+        });
       }
-    });
+    );
   };
 
   handlePasswordChange = event => {
-    this.setState({
-      password: event.target.value
-    });
+    this.setState(
+      {
+        password: event.target.value
+      },
+      () => {
+        const regex = configuration.passwordRegex;
+        const valid = regex.test(this.state.password);
 
-    const regex = configuration.passwordRegex;
-    const valid = regex.test(this.state.password);
-
-    if (valid) {
-      this.setState({
-        classNames: {
-          password: "valid"
+        if (valid) {
+          this.setState({
+            classNames: {
+              password: "valid"
+            }
+          });
+        } else {
+          this.setState({
+            classNames: {
+              password: "error"
+            }
+          });
         }
-      });
-    } else {
-      this.setState({
-        classNames: {
-          password: "error"
-        }
-      });
-    }
 
-    this.setState({
-      errors: {
-        password: valid
+        this.setState({
+          errors: {
+            password: valid
+          }
+        });
       }
-    });
+    );
   };
 
   render() {
