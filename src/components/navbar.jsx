@@ -12,18 +12,18 @@ export default class Navbar extends Component {
   }
 
   showMenu = () => {
-    const container = document.getElementById("navbar-container");
-    const button = document.getElementById("nav-btn");
+    this.setState({ showMenu: !this.state.showMenu }, () => {
+      const container = document.getElementById("navbar-container");
+      const button = document.getElementById("nav-btn");
 
-    if (this.state.showMenu) {
-      container.className = "expand-nav";
-      button.className = "show-arrow";
-    } else {
-      container.className = "collapse-nav";
-      button.className = "hide-arrow";
-    }
-
-    this.setState({ showMenu: !this.state.showMenu });
+      if (this.state.showMenu) {
+        container.className = "expand-nav";
+        button.className = "show-arrow";
+      } else {
+        container.className = "collapse-nav";
+        button.className = "hide-arrow";
+      }
+    });
   };
 
   render() {

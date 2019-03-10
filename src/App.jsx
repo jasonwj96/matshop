@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router history={customHistory}>
       <Switch>
-        <Route path="/" component={Landing} exact />
+        <Route path="/" component={Login} exact />
         <Route path="/home" component={Landing} />
         <Route path="/login" component={Login} />
         <Route component={NotFound} />
