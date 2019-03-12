@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./wishlistitem.scss";
 
 export default class WishlistItem extends Component {
-  deleteItem() {}
+  deleteItem = () => console.log("item deleted.");
 
   render() {
     const images = require.context("../assets/img", true);

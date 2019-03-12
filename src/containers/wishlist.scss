@@ -17,7 +17,9 @@
     .header {
       display: flex;
       height: 40px;
-      justify-content: flex-end;
+      // justify-content: flex-end;
+      padding: 0 20px;
+      font-family: "Poppins";
       box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000001f;
       background-color: #eb5d24;
       border-radius: 3px 3px 0px 0px;
@@ -27,14 +29,6 @@
       p {
         margin-top: auto;
         margin-bottom: auto;
-      }
-
-      .quantity-title {
-        margin-right: 80px;
-      }
-
-      .price-title {
-        margin-right: 120px;
       }
     }
 
@@ -50,7 +44,7 @@
 
       button {
         height: auto;
-        padding: 10px 15px;
+        padding: 5px 15px;
         outline: none;
         width: auto;
         color: #fff;
@@ -59,6 +53,11 @@
         border-radius: 3px;
         font-size: 1em;
         transition: 0.2s background-color ease-in-out;
+        font-family: "Poppins";
+
+        &:nth-child(1) {
+          margin: 0 10px;
+        }
 
         &:hover {
           background-color: #c04f22;

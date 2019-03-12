@@ -86,7 +86,7 @@ export default class Wishlist extends Component {
     };
   }
 
-  checkoutItems() {}
+  checkoutItems = () => console.log("Items checked out");
 
   render() {
     return (
@@ -95,8 +95,7 @@ export default class Wishlist extends Component {
         <Statusbar />
         <div className="wishlist">
           <div className="header">
-            <p className="quantity-title">Quantity</p>
-            <p className="price-title">Price</p>
+            <p>My wishlist items</p>
           </div>
           <div>
             {this.state.items.length > 0 ? (
@@ -108,6 +107,7 @@ export default class Wishlist extends Component {
             )}
           </div>
           <div className="footer">
+            <button onClick={this.checkoutItems}>Clear</button>
             <button onClick={this.checkoutItems}>Checkout</button>
           </div>
         </div>
