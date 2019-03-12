@@ -12,7 +12,7 @@ export default class Wishlist extends Component {
       items: [
         {
           imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket ",
+          title: "Lightweight Varsity Jacket",
           quantity: 5,
           alt: "Jacket",
           rating: 89,

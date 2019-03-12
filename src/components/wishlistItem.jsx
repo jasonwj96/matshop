@@ -11,14 +11,16 @@ export default class WishlistItem extends Component {
         <div className="image">
           <img src={images(`${imageUrl}`)} alt={alt} />
         </div>
+        <div className="title">
+          <p>{title}</p>
+        </div>
         <div className="info">
-          <p className="title">{title}</p>
-        </div>
-        <div className="quantity">
-          <p>{quantity}</p>
-        </div>
-        <div className="price">
-          <p>{`$${price}`}</p>
+          <div className="quantity">
+            <p>{quantity}</p>
+          </div>
+          <div className="price">
+            <p>{`$${price}`}</p>
+          </div>
         </div>
       </div>
     );
