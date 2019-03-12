@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./wishlistitem.scss";
 
 export default class WishlistItem extends Component {
+  deleteItem() {}
+
   render() {
     const images = require.context("../assets/img", true);
     const { imageUrl, title, quantity, alt, price } = this.props.item;
@@ -20,6 +22,12 @@ export default class WishlistItem extends Component {
           </div>
           <div className="price">
             <p>{`$${price}`}</p>
+          </div>
+
+          <div className="delete-btn">
+            <button onClick={this.deleteItem}>
+              <i className="fas fa-times-circle" />
+            </button>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@
 }
 
 .wishlistitem {
+  box-sizing: border-box;
   overflow: hidden;
   display: flex;
   background-color: #fff;
@@ -35,15 +36,36 @@
 
   .info {
     @include flex-center();
-    margin: 0 50px;
+    margin: 0 10px;
     width: auto;
-  }
-  .quantity {
-    @include flex-center();
-    margin: 0 80px;
-  }
 
-  .price {
-    @include flex-center();
+    .quantity {
+      @include flex-center();
+      margin: 60px;
+    }
+
+    .price {
+      @include flex-center();
+      margin: 40px;
+    }
+
+    .delete-btn {
+      display: flex;
+      align-items: center;
+
+      button {
+        border: none;
+        background: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      i {
+        font-size: 1.5em;
+        width: 20px;
+        height: 20px;
+        color: #ff0000;
+      }
+    }
   }
 }

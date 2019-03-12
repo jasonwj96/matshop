@@ -4,8 +4,7 @@
   flex-flow: column;
   align-items: center;
   width: 100%;
-  min-width: 600px;
-  padding: 100px 250px 50px;
+  padding: 100px 200px 50px;
   box-sizing: border-box;
 
   .wishlist {
@@ -31,11 +30,11 @@
       }
 
       .quantity-title {
-        margin-right: 60px;
+        margin-right: 80px;
       }
 
       .price-title {
-        margin-right: 50px;
+        margin-right: 120px;
       }
     }
 
