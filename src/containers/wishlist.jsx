@@ -19,12 +19,12 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
-          imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket",
-          quantity: 5,
-          alt: "Jacket",
-          rating: 89,
-          price: 19.99
+          imageUrl: "./product3.jpg",
+          title: "PlayStation 4 Slim 1TB Console",
+          quantity: 9,
+          alt: "Playstation 4",
+          rating: 73,
+          price: 299.99
         },
         {
           imageUrl: "./product1.jpg",
@@ -35,12 +35,12 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
-          imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket",
-          quantity: 5,
-          alt: "Jacket",
-          rating: 89,
-          price: 19.99
+          imageUrl: "./product3.jpg",
+          title: "PlayStation 4 Slim 1TB Console",
+          quantity: 9,
+          alt: "Playstation 4",
+          rating: 73,
+          price: 299.99
         },
         {
           imageUrl: "./product1.jpg",
@@ -51,12 +51,12 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
-          imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket",
-          quantity: 5,
-          alt: "Jacket",
-          rating: 89,
-          price: 19.99
+          imageUrl: "./product3.jpg",
+          title: "PlayStation 4 Slim 1TB Console",
+          quantity: 9,
+          alt: "Playstation 4",
+          rating: 73,
+          price: 299.99
         },
         {
           imageUrl: "./product1.jpg",
@@ -67,20 +67,12 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
-          imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket",
-          quantity: 5,
-          alt: "Jacket",
-          rating: 89,
-          price: 19.99
-        },
-        {
-          imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket",
-          quantity: 5,
-          alt: "Jacket",
-          rating: 89,
-          price: 19.99
+          imageUrl: "./product3.jpg",
+          title: "PlayStation 4 Slim 1TB Console",
+          quantity: 9,
+          alt: "Playstation 4",
+          rating: 73,
+          price: 299.99
         }
       ]
     };

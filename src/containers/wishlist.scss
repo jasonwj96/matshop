@@ -36,7 +36,8 @@
       flex-flow: row;
       justify-content: flex-end;
       box-shadow: 0 1px 3px #0000001f, 0 1px 2px #0000001f;
-      background-color: #e2e2e2;
+      // background-color: #e2e2e2;
+      background-color: #fff;
       height: auto;
       margin: 0px;
       padding: 10px;
@@ -56,6 +57,12 @@
 
         &:nth-child(1) {
           margin: 0 10px;
+          background-color: #cfcfcf;
+          color: #000;
+
+          &:hover {
+            background-color: #a3a2a2;
+          }
         }
 
         &:hover {

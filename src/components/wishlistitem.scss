@@ -16,11 +16,6 @@
   border-bottom: #e2e2e2 1px solid;
   transition: 0.2s height ease-in-out;
 
-  &:hover {
-    box-shadow: 0 2px 6px #0000007a;
-    height: 120px;
-  }
-
   .image {
     display: flex;
     margin: 0 20px;
@@ -49,12 +44,14 @@
 
     .quantity {
       @include flex-center();
-      margin: 60px;
+      margin: 0 60px;
+      width: 20px;
     }
 
     .price {
       @include flex-center();
-      margin: 40px;
+      margin: 0 80px 0 40px;
+      width: 20px;
     }
 
     .delete-btn {
