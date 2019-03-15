@@ -6,6 +6,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import Login from "./containers/login";
 import NotFound from "./containers/notfound";
 import Wishlist from "./containers/wishlist";
+import Category from "./containers/category";
 
 const customHistory = createBrowserHistory();
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/home" component={Landing} />
         <Route path="/login" component={Login} />
         <Route path="/wishlist" component={Wishlist} />
+        <Route path="/category" component={Category} />
         <Route component={NotFound} />
       </Switch>
     </Router>

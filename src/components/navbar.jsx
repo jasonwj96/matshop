@@ -44,23 +44,31 @@ export default class Navbar extends Component {
           </div>
           <div />
           <ul>
-            <Link className="link" to="/Home">
+            <Link onClick={this.showMenu} className="link" to="/Home">
               Home
             </Link>
 
-            <Link className="link" to="/Pets">
+            <Link onClick={this.showMenu} className="link" to="category?c=pets">
               Pets
             </Link>
 
-            <Link className="link" to="/Clothes">
+            <Link
+              onClick={this.showMenu}
+              className="link"
+              to="category?c=clothes"
+            >
               Clothes
             </Link>
 
-            <Link className="link" to="/Books">
+            <Link
+              onClick={this.showMenu}
+              className="link"
+              to="category?c=books"
+            >
               Books
             </Link>
 
-            <Link className="link" to="/Tech">
+            <Link onClick={this.showMenu} className="link" to="category?c=tech">
               Tech
             </Link>
           </ul>
