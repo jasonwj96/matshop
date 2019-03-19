@@ -1,9 +1,8 @@
 @import "../styles/styles";
 
 .login-container {
-  background-color: #f1f1f1;
-  // background: url("../assets/img/cover.jpg");
-
+  // background-color: #f1f1f1;
+  background: url("../assets/img/cover.jpg");
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +23,6 @@
     background-color: #fff;
     box-shadow: #00000052 1px 1px 1px 1px;
     justify-content: space-between;
-
     transition: 0.2s box-shadow ease-in-out;
 
     .logo {
