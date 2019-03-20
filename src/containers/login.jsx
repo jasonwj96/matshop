@@ -8,6 +8,7 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
+      userLoggedIn: localStorage.getItem("userEmail") ? true : false,
       emailIsValid: false,
       passwordIsValid: false,
       email: "",
@@ -147,60 +148,66 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="login-container">
-        <div className="login-panel">
-          <div className="logo">Matshop</div>
-          <form onSubmit={e => e.preventDefault()}>
-            {!this.state.emailIsValid ? (
-              <div>
-                <label htmlFor="email">Email</label>
-                <input
-                  id="emailInput"
-                  className={this.state.classNames.email}
-                  type="email"
-                  name="email"
-                  placeholder="brucewayne@gmail.com"
-                  value={this.state.email}
-                  onChange={this.handleEmailChange}
-                  onClick={this.handleEmailChange}
-                />
-                <Link to="/"> Forgot your email?</Link>
-              </div>
-            ) : (
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
-                  id="passwordInput"
-                  className={this.state.classNames.password}
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handlePasswordChange}
-                  onClick={this.handlePasswordChange}
-                />
-                <Link to="/"> Forgot your password?</Link>
-              </div>
-            )}
-          </form>
+      <div>
+        {this.state.userLoggedIn ? (
+          <Redirect to="/home" />
+        ) : (
+          <div className="login-container">
+            <div className="login-panel">
+              <div className="logo">Matshop</div>
+              <form onSubmit={e => e.preventDefault()}>
+                {!this.state.emailIsValid ? (
+                  <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                      id="emailInput"
+                      className={this.state.classNames.email}
+                      type="email"
+                      name="email"
+                      placeholder="brucewayne@gmail.com"
+                      value={this.state.email}
+                      onChange={this.handleEmailChange}
+                      onClick={this.handleEmailChange}
+                    />
+                    <Link to="/"> Forgot your email?</Link>
+                  </div>
+                ) : (
+                  <div>
+                    <label htmlFor="password">Password</label>
+                    <input
+                      id="passwordInput"
+                      className={this.state.classNames.password}
+                      type="password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.handlePasswordChange}
+                      onClick={this.handlePasswordChange}
+                    />
+                    <Link to="/"> Forgot your password?</Link>
+                  </div>
+                )}
+              </form>
 
-          <div className="login-footer">
-            {!this.state.emailIsValid ? (
-              <div className="login-buttons">
-                <button onClick={this.verifyEmail}>Next</button>
+              <div className="login-footer">
+                {!this.state.emailIsValid ? (
+                  <div className="login-buttons">
+                    <button onClick={this.verifyEmail}>Next</button>
+                  </div>
+                ) : (
+                  <div className="login-buttons">
+                    <button className="back-btn" onClick={this.verifyEmail}>
+                      Back
+                    </button>
+                    <button onClick={this.loginUser}>Login</button>
+                  </div>
+                )}
+                <p>
+                  Need an account?<Link to="/Register"> click here</Link>
+                </p>
               </div>
-            ) : (
-              <div className="login-buttons">
-                <button className="back-btn" onClick={this.verifyEmail}>
-                  Back
-                </button>
-                <button onClick={this.loginUser}>Login</button>
-              </div>
-            )}
-            <p>
-              Need an account?<Link to="/Register"> click here</Link>
-            </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
