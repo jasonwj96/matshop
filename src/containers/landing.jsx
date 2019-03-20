@@ -5,12 +5,14 @@ import configuration from "../config";
 import Navbar from "../components/navbar";
 import Statusbar from "../components/statusbar";
 import Footer from "../components/footer";
+import { Redirect } from "react-router-dom";
 
 export default class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      userLoggedIn: localStorage.getItem("userEmail") ? true : false
     };
   }
 
@@ -30,49 +32,55 @@ export default class Landing extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <Statusbar />
-        <div className="landing">
-          <div className="cover">
-            <div className="overlay">
-              <div className="cover-section">Welcome to Matshop!</div>
-              <div className="cover-section">It's nice to meet you</div>
+        {!this.state.userLoggedIn ? (
+          <Redirect to="/" />
+        ) : (
+          <div>
+            <Navbar />
+            <Statusbar />
+            <div className="landing">
+              <div className="cover">
+                <div className="overlay">
+                  <div className="cover-section">Welcome to Matshop!</div>
+                  <div className="cover-section">It's nice to meet you</div>
+                </div>
+              </div>
+              {this.state.products.length === 0 ? (
+                <div className="spinner">
+                  <i className="fas fa-spinner" />
+                </div>
+              ) : (
+                <LandingSection
+                  heading={"What's hot right now"}
+                  products={this.state.products}
+                />
+              )}
+
+              {this.state.products.length === 0 ? (
+                <div className="spinner">
+                  <i className="fas fa-spinner" />
+                </div>
+              ) : (
+                <LandingSection
+                  heading={"Men's clothing"}
+                  products={this.state.products}
+                />
+              )}
+
+              {this.state.products.length === 0 ? (
+                <div className="spinner">
+                  <i className="fas fa-spinner" />
+                </div>
+              ) : (
+                <LandingSection
+                  heading={"Latest in tech"}
+                  products={this.state.products}
+                />
+              )}
             </div>
+            <Footer />
           </div>
-          {this.state.products.length === 0 ? (
-            <div className="spinner">
-              <i className="fas fa-spinner" />
-            </div>
-          ) : (
-            <LandingSection
-              heading={"What's hot right now"}
-              products={this.state.products}
-            />
-          )}
-
-          {this.state.products.length === 0 ? (
-            <div className="spinner">
-              <i className="fas fa-spinner" />
-            </div>
-          ) : (
-            <LandingSection
-              heading={"Men's clothing"}
-              products={this.state.products}
-            />
-          )}
-
-          {this.state.products.length === 0 ? (
-            <div className="spinner">
-              <i className="fas fa-spinner" />
-            </div>
-          ) : (
-            <LandingSection
-              heading={"Latest in tech"}
-              products={this.state.products}
-            />
-          )}
-        </div>
-        <Footer />
+        )}
       </div>
     );
   }

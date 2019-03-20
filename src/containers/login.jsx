@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./login.scss";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import configuration from "../config";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       emailIsValid: false,
       passwordIsValid: false,
@@ -21,6 +22,8 @@ export default class Login extends Component {
       }
     };
   }
+
+  componentDidMount() {}
 
   loginUser = async () => {
     if (configuration.passwordRegex.test(this.state.password)) {

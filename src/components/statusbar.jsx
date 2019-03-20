@@ -55,6 +55,10 @@ export default class Statusbar extends Component {
     this.setState({ showMenu: !this.state.showMenu });
   };
 
+  logOutUser() {
+    localStorage.clear();
+  }
+
   render() {
     return (
       <div className="statusbar">
@@ -74,7 +78,11 @@ export default class Statusbar extends Component {
           <Link to="/preferences" className="settings-icon link">
             <i className="fas fa-cog" />
           </Link>
-          <Link to="/login" className="signout-icon link">
+          <Link
+            to="/login"
+            onClick={this.logOutUser}
+            className="signout-icon link"
+          >
             <i className="fas fa-sign-out-alt" />
           </Link>
         </div>
