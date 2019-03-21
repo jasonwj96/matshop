@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./login.scss";
 import { Link, Redirect } from "react-router-dom";
 import configuration from "../config";
+import Notification from "../components/notification";
 
 export default class Login extends Component {
   constructor(props) {
@@ -20,11 +21,23 @@ export default class Login extends Component {
       classNames: {
         email: "pristine",
         password: "pristine"
-      }
+      },
+      notificationMessage: "",
+      notificationTitle: ""
     };
   }
 
-  componentDidMount() {}
+  displayNotification(title, message) {
+    const notification = document.getElementById("notification");
+    this.setState(
+      { notificationTitle: title, notificationMessage: message },
+      () => (notification.style.opacity = 1)
+    );
+
+    setTimeout(() => {
+      notification.style.opacity = 0;
+    }, 5000);
+  }
 
   loginUser = async () => {
     if (configuration.passwordRegex.test(this.state.password)) {
@@ -43,11 +56,22 @@ export default class Login extends Component {
           localStorage.setItem("userEmail", this.state.email);
           this.props.history.push("/home");
         } else {
-          throw new Error();
+          this.displayNotification(
+            "Invalid input",
+            "The email entered does not exist"
+          ); //if the email doesn't exist
         }
       } catch (error) {
-        alert("The password is incorrect.");
+        this.displayNotification(
+          "Password error",
+          "The password entered does not match the user email"
+        );
       }
+    } else {
+      this.displayNotification(
+        "Invalid password",
+        "Please use a valid password format"
+      );
     }
   };
 
@@ -75,10 +99,16 @@ export default class Login extends Component {
           throw new Error("The email doesn't exist");
         }
       } catch (error) {
-        alert(error.message);
+        this.displayNotification(
+          "Email error",
+          "The email entered does not exist"
+        );
       }
     } else {
-      alert("Please insert a valid email format");
+      this.displayNotification(
+        "Invalid input",
+        "Please use a valid email format"
+      );
     }
   };
 
@@ -208,6 +238,10 @@ export default class Login extends Component {
             </div>
           </div>
         )}
+        <Notification
+          title={this.state.notificationTitle}
+          message={this.state.notificationMessage}
+        />
       </div>
     );
   }

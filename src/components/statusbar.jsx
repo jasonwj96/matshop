@@ -56,7 +56,7 @@ export default class Statusbar extends Component {
   };
 
   logOutUser() {
-    localStorage.clear();
+    localStorage.removeItem("userEmail");
   }
 
   render() {

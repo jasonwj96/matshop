@@ -4,17 +4,14 @@ import "./notification.scss";
 export default class Notification extends Component {
   render() {
     return (
-      <div className="container">
+      <div id="notification" className="notification-container">
         <div className="icon">
-          <i class="fas fa-exclamation-circle" />
+          <i className="fas fa-exclamation-circle" />
           {/* <i class="fas fa-check-square" /> */}
         </div>
         <div className="message">
-          <p className="notification-title">New message</p>
-          <p className="notification-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            excepturi distinctio, debitis quasi eos minima.
-          </p>
+          <p className="notification-title">{this.props.title}</p>
+          <p className="notification-desc">{this.props.message}</p>
         </div>
       </div>
     );
