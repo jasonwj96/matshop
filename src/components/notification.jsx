@@ -7,7 +7,6 @@ export default class Notification extends Component {
       <div id="notification" className="notification-container">
         <div className="icon">
           <i className="fas fa-exclamation-circle" />
-          {/* <i class="fas fa-check-square" /> */}
         </div>
         <div className="message">
           <p className="notification-title">{this.props.title}</p>

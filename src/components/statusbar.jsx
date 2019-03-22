@@ -8,6 +8,7 @@ export default class Statusbar extends Component {
     super(props);
 
     this.state = {
+      userLoggedIn: localStorage.getItem("userEmail") ? true : false,
       showMenu: true,
       userData: {
         userEmail: localStorage.getItem("userEmail"),
@@ -62,30 +63,40 @@ export default class Statusbar extends Component {
   render() {
     return (
       <div className="statusbar">
-        <div
-          id="statusbar-container"
-          onMouseEnter={this.showMenu}
-          onMouseLeave={this.showMenu}
-        >
-          <Link to="/profile">
-            <div className="profile-img">
-              <p>{this.state.userData.firstName.substring(0, 1)}</p>
-            </div>
-          </Link>
-          <Link to="/wishlist" className="wishlist-icon link">
-            <i className="fas fa-shopping-bag" />
-          </Link>
-          <Link to="/preferences" className="settings-icon link">
-            <i className="fas fa-cog" />
-          </Link>
-          <Link
-            to="/login"
-            onClick={this.logOutUser}
-            className="signout-icon link"
+        {this.state.userLoggedIn ? (
+          <div
+            id="statusbar-container"
+            onMouseEnter={this.showMenu}
+            onMouseLeave={this.showMenu}
           >
-            <i className="fas fa-sign-out-alt" />
-          </Link>
-        </div>
+            <Link to="/profile">
+              <div className="profile-img">
+                <p>{this.state.userData.firstName.substring(0, 1)}</p>
+              </div>
+            </Link>
+            <Link to="/wishlist" className="wishlist-icon link">
+              <i className="fas fa-shopping-bag" />
+            </Link>
+            <Link to="/preferences" className="settings-icon link">
+              <i className="fas fa-cog" />
+            </Link>
+            <Link
+              to="/login"
+              onClick={this.logOutUser}
+              className="signout-icon link"
+            >
+              <i className="fas fa-sign-out-alt" />
+            </Link>
+          </div>
+        ) : (
+          <div id="statusbar-container">
+            <Link to="/login">
+              <div className="profile-img">
+                <i className="fas fa-lock" />
+              </div>
+            </Link>
+          </div>
+        )}
       </div>
     );
   }

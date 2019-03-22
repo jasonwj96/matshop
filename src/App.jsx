@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Router history={customHistory}>
       <Switch>
-        <Route path="/" component={Login} exact />
+        <Route path="/" component={Landing} exact />
         <Route path="/home" component={Landing} />
         <Route path="/login" component={Login} />
         <Route path="/wishlist" component={Wishlist} />

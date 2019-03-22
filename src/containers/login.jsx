@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./login.scss";
 import { Link, Redirect } from "react-router-dom";
 import configuration from "../config";
 import Notification from "../components/notification";
+import "./login.scss";
 
 export default class Login extends Component {
   constructor(props) {

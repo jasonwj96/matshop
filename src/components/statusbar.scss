@@ -74,12 +74,21 @@ a {
       border-radius: 50%;
       justify-content: center;
       align-items: center;
+      transition: 0.2s background-color ease-in-out;
+
+      i {
+        color: #fff;
+      }
 
       p {
         margin: 0;
         padding: 0;
         color: #fff;
         text-decoration: none;
+      }
+
+      &:hover {
+        background-color: $profile-img-bg-hover;
       }
     }
 
