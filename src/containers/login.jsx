@@ -59,7 +59,7 @@ export default class Login extends Component {
           this.displayNotification(
             "Invalid input",
             "The email entered does not exist"
-          ); //if the email doesn't exist
+          );
         }
       } catch (error) {
         this.displayNotification(
@@ -199,7 +199,7 @@ export default class Login extends Component {
                       onChange={this.handleEmailChange}
                       onClick={this.handleEmailChange}
                     />
-                    <Link to="/"> Forgot your email?</Link>
+                    <Link to="/recovery"> Forgot your email?</Link>
                   </div>
                 ) : (
                   <div>
@@ -232,7 +232,7 @@ export default class Login extends Component {
                   </div>
                 )}
                 <p>
-                  Need an account?<Link to="/Register"> click here</Link>
+                  Need an account?<Link to="/register"> click here</Link>
                 </p>
               </div>
             </div>

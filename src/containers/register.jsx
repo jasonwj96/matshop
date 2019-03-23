@@ -15,14 +15,14 @@ export default class Register extends Component {
     };
   }
 
-  registerUser = event => alert("Registered user");
+  registerUser = () => alert("Registered user");
 
   render() {
     return (
       <div className="register-container">
         <div className="form-container">
           <div className="logo">Matshop</div>
-          <form onSubmit={e => e.preventDefault()}>
+          <form onSubmit={this.registerUser}>
             <label htmlFor="firstName">
               First name <input type="text" name="firstName" />
             </label>

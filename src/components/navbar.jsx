@@ -18,10 +18,8 @@ export default class Navbar extends Component {
 
       if (this.state.showMenu) {
         container.className = "expand-nav";
-        button.className = "show-arrow";
       } else {
         container.className = "collapse-nav";
-        button.className = "hide-arrow";
       }
     });
   };
