@@ -49,10 +49,21 @@
         display: flex;
         margin: 0;
 
-        sup {
-          font-size: 1em;
-          color: #fa0000;
+        .requiredDiv {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background-color: #fa0000;
+          align-self: center;
+          margin-left: 5px;
         }
+
+        // sup {
+        //   margin-left: 2px;
+        //   font-size: 1.4em;
+        //   color: #fa0000;
+        //   align-self: baseline;
+        // }
       }
     }
 
@@ -61,7 +72,7 @@
       width: auto;
       height: 40px;
       border: #b6b6b6 2px solid;
-      margin: 0px 0px 30px 0;
+      margin: 5px 0px 30px 0;
       border-radius: 5px;
       outline: none;
       padding: 5px 10px;
@@ -75,10 +86,13 @@
         font-size: 0.8em;
         font-family: "Poppins";
 
-        sup {
-          margin: 0 5px 0 0;
-          color: #fa0000;
-          font-size: 1em;
+        .requiredDiv {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background-color: #fa0000;
+          align-self: center;
+          margin-right: 5px;
         }
       }
 
