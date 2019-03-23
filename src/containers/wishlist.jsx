@@ -78,6 +78,10 @@ export default class Wishlist extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Matshop - Wishlist";
+  }
+
   checkoutItems = () => console.log("Items checked out");
 
   render() {

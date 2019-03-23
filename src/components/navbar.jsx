@@ -45,14 +45,14 @@ export default class Navbar extends Component {
               Home
             </Link>
 
-            <Link onClick={this.showMenu} className="link" to="category?c=pets">
+            <Link onClick={this.showMenu} className="link" to="category?c=Pets">
               Pets
             </Link>
 
             <Link
               onClick={this.showMenu}
               className="link"
-              to="category?c=clothes"
+              to="category?c=Clothes"
             >
               Clothes
             </Link>
@@ -60,12 +60,12 @@ export default class Navbar extends Component {
             <Link
               onClick={this.showMenu}
               className="link"
-              to="category?c=books"
+              to="category?c=Books"
             >
               Books
             </Link>
 
-            <Link onClick={this.showMenu} className="link" to="category?c=tech">
+            <Link onClick={this.showMenu} className="link" to="category?c=Tech">
               Tech
             </Link>
           </ul>

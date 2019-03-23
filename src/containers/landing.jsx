@@ -16,6 +16,8 @@ export default class Landing extends Component {
   }
 
   async componentDidMount() {
+    document.title = "Matshop - Home";
+
     try {
       const response = await fetch(`${configuration.apiPath}/Home`);
 

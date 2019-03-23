@@ -8,12 +8,13 @@ export default class Category extends Component {
     super(props);
 
     this.state = {
-      header: ""
+      header: "",
+      category: ""
     };
   }
 
   componentWillReceiveProps() {
-    this.createSectionHeader();
+    this.createSectionHeader(); //fix this
   }
 
   componentDidMount() {
@@ -22,20 +23,21 @@ export default class Category extends Component {
 
   createSectionHeader = () => {
     const params = new URLSearchParams(this.props.location.search);
-    const category = params.get("c").toLowerCase();
+    const category = params.get("c");
+
     let header = "";
 
     switch (category) {
-      case "pets":
+      case "Pets":
         header = "Items for man's best friend";
         break;
-      case "clothes":
+      case "Clothes":
         header = "Clothes from the most prestigious brands";
         break;
-      case "tech":
+      case "Tech":
         header = "Cutting edge tech at the tip of your hands";
         break;
-      case "books":
+      case "Books":
         header = "Timeless classics from all genres";
         break;
       default:
@@ -44,7 +46,9 @@ export default class Category extends Component {
         break;
     }
 
-    this.setState({ header: header });
+    this.setState({ header, category }, () => {
+      document.title = `Matshop - ${this.state.category}`;
+    });
   };
 
   render() {

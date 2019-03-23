@@ -21,6 +21,10 @@ export default class Register extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Matshop - Register";
+  }
+
   registerUser = () => alert("Registered user");
 
   handleFirstNameChange = event => {

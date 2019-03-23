@@ -27,6 +27,10 @@ export default class Login extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = "Matshop - Login";
+  }
+
   displayNotification(title, message) {
     const notification = document.getElementById("notification");
     this.setState(
