@@ -14,7 +14,6 @@ export default class Navbar extends Component {
   showMenu = () => {
     this.setState({ showMenu: !this.state.showMenu }, () => {
       const container = document.getElementById("navbar-container");
-      const button = document.getElementById("nav-btn");
 
       if (this.state.showMenu) {
         container.className = "expand-nav";

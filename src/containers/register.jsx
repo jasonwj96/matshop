@@ -24,21 +24,37 @@ export default class Register extends Component {
           <div className="logo">Matshop</div>
           <form onSubmit={this.registerUser}>
             <label htmlFor="firstName">
-              First name <input type="text" name="firstName" />
+              <p>
+                First name<sup>*</sup>
+              </p>
+              <input type="text" name="firstName" />
             </label>
             <label htmlFor="lastName">
-              Last name <input type="text" name="lastName" />
+              <p>Last name</p>
+              <input type="text" name="lastName" />
             </label>
             <label htmlFor="email">
-              Email address <input type="email" name="email" />
+              <p>
+                Email address<sup>*</sup>
+              </p>
+              <input type="email" name="email" />
             </label>
             <label htmlFor="password">
-              Password <input type="password" name="password" />
+              <p>
+                Password<sup>*</sup>
+              </p>
+              <input type="password" name="password" />
             </label>
             <label htmlFor="confirmPassword">
-              Confirm password <input type="password" name="confirmPassword" />
+              <p>
+                Confirm password<sup>*</sup>
+              </p>
+              <input type="password" name="confirmPassword" />
             </label>
             <div className="form-footer">
+              <p>
+                <sup>*</sup>Required field
+              </p>
               <button onClick={this.registerUser}>Register</button>
             </div>
           </form>
