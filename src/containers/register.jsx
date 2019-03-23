@@ -24,42 +24,54 @@ export default class Register extends Component {
           <div className="logo">Matshop</div>
           <form onSubmit={this.registerUser}>
             <label htmlFor="firstName">
-              <p>
+              <div>
                 First name
                 <div className="requiredDiv" />
-              </p>
-              <input type="text" name="firstName" />
+              </div>
+              <input type="text" name="firstName" placeholder="Bruce" />
             </label>
             <label htmlFor="lastName">
-              <p>Last name</p>
-              <input type="text" name="lastName" />
+              <div>Last name</div>
+              <input type="text" name="lastName" placeholder="Wayne" />
             </label>
             <label htmlFor="email">
-              <p>
+              <div>
                 Email address
                 <div className="requiredDiv" />
-              </p>
-              <input type="email" name="email" />
+              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="brucewayne@gmail.com"
+              />
+            </label>
+            <label htmlFor="address">
+              <div>Residence address</div>
+              <textarea
+                type="text"
+                name="address"
+                placeholder="Wayne Manor, 1007 Mountain Drive, Gotham City. "
+              />
             </label>
             <label htmlFor="password">
-              <p>
+              <div>
                 Password
                 <div className="requiredDiv" />
-              </p>
+              </div>
               <input type="password" name="password" />
             </label>
             <label htmlFor="confirmPassword">
-              <p>
+              <div>
                 Confirm password
                 <div className="requiredDiv" />
-              </p>
+              </div>
               <input type="password" name="confirmPassword" />
             </label>
             <div className="form-footer">
-              <p>
+              <div>
                 <div className="requiredDiv" />
                 Required field
-              </p>
+              </div>
               <button onClick={this.registerUser}>Register</button>
             </div>
           </form>
