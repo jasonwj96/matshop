@@ -22,28 +22,30 @@ export default class Statusbar extends Component {
   }
 
   async fetchUserData() {
-    try {
-      const response = await fetch(`${configuration.apiPath}/Home/userdata`, {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify({ userEmail: this.state.userData.userEmail })
-      });
-
-      const data = await response.json();
-
-      if (data.firstName) {
-        this.setState({
-          userData: {
-            firstName: data.firstName
-          }
+    if (this.state.userLoggedIn) {
+      try {
+        const response = await fetch(`${configuration.apiPath}/Home/userdata`, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify({ userEmail: this.state.userData.userEmail })
         });
-      } else {
-        throw new Error("Error while fetching user data");
+
+        const data = await response.json();
+
+        if (data.firstName) {
+          this.setState({
+            userData: {
+              firstName: data.firstName
+            }
+          });
+        } else {
+          throw new Error("Error while fetching user data");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   }
 
