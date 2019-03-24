@@ -3,19 +3,15 @@ import "./statusbar.scss";
 import { Link } from "react-router-dom";
 import configuration from "../config";
 
-export default class Statusbar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      userLoggedIn: localStorage.getItem("userEmail") ? true : false,
-      showMenu: true,
-      userData: {
-        userEmail: localStorage.getItem("userEmail"),
-        firstName: ""
-      }
-    };
-  }
+class Statusbar extends Component {
+  state = {
+    userLoggedIn: localStorage.getItem("userEmail") ? true : false,
+    showMenu: true,
+    userData: {
+      userEmail: localStorage.getItem("userEmail"),
+      firstName: ""
+    }
+  };
 
   async componentDidMount() {
     this.fetchUserData();
@@ -103,3 +99,5 @@ export default class Statusbar extends Component {
     );
   }
 }
+
+export default React.memo(Statusbar);
