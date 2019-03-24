@@ -30,7 +30,7 @@
     background-color: #fff;
     flex-flow: column;
     border-radius: 5px;
-    box-shadow: #00000052 1px 1px 1px 1px;
+    box-shadow: #00000052 1px 1px 2px 1px;
 
     .logo {
       margin: 0px 0px 40px 0px;
@@ -110,7 +110,6 @@
         outline: none;
         border-radius: 3px;
         padding: 10px;
-        font-weight: bold;
         transition: 0.2s background-color ease-in-out;
         background-color: #eb5d24;
         color: #fff;

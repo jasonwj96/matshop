@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import "./register.scss";
+// import Configuration from "../config";
 
 const Register = props => {
   const [state, setState] = useState({
-    errors: {
-      firstName: false,
-      lastName: false,
-      email: false,
-      password: false
-    },
     firstName: "",
     lastName: "",
     email: "",
     address: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    errors: {
+      firstName: false,
+      lastName: false,
+      email: false,
+      password: false
+    }
   });
 
   document.title = "Matshop - Register";
@@ -22,60 +23,42 @@ const Register = props => {
   const registerUser = () => alert("Registered user");
 
   const handleFirstNameChange = event => {
-    setState(
-      {
-        firstName: event.target.value
-      },
-      () => {}
-    );
+    setState({
+      firstName: event.target.value
+    });
   };
 
   const handleLastNameChange = event => {
-    setState(
-      {
-        lastName: event.target.value
-      },
-      () => {}
-    );
+    setState({
+      lastName: event.target.value
+    });
   };
 
   const handleEmailChange = event => {
-    setState(
-      {
-        email: event.target.value
-      },
-      () => {}
-    );
+    setState({
+      email: event.target.value
+    });
   };
 
   const handleAddressChange = event => {
-    setState(
-      {
-        address: event.target.value
-      },
-      () => {}
-    );
+    setState({
+      address: event.target.value
+    });
   };
 
   const handlePasswordChange = event => {
-    setState(
-      {
-        password: event.target.value
-      },
-      () => {}
-    );
+    setState({
+      password: event.target.value
+    });
   };
 
   const handlePasswordConfirmChange = event => {
-    setState(
-      {
-        confirmPassword: event.target.value
-      },
-      () => {}
-    );
+    setState({
+      confirmPassword: event.target.value
+    });
   };
 
-  let content = (
+  return (
     <div className="register-container">
       <div className="form-container">
         <div className="logo">Matshop</div>
@@ -87,17 +70,18 @@ const Register = props => {
             </div>
             <input
               type="text"
-              value={state.firstName}
+              value={state.firstName || ""}
               name="firstName"
               placeholder="Bruce"
               onChange={handleFirstNameChange}
+              onClick={handleFirstNameChange}
             />
           </label>
           <label htmlFor="lastName">
             <div>Last name</div>
             <input
               type="text"
-              value={state.lastName}
+              value={state.lastName || ""}
               name="lastName"
               placeholder="Wayne"
               onChange={handleLastNameChange}
@@ -111,7 +95,7 @@ const Register = props => {
             <input
               type="email"
               name="email"
-              value={state.email}
+              value={state.email || ""}
               placeholder="notbatman@gmail.com"
               onChange={handleEmailChange}
             />
@@ -121,7 +105,7 @@ const Register = props => {
             <textarea
               type="text"
               name="address"
-              value={state.address}
+              value={state.address || ""}
               placeholder="Wayne Manor, 1007 Mountain Drive, Gotham City"
               onChange={handleAddressChange}
             />
@@ -133,7 +117,7 @@ const Register = props => {
             </div>
             <input
               type="password"
-              value={state.password}
+              value={state.password || ""}
               name="password"
               onChange={handlePasswordChange}
             />
@@ -145,7 +129,7 @@ const Register = props => {
             </div>
             <input
               type="password"
-              value={state.confirmPassword}
+              value={state.confirmPassword || ""}
               name="confirmPassword"
               onChange={handlePasswordConfirmChange}
             />
@@ -161,8 +145,6 @@ const Register = props => {
       </div>
     </div>
   );
-
-  return content;
 };
 
 export default Register;

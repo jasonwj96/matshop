@@ -199,7 +199,7 @@ export default class Login extends Component {
                       type="email"
                       name="email"
                       placeholder="brucewayne@gmail.com"
-                      value={this.state.email}
+                      value={this.state.email || ""}
                       onChange={this.handleEmailChange}
                       onClick={this.handleEmailChange}
                     />
@@ -213,7 +213,7 @@ export default class Login extends Component {
                       className={this.state.classNames.password}
                       type="password"
                       name="password"
-                      value={this.state.password}
+                      value={this.state.password || ""}
                       onChange={this.handlePasswordChange}
                       onClick={this.handlePasswordChange}
                     />
