@@ -7,18 +7,14 @@ const Navbar = props => {
 
   useEffect(() => {
     return () => {
-      changeClass();
+      const container = document.getElementById("navbar-container");
+      if (showMenu) {
+        container.className = "expand-nav";
+      } else {
+        container.className = "collapse-nav";
+      }
     };
   }, [showMenu]);
-
-  const changeClass = () => {
-    const container = document.getElementById("navbar-container");
-    if (showMenu) {
-      container.className = "expand-nav";
-    } else {
-      container.className = "collapse-nav";
-    }
-  };
 
   const toggle = () => {
     setShowMenu(!showMenu);
