@@ -86,7 +86,7 @@ export default class Register extends Component {
       <div className="register-container">
         <div className="form-container">
           <div className="logo">Matshop</div>
-          <form onSubmit={this.registerUser}>
+          <form onSubmit={e => e.preventDefault()}>
             <label htmlFor="firstName">
               <div>
                 First name
