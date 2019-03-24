@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import { Router, Route, Switch } from "react-router-dom";
 import Landing from "./containers/landing";
-import createBrowserHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import Login from "./containers/login";
 import NotFound from "./containers/notfound";
 import Wishlist from "./containers/wishlist";
