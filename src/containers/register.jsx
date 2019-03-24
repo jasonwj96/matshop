@@ -23,39 +23,27 @@ const Register = props => {
   const registerUser = () => alert("Registered user");
 
   const handleFirstNameChange = event => {
-    setState({
-      firstName: event.target.value
-    });
+    setState({ ...state, firstName: event.target.value });
   };
 
   const handleLastNameChange = event => {
-    setState({
-      lastName: event.target.value
-    });
+    setState({ ...state, lastName: event.target.value });
   };
 
   const handleEmailChange = event => {
-    setState({
-      email: event.target.value
-    });
+    setState({ ...state, email: event.target.value });
   };
 
   const handleAddressChange = event => {
-    setState({
-      address: event.target.value
-    });
+    setState({ ...state, address: event.target.value });
   };
 
   const handlePasswordChange = event => {
-    setState({
-      password: event.target.value
-    });
+    setState({ ...state, password: event.target.value });
   };
 
   const handlePasswordConfirmChange = event => {
-    setState({
-      confirmPassword: event.target.value
-    });
+    setState({ ...state, confirmPassword: event.target.value });
   };
 
   return (
