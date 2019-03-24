@@ -1,34 +1,28 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./register.scss";
 
-export default class Register extends Component {
-  constructor(props) {
-    super(props);
+const Register = props => {
+  const [state, setState] = useState({
+    errors: {
+      firstName: false,
+      lastName: false,
+      email: false,
+      password: false
+    },
+    firstName: "",
+    lastName: "",
+    email: "",
+    address: "",
+    password: "",
+    confirmPassword: ""
+  });
 
-    this.state = {
-      errors: {
-        firstName: false,
-        lastName: false,
-        email: false,
-        password: false
-      },
-      firstName: "",
-      lastName: "",
-      email: "",
-      address: "",
-      password: "",
-      confirmPassword: ""
-    };
-  }
+  document.title = "Matshop - Register";
 
-  componentDidMount() {
-    document.title = "Matshop - Register";
-  }
+  const registerUser = () => alert("Registered user");
 
-  registerUser = () => alert("Registered user");
-
-  handleFirstNameChange = event => {
-    this.setState(
+  const handleFirstNameChange = event => {
+    setState(
       {
         firstName: event.target.value
       },
@@ -36,8 +30,8 @@ export default class Register extends Component {
     );
   };
 
-  handleLastNameChange = event => {
-    this.setState(
+  const handleLastNameChange = event => {
+    setState(
       {
         lastName: event.target.value
       },
@@ -45,8 +39,8 @@ export default class Register extends Component {
     );
   };
 
-  handleEmailChange = event => {
-    this.setState(
+  const handleEmailChange = event => {
+    setState(
       {
         email: event.target.value
       },
@@ -54,8 +48,8 @@ export default class Register extends Component {
     );
   };
 
-  handleAddressChange = event => {
-    this.setState(
+  const handleAddressChange = event => {
+    setState(
       {
         address: event.target.value
       },
@@ -63,8 +57,8 @@ export default class Register extends Component {
     );
   };
 
-  handlePasswordChange = event => {
-    this.setState(
+  const handlePasswordChange = event => {
+    setState(
       {
         password: event.target.value
       },
@@ -72,8 +66,8 @@ export default class Register extends Component {
     );
   };
 
-  handlePasswordConfirmChange = event => {
-    this.setState(
+  const handlePasswordConfirmChange = event => {
+    setState(
       {
         confirmPassword: event.target.value
       },
@@ -81,92 +75,94 @@ export default class Register extends Component {
     );
   };
 
-  render() {
-    return (
-      <div className="register-container">
-        <div className="form-container">
-          <div className="logo">Matshop</div>
-          <form onSubmit={e => e.preventDefault()}>
-            <label htmlFor="firstName">
-              <div>
-                First name
-                <div className="requiredDiv" />
-              </div>
-              <input
-                type="text"
-                value={this.state.firstName}
-                name="firstName"
-                placeholder="Bruce"
-                onChange={this.handleFirstNameChange}
-              />
-            </label>
-            <label htmlFor="lastName">
-              <div>Last name</div>
-              <input
-                type="text"
-                value={this.state.lastName}
-                name="lastName"
-                placeholder="Wayne"
-                onChange={this.handleLastNameChange}
-              />
-            </label>
-            <label htmlFor="email">
-              <div>
-                Email address
-                <div className="requiredDiv" />
-              </div>
-              <input
-                type="email"
-                name="email"
-                value={this.state.email}
-                placeholder="notbatman@gmail.com"
-                onChange={this.handleEmailChange}
-              />
-            </label>
-            <label htmlFor="address">
-              <div>Residence address</div>
-              <textarea
-                type="text"
-                name="address"
-                value={this.state.address}
-                placeholder="Wayne Manor, 1007 Mountain Drive, Gotham City"
-                onChange={this.handleAddressChange}
-              />
-            </label>
-            <label htmlFor="password">
-              <div>
-                Password
-                <div className="requiredDiv" />
-              </div>
-              <input
-                type="password"
-                value={this.state.password}
-                name="password"
-                onChange={this.handlePasswordChange}
-              />
-            </label>
-            <label htmlFor="confirmPassword">
-              <div>
-                Confirm password
-                <div className="requiredDiv" />
-              </div>
-              <input
-                type="password"
-                value={this.state.confirmPassword}
-                name="confirmPassword"
-                onChange={this.handlePasswordConfirmChange}
-              />
-            </label>
-            <div className="form-footer">
-              <div>
-                <div className="requiredDiv" />
-                Required field
-              </div>
-              <button onClick={this.registerUser}>Register</button>
+  let content = (
+    <div className="register-container">
+      <div className="form-container">
+        <div className="logo">Matshop</div>
+        <form onSubmit={e => e.preventDefault()}>
+          <label htmlFor="firstName">
+            <div>
+              First name
+              <div className="requiredDiv" />
             </div>
-          </form>
-        </div>
+            <input
+              type="text"
+              value={state.firstName}
+              name="firstName"
+              placeholder="Bruce"
+              onChange={handleFirstNameChange}
+            />
+          </label>
+          <label htmlFor="lastName">
+            <div>Last name</div>
+            <input
+              type="text"
+              value={state.lastName}
+              name="lastName"
+              placeholder="Wayne"
+              onChange={handleLastNameChange}
+            />
+          </label>
+          <label htmlFor="email">
+            <div>
+              Email address
+              <div className="requiredDiv" />
+            </div>
+            <input
+              type="email"
+              name="email"
+              value={state.email}
+              placeholder="notbatman@gmail.com"
+              onChange={handleEmailChange}
+            />
+          </label>
+          <label htmlFor="address">
+            <div>Residence address</div>
+            <textarea
+              type="text"
+              name="address"
+              value={state.address}
+              placeholder="Wayne Manor, 1007 Mountain Drive, Gotham City"
+              onChange={handleAddressChange}
+            />
+          </label>
+          <label htmlFor="password">
+            <div>
+              Password
+              <div className="requiredDiv" />
+            </div>
+            <input
+              type="password"
+              value={state.password}
+              name="password"
+              onChange={handlePasswordChange}
+            />
+          </label>
+          <label htmlFor="confirmPassword">
+            <div>
+              Confirm password
+              <div className="requiredDiv" />
+            </div>
+            <input
+              type="password"
+              value={state.confirmPassword}
+              name="confirmPassword"
+              onChange={handlePasswordConfirmChange}
+            />
+          </label>
+          <div className="form-footer">
+            <div>
+              <div className="requiredDiv" />
+              Required field
+            </div>
+            <button onClick={registerUser}>Register</button>
+          </div>
+        </form>
       </div>
-    );
-  }
-}
+    </div>
+  );
+
+  return content;
+};
+
+export default Register;
