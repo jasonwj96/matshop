@@ -3,47 +3,39 @@ import "./register.scss";
 // import Configuration from "../config";
 
 const Register = props => {
-  const [state, setState] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    address: "",
-    password: "",
-    confirmPassword: "",
-    errors: {
-      firstName: false,
-      lastName: false,
-      email: false,
-      password: false
-    }
-  });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   document.title = "Matshop - Register";
 
   const registerUser = () => alert("Registered user");
 
   const handleFirstNameChange = event => {
-    setState({ ...state, firstName: event.target.value });
+    setFirstName(event.target.value);
   };
 
   const handleLastNameChange = event => {
-    setState({ ...state, lastName: event.target.value });
+    setLastName(event.target.value);
   };
 
   const handleEmailChange = event => {
-    setState({ ...state, email: event.target.value });
+    setEmail(event.target.value);
   };
 
   const handleAddressChange = event => {
-    setState({ ...state, address: event.target.value });
+    setAddress(event.target.value);
   };
 
   const handlePasswordChange = event => {
-    setState({ ...state, password: event.target.value });
+    setPassword(event.target.value);
   };
 
   const handlePasswordConfirmChange = event => {
-    setState({ ...state, confirmPassword: event.target.value });
+    setConfirmPassword(event.target.value);
   };
 
   return (
@@ -58,7 +50,7 @@ const Register = props => {
             </div>
             <input
               type="text"
-              value={state.firstName || ""}
+              value={firstName}
               name="firstName"
               placeholder="Bruce"
               onChange={handleFirstNameChange}
@@ -69,7 +61,7 @@ const Register = props => {
             <div>Last name</div>
             <input
               type="text"
-              value={state.lastName || ""}
+              value={lastName}
               name="lastName"
               placeholder="Wayne"
               onChange={handleLastNameChange}
@@ -83,7 +75,7 @@ const Register = props => {
             <input
               type="email"
               name="email"
-              value={state.email || ""}
+              value={email}
               placeholder="notbatman@gmail.com"
               onChange={handleEmailChange}
             />
@@ -93,7 +85,7 @@ const Register = props => {
             <textarea
               type="text"
               name="address"
-              value={state.address || ""}
+              value={address}
               placeholder="Wayne Manor, 1007 Mountain Drive, Gotham City"
               onChange={handleAddressChange}
             />
@@ -105,7 +97,7 @@ const Register = props => {
             </div>
             <input
               type="password"
-              value={state.password || ""}
+              value={password}
               name="password"
               onChange={handlePasswordChange}
             />
@@ -117,7 +109,7 @@ const Register = props => {
             </div>
             <input
               type="password"
-              value={state.confirmPassword || ""}
+              value={confirmPassword}
               name="confirmPassword"
               onChange={handlePasswordConfirmChange}
             />
