@@ -1,63 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./category.scss";
 import Navbar from "../components/navbar";
 import Statusbar from "../components/statusbar";
 
-export default class Category extends Component {
-  constructor(props) {
-    super(props);
+const Category = props => {
+  const [header] = useState("Hello world");
 
-    this.state = {
-      header: "",
-      category: ""
-    };
-  }
+  const content = (
+    <div className="category-container">
+      <Navbar />
+      <Statusbar />
+      <p className="header">{header}</p>
+    </div>
+  );
 
-  componentWillReceiveProps() {
-    this.createSectionHeader(); //fix this
-  }
+  return content;
+};
 
-  componentDidMount() {
-    this.createSectionHeader();
-  }
-
-  createSectionHeader = () => {
-    const params = new URLSearchParams(this.props.location.search);
-    const category = params.get("c");
-
-    let header = "";
-
-    switch (category) {
-      case "Pets":
-        header = "Items for man's best friend";
-        break;
-      case "Clothes":
-        header = "Clothes from the most prestigious brands";
-        break;
-      case "Tech":
-        header = "Cutting edge tech at the tip of your hands";
-        break;
-      case "Books":
-        header = "Timeless classics from all genres";
-        break;
-      default:
-        header =
-          "Unless you got a time machine this category no longer exists :(";
-        break;
-    }
-
-    this.setState({ header, category }, () => {
-      document.title = `Matshop - ${this.state.category}`;
-    });
-  };
-
-  render() {
-    return (
-      <div className="category-container">
-        <Navbar />
-        <Statusbar />
-        <p className="header">{this.state.header}</p>
-      </div>
-    );
-  }
-}
+export default Category;
