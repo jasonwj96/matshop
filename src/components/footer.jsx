@@ -1,53 +1,56 @@
-import React, { Component } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <div className="footer">
-        <div className="footerLinks">
-          <div className="linkSet">
-            <p>Jobs</p>
-            <a href="/">Careers</a>
-            <a href="/">Internships</a>
-            <a href="/">Training</a>
-            <a href="/">Resources</a>
-          </div>
-
-          <div className="linkSet">
-            <p>Meet Us</p>
-            <a href="/">About</a>
-            <a href="/">Terms</a>
-            <a href="/">Partners</a>
-            <a href="/">Blog</a>
-          </div>
-
-          <div className="linkSet">
-            <p>Troubleshooting</p>
-            <a href="/">Feedback</a>
-            <a href="/">Refunds</a>
-            <a href="/">Replacements</a>
-            <a href="/">Shipping Policy</a>
-          </div>
-
-          <div className="linkSet">
-            <p>FAQ</p>
-            <a href="/">Questions</a>
-            <a href="/">Answers</a>
-            <a href="/">Suggestions</a>
-          </div>
+const Footer = props => {
+  const content = (
+    <div className="footer">
+      <div className="footer-links">
+        <div className="linkSet">
+          <p>Jobs</p>
+          <Link to="/">Careers</Link>
+          <Link to="/">Internships</Link>
+          <Link to="/">Training</Link>
+          <Link to="/">Resources</Link>
         </div>
-        <div className="bottom">
-          <div>
-            <a href="/">Back to top</a>
-            <a href="/">Help</a>
-            <a href="/">Privacy & Terms</a>
-          </div>
-          <p>
-            2019 Copyright &copy; <span> Matshop.com</span>
-          </p>
+
+        <div className="linkSet">
+          <p>Meet Us</p>
+          <Link to="/">About</Link>
+          <Link to="/">Terms</Link>
+          <Link to="/">Partners</Link>
+          <Link to="/">Blog</Link>
+        </div>
+
+        <div className="linkSet">
+          <p>Troubleshooting</p>
+          <Link to="/">Feedback</Link>
+          <Link to="/">Refunds</Link>
+          <Link to="/">Replacements</Link>
+          <Link to="/">Shipping Policy</Link>
+        </div>
+
+        <div className="linkSet">
+          <p>FAQ</p>
+          <Link to="/">Questions</Link>
+          <Link to="/">Answers</Link>
+          <Link to="/">Suggestions</Link>
         </div>
       </div>
-    );
-  }
-}
+      <div className="bottom">
+        <div>
+          <Link to="/">Back to top</Link>
+          <Link to="/">Help</Link>
+          <Link to="/">Privacy & Terms</Link>
+        </div>
+        <p>
+          2019 Copyright &copy; <span> Matshop.com</span>
+        </p>
+      </div>
+    </div>
+  );
+
+  return content;
+};
+
+export default Footer;

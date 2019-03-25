@@ -1,44 +1,35 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./product.scss";
 
-export default class Product extends Component {
-  state = {
-    rating: 89,
-    ratingThreshold: 50
-  };
+const Product = props => {
+  const [ratingThreshold] = useState(50);
+  const images = require.context("../assets/img", true);
+  const { imageUrl, title, description, alt, price, rating } = props.product;
 
-  render() {
-    const images = require.context("../assets/img", true);
-    const {
-      imageUrl,
-      title,
-      description,
-      alt,
-      price,
-      rating
-    } = this.props.product;
-
-    return (
-      <div className="product">
-        <div className="title">
-          <a href="/">{title}</a>
-        </div>
-        <div className="picture">
-          <img src={images(`${imageUrl}`)} alt={alt} />
-        </div>
-        <div className="description">{description.slice(0, 90) + "..."}</div>
-        <div className="productFooter">
-          <div className="rating">
-            {rating >= this.state.ratingThreshold ? (
-              <i className="fas fa-heart" />
-            ) : (
-              <i className="fas fa-heart-broken" />
-            )}
-            {`${rating}%`}
-          </div>
-          <div className="price">{`$${price}`}</div>
-        </div>
+  const content = (
+    <div className="product">
+      <div className="title">
+        <a href="/">{title}</a>
       </div>
-    );
-  }
-}
+      <div className="picture">
+        <img src={images(`${imageUrl}`)} alt={alt} />
+      </div>
+      <div className="description">{description.slice(0, 90) + "..."}</div>
+      <div className="productFooter">
+        <div className="rating">
+          {rating >= ratingThreshold ? (
+            <i className="fas fa-heart" />
+          ) : (
+            <i className="fas fa-heart-broken" />
+          )}
+          {`${rating}%`}
+        </div>
+        <div className="price">{`$${price}`}</div>
+      </div>
+    </div>
+  );
+
+  return content;
+};
+
+export default Product;

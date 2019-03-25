@@ -1,41 +1,35 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./statusbar.scss";
 import { Link } from "react-router-dom";
 import configuration from "../config";
 
-class Statusbar extends Component {
-  state = {
-    userLoggedIn: localStorage.getItem("userEmail") ? true : false,
-    showMenu: true,
-    userData: {
-      userEmail: localStorage.getItem("userEmail"),
-      firstName: ""
-    }
-  };
+const Statusbar = props => {
+  const [userLoggedIn] = useState(
+    localStorage.getItem("userEmail") ? true : false
+  );
+  const [showMenu, setShowMenu] = useState(true);
+  const [userEmail] = useState(localStorage.getItem("userEmail"));
+  const [firstName, setFirstName] = useState("");
 
-  async componentDidMount() {
-    this.fetchUserData();
-  }
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-  async fetchUserData() {
-    if (this.state.userLoggedIn) {
+  const fetchUserData = async () => {
+    if (userLoggedIn) {
       try {
         const response = await fetch(`${configuration.apiPath}/Home/userdata`, {
           headers: {
             "Content-Type": "application/json"
           },
           method: "POST",
-          body: JSON.stringify({ userEmail: this.state.userData.userEmail })
+          body: JSON.stringify({ userEmail: userEmail })
         });
 
         const data = await response.json();
 
         if (data.firstName) {
-          this.setState({
-            userData: {
-              firstName: data.firstName
-            }
-          });
+          setFirstName(data.firstName);
         } else {
           throw new Error("Error while fetching user data");
         }
@@ -43,61 +37,57 @@ class Statusbar extends Component {
         console.log(error);
       }
     }
-  }
+  };
 
-  showMenu = () => {
+  const toggle = () => {
     const container = document.getElementById("statusbar-container");
-    this.state.showMenu
+    showMenu
       ? (container.className = "expand")
       : (container.className = "collapse");
 
-    this.setState({ showMenu: !this.state.showMenu });
+    setShowMenu(!showMenu);
   };
 
-  logOutUser() {
+  const logOutUser = () => {
     localStorage.removeItem("userEmail");
-  }
+  };
 
-  render() {
-    return (
-      <div className="statusbar">
-        {this.state.userLoggedIn ? (
-          <div
-            id="statusbar-container"
-            onMouseEnter={this.showMenu}
-            onMouseLeave={this.showMenu}
-          >
-            <Link to="/profile">
-              <div className="profile-img">
-                <p>{this.state.userData.firstName.substring(0, 1)}</p>
-              </div>
-            </Link>
-            <Link to="/wishlist" className="wishlist-icon link">
-              <i className="fas fa-shopping-bag" />
-            </Link>
-            <Link to="/preferences" className="settings-icon link">
-              <i className="fas fa-cog" />
-            </Link>
-            <Link
-              to="/login"
-              onClick={this.logOutUser}
-              className="signout-icon link"
-            >
-              <i className="fas fa-sign-out-alt" />
-            </Link>
-          </div>
-        ) : (
-          <div id="statusbar-container">
-            <Link to="/login">
-              <div className="profile-img">
-                <i className="fas fa-lock" />
-              </div>
-            </Link>
-          </div>
-        )}
-      </div>
-    );
-  }
-}
+  const content = (
+    <div className="statusbar">
+      {userLoggedIn ? (
+        <div
+          id="statusbar-container"
+          onMouseEnter={toggle}
+          onMouseLeave={toggle}
+        >
+          <Link to="/profile">
+            <div className="profile-img">
+              <p>{firstName.substring(0, 1)}</p>
+            </div>
+          </Link>
+          <Link to="/wishlist" className="wishlist-icon link">
+            <i className="fas fa-shopping-bag" />
+          </Link>
+          <Link to="/preferences" className="settings-icon link">
+            <i className="fas fa-cog" />
+          </Link>
+          <Link to="/login" onClick={logOutUser} className="signout-icon link">
+            <i className="fas fa-sign-out-alt" />
+          </Link>
+        </div>
+      ) : (
+        <div id="statusbar-container">
+          <Link to="/login">
+            <div className="profile-img">
+              <i className="fas fa-lock" />
+            </div>
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+
+  return content;
+};
 
 export default React.memo(Statusbar);
