@@ -41,19 +41,19 @@ const Navbar = props => {
             Home
           </Link>
 
-          <Link onClick={toggle} className="link" to="category?c=pets">
+          <Link onClick={toggle} className="link" to="/category/pets">
             Pets
           </Link>
 
-          <Link onClick={toggle} className="link" to="category?c=clothes">
+          <Link onClick={toggle} className="link" to="/category/clothes">
             Clothes
           </Link>
 
-          <Link onClick={toggle} className="link" to="category?c=books">
+          <Link onClick={toggle} className="link" to="/category/books">
             Books
           </Link>
 
-          <Link onClick={toggle} className="link" to="category?c=tech">
+          <Link onClick={toggle} className="link" to="/category/tech">
             Tech
           </Link>
         </ul>

@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/home" component={Landing} />
         <Route path="/login" component={Login} />
         <Route path="/wishlist" component={Wishlist} />
-        <Route path="/category" component={Category} />
+        <Route path="/category/:c" component={Category} />
         <Route path="/register" component={Register} />
         <Route component={NotFound} />
       </Switch>
