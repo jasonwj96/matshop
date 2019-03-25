@@ -13,7 +13,7 @@ const WishlistItem = props => {
         <img src={images(`${imageUrl}`)} alt={alt} />
       </div>
       <div className="title">
-        <p>{title}</p>
+        <p>{title.length > 30 ? `${title.slice(0, 30)}...` : title}</p>
       </div>
       <div className="info">
         <div className="quantity">

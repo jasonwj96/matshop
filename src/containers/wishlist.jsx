@@ -19,6 +19,16 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
+          imageUrl: "./product2.jpg",
+          title: "Apple iPhone X, GSM Unlocked, 64GB - Silver (Refurbished)",
+          description:
+            "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
+          alt: "IPhone",
+          quantity: 5,
+          rating: 39,
+          price: 899.99
+        },
+        {
           imageUrl: "./product3.jpg",
           title: "PlayStation 4 Slim 1TB Console",
           quantity: 9,
@@ -35,6 +45,16 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
+          imageUrl: "./product2.jpg",
+          title: "Apple iPhone X, GSM Unlocked, 64GB - Silver (Refurbished)",
+          description:
+            "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
+          alt: "IPhone",
+          quantity: 5,
+          rating: 39,
+          price: 899.99
+        },
+        {
           imageUrl: "./product3.jpg",
           title: "PlayStation 4 Slim 1TB Console",
           quantity: 9,
@@ -51,20 +71,14 @@ export default class Wishlist extends Component {
           price: 19.99
         },
         {
-          imageUrl: "./product3.jpg",
-          title: "PlayStation 4 Slim 1TB Console",
-          quantity: 9,
-          alt: "Playstation 4",
-          rating: 73,
-          price: 299.99
-        },
-        {
-          imageUrl: "./product1.jpg",
-          title: "Lightweight Varsity Jacket",
+          imageUrl: "./product2.jpg",
+          title: "Apple iPhone X, GSM Unlocked, 64GB - Silver (Refurbished)",
+          description:
+            "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
           quantity: 5,
-          alt: "Jacket",
-          rating: 89,
-          price: 19.99
+          alt: "IPhone",
+          rating: 39,
+          price: 899.99
         },
         {
           imageUrl: "./product3.jpg",
