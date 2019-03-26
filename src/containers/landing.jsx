@@ -5,6 +5,7 @@ import configuration from "../config";
 import Navbar from "../components/navbar";
 import Statusbar from "../components/statusbar";
 import Footer from "../components/footer";
+import OfferPanel from "../components/offerPanel";
 
 export default class Landing extends Component {
   constructor(props) {
@@ -31,6 +32,15 @@ export default class Landing extends Component {
   }
 
   render() {
+    const offerItem = {
+      name: "Apple iPhone X, GSM Unlocked, 64GB - Silver",
+      description:
+        "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
+      imageUrl: "./product4.png",
+      alt: "iPhone",
+      price: 899.99
+    };
+
     return (
       <div>
         <Navbar />
@@ -52,6 +62,8 @@ export default class Landing extends Component {
               products={this.state.products}
             />
           )}
+
+          <OfferPanel item={offerItem} />
 
           {this.state.products.length === 0 ? (
             <div className="spinner">
