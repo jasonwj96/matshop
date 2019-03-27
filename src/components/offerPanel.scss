@@ -8,56 +8,73 @@
   background-color: #e7e7e7;
   width: 100%;
   height: auto;
+  display: flex;
+  justify-content: center;
 
-  .offer-data {
-    width: 500px;
+  .offer {
+    display: flex;
+    align-self: center;
 
-    h2 {
-      font-size: 1.5em;
-      color: #5e5e5e;
-      margin: 0;
-      font-weight: 400;
-      margin: 10px 0;
-    }
-    h3 {
-      margin: 0;
-      font-size: 3em;
-    }
-    .price {
-      margin: 10px 0;
-      color: #ff4136;
-      font-size: 3em;
-      font-weight: bold;
-    }
+    .offer-data {
+      width: 500px;
+      margin-right: 150px;
 
-    p {
-      margin-top: 20px 0;
-      font-size: 1em;
-      line-height: 30px;
-    }
+      h2 {
+        font-size: 1.5em;
+        color: #5e5e5e;
+        margin: 0;
+        font-weight: 400;
+        margin: 10px 0;
+      }
+      h3 {
+        margin: 0;
+        font-size: 3em;
+      }
+      .price {
+        margin: 10px 0;
+        // color: #ff4136;
+        color: #009900;
+        font-size: 3em;
+        font-weight: bold;
+      }
 
-    .timer {
-      font-size: 3em;
-      font-weight: bold;
-      letter-spacing: 5px;
-    }
+      p {
+        margin-top: 20px 0;
+        font-size: 1em;
+        line-height: 30px;
+      }
 
-    .shop-btn {
-      button {
-        font-family: "Poppins";
-        font-size: 1.2em;
-        background-color: #eb5d24;
-        width: 220px;
-        border-radius: 3px;
-        cursor: pointer;
-        border: none;
-        outline: none;
-        height: 50px;
-        transition: 0.2s background-color ease-in-out;
-        color: #fff;
+      .timer {
+        font-size: 3em;
+        font-weight: bold;
+        letter-spacing: 5px;
+      }
 
-        &:hover {
-          background-color: #c04f22;
+      .placeholder-timer {
+        font-size: 3em;
+        font-weight: bold;
+        letter-spacing: 5px;
+        color: #0000006c;
+      }
+
+      .shop-btn {
+        button {
+          font-family: "Poppins";
+          font-size: 1.2em;
+          background-color: #eb5d24;
+          width: 220px;
+          border-radius: 3px;
+          cursor: pointer;
+          border: none;
+          outline: none;
+          height: 50px;
+          transition: 0.2s background-color ease-in-out;
+          color: #fff;
+          box-shadow: 0 2px 6px #0000007a;
+
+          &:hover {
+            background-color: #c04f22;
+          }
         }
       }
     }
