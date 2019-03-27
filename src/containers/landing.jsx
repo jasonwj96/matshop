@@ -18,6 +18,7 @@ const Landing = () => {
 
   useEffect(() => {
     fetchProducts();
+    displayNotification("Welcome back!", "You've been gone for a while!");
 
     return () => {
       didCancel = true;
