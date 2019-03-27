@@ -14,15 +14,11 @@ const OfferPanel = props => {
   const coundown = () => {
     var countDownDate = new Date("April 1, 2019 15:37:25").getTime();
 
-    // Update the count down every 1 second
-    const x = setInterval(function() {
-      // Get todays date and time
+    const x = setInterval(() => {
       const now = new Date().getTime();
 
-      // Find the distance between now and the count down date
       const distance = countDownDate - now;
 
-      // Time calculations for days, hours, minutes and seconds
       let days = Math.floor(distance / (1000 * 60 * 60 * 24));
       let hours = Math.floor(
         (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -35,10 +31,8 @@ const OfferPanel = props => {
       if (minutes.toString().length < 2) minutes = "0" + minutes;
       if (seconds.toString().length < 2) seconds = "0" + seconds;
 
-      // Display the result in the element with id="demo"
       setTimer(`${days}:${hours}:${minutes}:${seconds}`);
 
-      // If the count down is finished, write some text
       if (distance < 0) {
         clearInterval(x);
         setTimer("Offer expired");
