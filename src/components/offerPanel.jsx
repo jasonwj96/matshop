@@ -51,7 +51,9 @@ const OfferPanel = props => {
           {timer ? (
             <p className="timer">{timer}</p>
           ) : (
-            <p className="placeholder-timer">00:00:00:00</p>
+            <div className="spinner">
+              <i className="fas fa-spinner" />
+            </div>
           )}
           <Link className="shop-btn" to="/">
             <button>Shop now</button>
