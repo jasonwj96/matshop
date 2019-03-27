@@ -6,16 +6,21 @@ import Navbar from "../components/navbar";
 import Statusbar from "../components/statusbar";
 import Footer from "../components/footer";
 import OfferPanel from "../components/offerPanel";
+import Notification from "../components/notification";
 
 const Landing = () => {
   const [products, setProducts] = useState([]);
-  const controller = new AbortController();
+  const [notificationTitle, setNotificationTitle] = useState("");
+  const [notificationMessage, setNotificationMessage] = useState("");
+
   document.title = "Matshop - Home";
+  let didCancel = false;
 
   useEffect(() => {
     fetchProducts();
+
     return () => {
-      controller.abort();
+      didCancel = true;
     };
   }, []);
 
@@ -27,10 +32,23 @@ const Landing = () => {
 
       const products = await response.json();
 
-      setProducts(products);
+      if (!didCancel) {
+        setProducts(products);
+      }
     } catch (err) {
-      console.log(err.message);
+      displayNotification("Products couldn't be retrieved", err.message);
     }
+  };
+
+  const displayNotification = (title, message) => {
+    const notification = document.getElementById("notification");
+    setNotificationTitle(title);
+    setNotificationMessage(message);
+    notification.style.opacity = 1;
+
+    setTimeout(() => {
+      notification.style.opacity = 0;
+    }, 5000);
   };
 
   const offerItem = {
@@ -82,6 +100,7 @@ const Landing = () => {
           <LandingSection heading={"Latest in tech"} products={products} />
         )}
       </div>
+      <Notification title={notificationTitle} message={notificationMessage} />
       <Footer />
     </div>
   );
