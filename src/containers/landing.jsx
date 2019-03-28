@@ -13,16 +13,10 @@ const Landing = () => {
   const [notificationTitle, setNotificationTitle] = useState("");
   const [notificationMessage, setNotificationMessage] = useState("");
 
-  document.title = "Matshop - Home";
-  let didCancel = false;
-
   useEffect(() => {
+    document.title = "Matshop - Home";
     fetchProducts();
     displayNotification("Welcome back!", "You've been gone for a while!");
-
-    return () => {
-      didCancel = true;
-    };
   }, []);
 
   const fetchProducts = async () => {
@@ -33,9 +27,7 @@ const Landing = () => {
 
       const products = await response.json();
 
-      if (!didCancel) {
-        setProducts(products);
-      }
+      setProducts(products);
     } catch (err) {
       displayNotification("Products couldn't be retrieved", err.message);
     }

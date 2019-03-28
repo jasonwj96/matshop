@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./register.scss";
 // import Configuration from "../config";
 
@@ -10,7 +10,9 @@ const Register = props => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  document.title = "Matshop - Register";
+  useEffect(() => {
+    document.title = "Matshop - Register";
+  });
 
   const registerUser = () => alert("Registered user");
 
