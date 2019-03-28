@@ -14,7 +14,7 @@ const Register = props => {
     document.title = "Matshop - Register";
   });
 
-  const registerUser = () => alert("Registered user");
+  const registerUser = () => {};
 
   const handleFirstNameChange = event => {
     setFirstName(event.target.value);

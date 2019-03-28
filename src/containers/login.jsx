@@ -1,50 +1,71 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import configuration from "../config";
 import Notification from "../components/notification";
 import "./login.scss";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
+const Login = props => {
+  const [userLoggedIn, setUserLoggedIn] = useState(
+    localStorage.getItem("userEmail") ? true : false
+  );
+  const [emailIsValid, setEmailIsValid] = useState(false);
+  // const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({
+    email: true,
+    password: true
+  });
+  const [classNames, setClassNames] = useState({
+    email: "pristine",
+    password: "pristine"
+  });
+  const [notificationMessage, setNotificationMessage] = useState("");
+  const [notificationTitle, setNotificationTitle] = useState("");
 
-    this.state = {
-      userLoggedIn: localStorage.getItem("userEmail") ? true : false,
-      emailIsValid: false,
-      passwordIsValid: false,
-      email: "",
-      password: "",
-      errors: {
-        email: true,
-        password: true
-      },
-      classNames: {
-        email: "pristine",
-        password: "pristine"
-      },
-      notificationMessage: "",
-      notificationTitle: ""
-    };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     document.title = "Matshop - Login";
-  }
+  }, []);
 
-  displayNotification(title, message) {
+  useEffect(() => {
+    const regex = configuration.emailRegex;
+    const valid = regex.test(email);
+
+    if (valid) {
+      setClassNames({ ...classNames, email: "valid" });
+    } else {
+      setClassNames({ ...classNames, email: "error" });
+    }
+
+    setErrors({ ...errors, email: valid });
+  }, [email]);
+
+  useEffect(() => {
+    const regex = configuration.passwordRegex;
+    const valid = regex.test(password);
+
+    if (valid) {
+      setClassNames({ ...classNames, password: "valid" });
+    } else {
+      setClassNames({ ...classNames, password: "error" });
+    }
+
+    setErrors({ ...errors, password: valid });
+  }, [password]);
+
+  const displayNotification = (title, message) => {
     const notification = document.getElementById("notification");
-    this.setState(
-      { notificationTitle: title, notificationMessage: message },
-      () => (notification.style.opacity = 1)
-    );
+    setNotificationTitle(title);
+    setNotificationMessage(message);
+    notification.style.opacity = 1;
 
     setTimeout(() => {
       notification.style.opacity = 0;
     }, 5000);
-  }
+  };
 
-  loginUser = async () => {
-    if (configuration.passwordRegex.test(this.state.password)) {
+  const loginUser = async () => {
+    if (configuration.passwordRegex.test(password)) {
       try {
         const response = await fetch(`${configuration.apiPath}/account/login`, {
           headers: {
@@ -57,30 +78,30 @@ export default class Login extends Component {
         const data = await response.json();
 
         if (data.userLoggedIn) {
-          localStorage.setItem("userEmail", this.state.email);
-          this.props.history.push("/home");
+          localStorage.setItem("userEmail", email);
+          props.history.push("/home");
         } else {
-          this.displayNotification(
+          displayNotification(
             "Invalid input",
             "The email entered does not exist"
           );
         }
       } catch (error) {
-        this.displayNotification(
+        displayNotification(
           "Password error",
           "The password entered does not match the user email"
         );
       }
     } else {
-      this.displayNotification(
+      displayNotification(
         "Invalid password",
         "Please use a valid password format"
       );
     }
   };
 
-  verifyEmail = async () => {
-    if (configuration.emailRegex.test(this.state.email)) {
+  const verifyEmail = async () => {
+    if (configuration.emailRegex.test(email)) {
       try {
         const response = await fetch(
           `${configuration.apiPath}/account/validate`,
@@ -89,164 +110,99 @@ export default class Login extends Component {
               "Content-Type": "application/json"
             },
             method: "POST",
-            body: JSON.stringify({ email: this.state.email })
+            body: JSON.stringify({ email })
           }
         );
 
         const data = await response.json();
 
         if (data.accountExists) {
-          this.setState({
-            emailIsValid: !this.state.emailIsValid
-          });
+          setEmailIsValid(!emailIsValid);
         } else {
           throw new Error("The email doesn't exist");
         }
       } catch (error) {
-        this.displayNotification(
-          "Email error",
-          "The email entered does not exist"
-        );
+        displayNotification("Email error", "The email entered does not exist");
       }
     } else {
-      this.displayNotification(
-        "Invalid input",
-        "Please use a valid email format"
-      );
+      displayNotification("Invalid input", "Please use a valid email format");
     }
   };
 
-  handleEmailChange = event => {
-    this.setState(
-      {
-        email: event.target.value
-      },
-      () => {
-        const regex = configuration.emailRegex;
-        const valid = regex.test(this.state.email);
-
-        if (valid) {
-          this.setState({
-            classNames: {
-              email: "valid"
-            }
-          });
-        } else {
-          this.setState({
-            classNames: {
-              email: "error"
-            }
-          });
-        }
-
-        this.setState({
-          errors: {
-            email: valid
-          }
-        });
-      }
-    );
+  const handleEmailChange = event => {
+    setEmail(event.target.value);
   };
 
-  handlePasswordChange = event => {
-    this.setState(
-      {
-        password: event.target.value
-      },
-      () => {
-        const regex = configuration.passwordRegex;
-        const valid = regex.test(this.state.password);
-
-        if (valid) {
-          this.setState({
-            classNames: {
-              password: "valid"
-            }
-          });
-        } else {
-          this.setState({
-            classNames: {
-              password: "error"
-            }
-          });
-        }
-
-        this.setState({
-          errors: {
-            password: valid
-          }
-        });
-      }
-    );
+  const handlePasswordChange = event => {
+    setPassword(event.target.value);
   };
 
-  render() {
-    return (
-      <div>
-        {this.state.userLoggedIn ? (
-          <Redirect to="/home" />
-        ) : (
-          <div className="login-container">
-            <div className="login-panel">
-              <div className="logo">Matshop</div>
-              <form onSubmit={e => e.preventDefault()}>
-                {!this.state.emailIsValid ? (
-                  <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                      id="emailInput"
-                      className={this.state.classNames.email}
-                      type="email"
-                      name="email"
-                      placeholder="brucewayne@gmail.com"
-                      value={this.state.email || ""}
-                      onChange={this.handleEmailChange}
-                      onClick={this.handleEmailChange}
-                    />
-                    <Link to="/recovery"> Forgot your email?</Link>
-                  </div>
-                ) : (
-                  <div>
-                    <label htmlFor="password">Password</label>
-                    <input
-                      id="passwordInput"
-                      className={this.state.classNames.password}
-                      type="password"
-                      name="password"
-                      value={this.state.password || ""}
-                      onChange={this.handlePasswordChange}
-                      onClick={this.handlePasswordChange}
-                    />
-                    <Link to="/"> Forgot your password?</Link>
-                  </div>
-                )}
-              </form>
+  const content = (
+    <div>
+      {userLoggedIn ? (
+        <Redirect to="/home" />
+      ) : (
+        <div className="login-container">
+          <div className="login-panel">
+            <div className="logo">Matshop</div>
+            <form onSubmit={e => e.preventDefault()}>
+              {!emailIsValid ? (
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="emailInput"
+                    className={classNames.email}
+                    type="email"
+                    name="email"
+                    placeholder="brucewayne@gmail.com"
+                    value={email}
+                    onChange={handleEmailChange}
+                    onClick={handleEmailChange}
+                  />
+                  <Link to="/recovery"> Forgot your email?</Link>
+                </div>
+              ) : (
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    id="passwordInput"
+                    className={classNames.password}
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    onClick={handlePasswordChange}
+                  />
+                  <Link to="/"> Forgot your password?</Link>
+                </div>
+              )}
+            </form>
 
-              <div className="login-footer">
-                {!this.state.emailIsValid ? (
-                  <div className="login-buttons">
-                    <button onClick={this.verifyEmail}>Next</button>
-                  </div>
-                ) : (
-                  <div className="login-buttons">
-                    <button className="back-btn" onClick={this.verifyEmail}>
-                      Back
-                    </button>
-                    <button onClick={this.loginUser}>Login</button>
-                  </div>
-                )}
-                <p>
-                  Need an account?<Link to="/register"> click here</Link>
-                </p>
-              </div>
+            <div className="login-footer">
+              {!emailIsValid ? (
+                <div className="login-buttons">
+                  <button onClick={verifyEmail}>Next</button>
+                </div>
+              ) : (
+                <div className="login-buttons">
+                  <button className="back-btn" onClick={verifyEmail}>
+                    Back
+                  </button>
+                  <button onClick={loginUser}>Login</button>
+                </div>
+              )}
+              <p>
+                Need an account?<Link to="/register"> click here</Link>
+              </p>
             </div>
           </div>
-        )}
-        <Notification
-          title={this.state.notificationTitle}
-          message={this.state.notificationMessage}
-        />
-      </div>
-    );
-  }
-}
+        </div>
+      )}
+      <Notification title={notificationTitle} message={notificationMessage} />
+    </div>
+  );
+
+  return content;
+};
+
+export default Login;
