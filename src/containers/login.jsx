@@ -5,7 +5,7 @@ import Notification from "../components/notification";
 import "./login.scss";
 
 const Login = props => {
-  const [userLoggedIn, setUserLoggedIn] = useState(
+  const [userLoggedIn] = useState(
     localStorage.getItem("userEmail") ? true : false
   );
   const [emailIsValid, setEmailIsValid] = useState(false);
@@ -16,7 +16,6 @@ const Login = props => {
     email: true,
     password: true
   });
-
   const [classNames, setClassNames] = useState({
     email: "pristine",
     password: "pristine"
