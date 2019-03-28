@@ -16,6 +16,7 @@ const Login = props => {
     email: true,
     password: true
   });
+
   const [classNames, setClassNames] = useState({
     email: "pristine",
     password: "pristine"
@@ -72,7 +73,7 @@ const Login = props => {
             "Content-Type": "application/json"
           },
           method: "POST",
-          body: JSON.stringify({ password: this.state.password })
+          body: JSON.stringify({ password: password })
         });
 
         const data = await response.json();
