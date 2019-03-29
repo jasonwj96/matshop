@@ -1,8 +1,8 @@
 import React from "react";
-import "./landingSection.scss";
+import "./itemSection.scss";
 import Product from "./product";
 
-const LandingSection = props => {
+const ItemSection = props => {
   const content = (
     <div>
       <div className="section">
@@ -19,4 +19,4 @@ const LandingSection = props => {
   return content;
 };
 
-export default LandingSection;
+export default ItemSection;

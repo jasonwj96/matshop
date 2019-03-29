@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./landing.scss";
-import LandingSection from "../components/landingSection";
+import ItemSection from "../components/itemSection";
 import configuration from "../config";
 import Navbar from "../components/navbar";
 import Statusbar from "../components/statusbar";
@@ -69,10 +69,7 @@ const Landing = () => {
             <i className="fas fa-spinner" />
           </div>
         ) : (
-          <LandingSection
-            heading={"What's hot right now"}
-            products={products}
-          />
+          <ItemSection heading={"What's hot right now"} products={products} />
         )}
 
         <OfferPanel item={offerItem} />
@@ -82,7 +79,7 @@ const Landing = () => {
             <i className="fas fa-spinner" />
           </div>
         ) : (
-          <LandingSection heading={"Men's clothing"} products={products} />
+          <ItemSection heading={"Men's clothing"} products={products} />
         )}
 
         {products.length === 0 ? (
@@ -90,7 +87,7 @@ const Landing = () => {
             <i className="fas fa-spinner" />
           </div>
         ) : (
-          <LandingSection heading={"Latest in tech"} products={products} />
+          <ItemSection heading={"Latest in tech"} products={products} />
         )}
       </div>
       <Notification title={notificationTitle} message={notificationMessage} />
