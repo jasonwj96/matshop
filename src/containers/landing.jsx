@@ -60,8 +60,13 @@ const Landing = () => {
       <div className="landing">
         <div className="cover">
           <div className="overlay">
-            <div className="cover-section">Welcome to Matshop!</div>
-            <div className="cover-section">It's nice to meet you</div>
+            <div className="cover-section">
+              <q>
+                Anyone who has never made a mistake has never tried anything
+                new.
+              </q>
+            </div>
+            <div className="cover-section">-Albert Einstein</div>
           </div>
         </div>
         {products.length === 0 ? (

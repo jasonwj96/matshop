@@ -3,20 +3,52 @@ import "./category.scss";
 import Navbar from "../components/navbar";
 import Statusbar from "../components/statusbar";
 import Footer from "../components/footer";
+import ItemSection from "../components/itemSection";
+import configuration from "../config";
+import Notification from "../components/notification";
 
 const Category = props => {
   const [category, setCategory] = useState(props.match.params.c);
   const [header, setHeader] = useState("");
+  const [products, setProducts] = useState([]);
+  const [notificationTitle, setNotificationTitle] = useState("");
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   useEffect(() => {
     setCategory(props.match.params.c);
     selectHeader();
+    fetchProducts();
   });
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch(`${configuration.apiPath}/Home`);
+
+      if (!response.ok) throw new Error("The products are gone ¯\\_(ツ)_/¯.");
+
+      const products = await response.json();
+
+      setProducts(products);
+    } catch (err) {
+      displayNotification("Products couldn't be retrieved", err.message);
+    }
+  };
+
+  const displayNotification = (title, message) => {
+    const notification = document.getElementById("notification");
+    setNotificationTitle(title);
+    setNotificationMessage(message);
+    notification.style.opacity = 1;
+
+    setTimeout(() => {
+      notification.style.opacity = 0;
+    }, 5000);
+  };
 
   const selectHeader = () => {
     switch (category) {
       case "pets":
-        setHeader("Items for man's best friends");
+        setHeader("The best selection of items for man's best friends");
         break;
       case "clothes":
         setHeader("The latest fashion trends");
@@ -31,7 +63,6 @@ const Category = props => {
         props.history.push("/");
         break;
     }
-
     return "";
   };
 
@@ -39,8 +70,20 @@ const Category = props => {
     <div className="category-container">
       <Navbar />
       <Statusbar />
-      <p className="header">{header}</p>
+      <div className="cover">
+        <div className="overlay">
+          <div className="cover-section">{header}</div>
+        </div>
+      </div>
+      {products.length === 0 ? (
+        <div className="spinner">
+          <i className="fas fa-spinner" />
+        </div>
+      ) : (
+        <ItemSection heading={"What's hot right now"} products={products} />
+      )}
       <Footer />
+      <Notification />
     </div>
   );
 
