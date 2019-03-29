@@ -4,8 +4,8 @@ import Navbar from "../components/navbar";
 import WishlistItem from "../components/wishlistItem";
 import Statusbar from "../components/statusbar";
 
-const Component = props => {
-  [items, setItems] = useState([
+const Wishlist = props => {
+  const [items, setItems] = useState([
     {
       imageUrl: "./product1.jpg",
       title: "Lightweight Varsity Jacket",
@@ -38,7 +38,7 @@ const Component = props => {
     document.title = "Matshop - Wishlist";
   }, []);
 
-  checkoutItems = () => console.log("Items checked out");
+  const checkoutItems = () => console.log("Items checked out");
 
   const content = (
     <div className="wishlist-container">
