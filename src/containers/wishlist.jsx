@@ -3,6 +3,7 @@ import "./wishlist.scss";
 import Navbar from "../components/navbar";
 import WishlistItem from "../components/wishlistItem";
 import Statusbar from "../components/statusbar";
+import Footer from "../components/footer";
 
 const Wishlist = props => {
   const [items, setItems] = useState([
@@ -62,6 +63,7 @@ const Wishlist = props => {
           <button onClick={checkoutItems}>Checkout</button>
         </div>
       </div>
+      <Footer />
     </div>
   );
   return content;

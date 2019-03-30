@@ -48,7 +48,7 @@ const Category = props => {
   const selectHeader = () => {
     switch (category) {
       case "pets":
-        setHeader("The best selection of items for man's best friends");
+        setHeader("The best selection of items for man's best friend");
         break;
       case "clothes":
         setHeader("The latest fashion trends");
@@ -83,7 +83,7 @@ const Category = props => {
         <ItemSection heading={"What's hot right now"} products={products} />
       )}
       <Footer />
-      <Notification />
+      <Notification title={notificationTitle} message={notificationMessage} />
     </div>
   );
 

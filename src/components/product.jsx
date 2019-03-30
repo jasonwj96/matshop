@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./product.scss";
+import { Link } from "react-router-dom";
 
 const Product = props => {
   const [ratingThreshold] = useState(50);
@@ -9,7 +10,9 @@ const Product = props => {
   const content = (
     <div className="product">
       <div className="title">
-        <a href="/">{title}</a>
+        <Link className="link" to="/">
+          {title.length > 55 ? `${title.slice(0, 55)}... ` : title}
+        </Link>
       </div>
       <div className="picture">
         <img src={images(`${imageUrl}`)} alt={alt} />
