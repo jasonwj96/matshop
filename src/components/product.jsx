@@ -6,12 +6,15 @@ const Product = props => {
   const [ratingThreshold] = useState(50);
   const images = require.context("../assets/img", true);
   const { imageUrl, title, description, alt, price, rating } = props.product;
+  const titleLength = 50;
 
   const content = (
     <div className="product">
       <div className="title">
         <Link className="link" to="/">
-          {title.length > 55 ? `${title.slice(0, 55)}... ` : title}
+          {title.length > titleLength
+            ? `${title.slice(0, titleLength)}...`
+            : title}
         </Link>
       </div>
       <div className="picture">
