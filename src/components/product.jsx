@@ -6,7 +6,7 @@ const Product = props => {
   const [ratingThreshold] = useState(50);
   const images = require.context("../assets/img", true);
   const { imageUrl, title, description, alt, price, rating } = props.product;
-  const titleLength = 50;
+  const titleLength = 60;
 
   const content = (
     <div className="product">

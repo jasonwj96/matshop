@@ -55,7 +55,6 @@
     }
 
     label {
-      font-family: "Poppins";
       font-size: 0.9em;
       display: flex;
       flex-flow: column;
@@ -88,8 +87,7 @@
     .form-footer {
       div {
         display: flex;
-        font-size: 0.8em;
-        font-family: "Poppins";
+        font-size: 0.9em;
 
         .requiredDiv {
           width: 5px;
@@ -103,8 +101,8 @@
 
       button {
         margin: 20px 0 0 0;
+        font-size: 1em;
         cursor: pointer;
-        font-family: "Poppins";
         width: 100%;
         height: 40px;
         border: none;
