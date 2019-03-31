@@ -6,7 +6,7 @@ import Statusbar from "../components/statusbar";
 import Footer from "../components/footer";
 
 const Wishlist = props => {
-  const [items, setItems] = useState([
+  const [items] = useState([
     {
       imageUrl: "./product1.jpg",
       title: "Lightweight Varsity Jacket",

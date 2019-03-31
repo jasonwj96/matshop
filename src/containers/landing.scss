@@ -8,34 +8,33 @@
   .cover {
     box-sizing: border-box;
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    background-image: url("../assets/img/cover.jpg");
+    // background-image: url("../assets/img/cover.jpg");
+    // background-image: url("../assets/img/morning_cover.jpg");
+    // background-image: url("../assets/img/sunset_cover.png");
+    background-image: url("../assets/img/night_cover.png");
     transition: 0.2s filter ease-in-out;
 
     .overlay {
-      padding: 50px 250px;
+      padding: 20px;
       box-sizing: border-box;
       width: 100%;
       height: 100%;
       z-index: 1;
-      background-image: linear-gradient(#00000049, #000000ab);
+      background-image: linear-gradient(#00000021, #000000c7);
       display: flex;
       flex-flow: column;
       justify-content: center;
+      justify-items: center;
+      align-items: center;
 
       div:nth-child(1) {
         font-family: "Courgette", cursive;
         position: inherit;
-        font-size: 3em;
-      }
-
-      div:nth-child(2) {
-        font-weight: bold;
-        font-size: 1.5em;
-        align-self: flex-end;
+        font-size: 4.5em;
       }
 
       .cover-section {
@@ -44,6 +43,27 @@
         text-align: center;
         font-family: "Poppins";
         font-weight: 100;
+      }
+
+      .scroll-msg {
+        margin: 20px 0;
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        color: #fff;
+        font-size: 1.2em;
+        position: absolute;
+        bottom: 0;
+
+        p {
+          margin: 10px 0;
+          font-size: 0.9em;
+        }
+
+        i {
+          text-align: center;
+        }
       }
     }
   }
