@@ -31,18 +31,23 @@
       justify-items: center;
       align-items: center;
 
-      div:nth-child(1) {
-        font-family: "Courgette", cursive;
-        position: inherit;
-        font-size: 4.5em;
-      }
-
       .cover-section {
-        color: #fff;
-        font-size: 4em;
-        text-align: center;
-        font-family: "Poppins";
-        font-weight: 100;
+        .welcome-text {
+          font-family: "Courgette", cursive;
+          position: inherit;
+          color: #fff;
+          font-size: 4em;
+          text-align: center;
+          font-weight: 100;
+          margin: 0 0 40px 0;
+        }
+
+        p {
+          font-size: 1.2em;
+          margin: 8px 0;
+          color: #fff;
+          text-align: center;
+        }
       }
 
       .scroll-msg {

@@ -60,7 +60,11 @@ const Landing = () => {
       <div className="landing">
         <div className="cover">
           <div className="overlay">
-            <div className="cover-section">Good afternoon!</div>
+            <div className="cover-section">
+              <p className="welcome-text">Good afternoon, Jason!</p>
+              <p>You have 3 notifications</p>
+              <p>We have 7 new offers for you</p>
+            </div>
             <div className="scroll-msg">
               <p>Scroll down</p>
               <i className="fas fa-chevron-down" />
