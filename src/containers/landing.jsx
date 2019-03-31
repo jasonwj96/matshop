@@ -16,7 +16,6 @@ const Landing = () => {
   useEffect(() => {
     document.title = "Matshop - Home";
     fetchProducts();
-    displayNotification("Welcome back!", "You've been gone for a while!");
   }, []);
 
   const fetchProducts = async () => {
@@ -61,7 +60,7 @@ const Landing = () => {
         <div className="cover">
           <div className="overlay">
             <div className="cover-section">
-              <p className="welcome-text">Good afternoon, Jason!</p>
+              <p className="welcome-text">Good morning, Jason!</p>
               <p>You have 3 notifications</p>
               <p>We have 7 new offers for you</p>
             </div>
