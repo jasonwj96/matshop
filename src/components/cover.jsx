@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./cover.scss";
 
 const Cover = props => {
@@ -10,7 +10,7 @@ const Cover = props => {
     <div className="cover" style={style}>
       <div className="overlay">
         <div className="cover-section">
-          <p className="welcome-text">Good night, Jason!</p>
+          <p className="welcome-text">{props.header}</p>
           <p>You have 3 notifications</p>
           <p>We have 7 new offers for you</p>
         </div>

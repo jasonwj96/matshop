@@ -10,12 +10,41 @@ import Cover from "../components/cover";
 
 const Landing = () => {
   const [products, setProducts] = useState([]);
+  const [coverImg, setCoverImg] = useState("./morning_cover.jpg");
+  const [coverHeader, setCoverHeader] = useState("");
+  const images = require.context("../assets/img", true);
   // const { products, isLoading, error } = useHttp("/home");
 
   useEffect(() => {
+    updateCover();
     document.title = "Matshop - Home";
     fetchProducts();
   }, []);
+
+  const updateCover = () => {
+    const urls = [
+      "./morning_cover.jpg",
+      "./sunset_cover.png",
+      "./night_cover.png"
+    ];
+    const currentHour = new Date("April 4, 2019 19:37:25").getHours();
+
+    //morning
+    if (currentHour >= 0 && currentHour < 12) {
+      setCoverImg(urls[0]);
+      setCoverHeader("Good morning, Jason!");
+    }
+    //afternoon
+    if (currentHour >= 12 && currentHour < 19) {
+      setCoverImg(urls[1]);
+      setCoverHeader("Good afternoon, Jason!");
+    }
+    //night
+    if (currentHour >= 19 && currentHour < 23) {
+      setCoverImg(urls[2]);
+      setCoverHeader("Good night, Jason!");
+    }
+  };
 
   const fetchProducts = async () => {
     try {
@@ -37,15 +66,13 @@ const Landing = () => {
     alt: "iPhone",
     price: 899.99
   };
-  const images = require.context("../assets/img", true);
-  const imageUrl = "./morning_cover.jpg";
 
   const content = (
     <div>
       <Navbar />
       <Statusbar />
       <div className="landing">
-        <Cover imageUrl={images(`${imageUrl}`)} />
+        <Cover imageUrl={images(`${coverImg}`)} header={coverHeader} />
 
         {products.length === 0 ? (
           <div className="spinner">
