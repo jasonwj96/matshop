@@ -12,7 +12,7 @@ const OfferPanel = props => {
   }, []);
 
   const coundown = () => {
-    var countDownDate = new Date("April 1, 2019 15:37:25").getTime();
+    var countDownDate = new Date("April 29, 2019 15:37:25").getTime();
 
     const x = setInterval(() => {
       const now = new Date().getTime();
