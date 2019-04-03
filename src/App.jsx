@@ -8,6 +8,7 @@ import NotFound from "./containers/notfound";
 import Wishlist from "./containers/wishlist";
 import Category from "./containers/category";
 import Register from "./containers/register";
+import Notification from "./components/notification";
 
 const customHistory = createBrowserHistory();
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/register" component={Register} />
         <Route component={NotFound} />
       </Switch>
+      <Notification />
     </Router>
   );
 };
