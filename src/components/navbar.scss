@@ -65,7 +65,6 @@ link {
     .nav-menu {
       display: flex;
       background-color: $nav-menu-bg;
-      width: 250px;
       height: 50px;
       color: $nav-menu-color;
 
@@ -136,6 +135,41 @@ link {
         &:hover {
           background-color: #eb5d24;
           color: #ffffff;
+        }
+      }
+    }
+  }
+
+  //Responsive
+  @media only screen and (max-width: 360px) {
+    @keyframes expand-nav {
+      from {
+        height: 275px;
+      }
+
+      to {
+        height: 50px;
+      }
+    }
+
+    @keyframes collapse-nav {
+      from {
+        height: 50px;
+      }
+
+      to {
+        height: 275px;
+      }
+    }
+
+    #navbar-container {
+      width: 100vw;
+      border-radius: 0;
+      margin: 0;
+
+      .nav-menu {
+        .logo {
+          align-self: center;
         }
       }
     }
