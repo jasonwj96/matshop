@@ -168,10 +168,15 @@ link {
       width: 100vw;
       border-radius: 0;
       margin: 0;
-
       .nav-menu {
+        justify-content: center;
+
+        #nav-btn {
+          position: absolute;
+          left: 0;
+        }
+
         .logo {
-          align-self: center;
         }
       }
     }
