@@ -47,6 +47,7 @@ a {
 }
 
 .statusbar {
+  box-sizing: border-box;
   #statusbar-container {
     @include card();
     display: flex;
@@ -148,7 +149,7 @@ a {
     }
   }
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 600px) {
     #statusbar-container {
       position: fixed;
       top: auto;

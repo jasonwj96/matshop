@@ -3,6 +3,7 @@
   flex-flow: column;
   width: 100%;
   padding: 0px 30px;
+  box-sizing: border-box;
 
   .heading {
     font-size: 2em;
@@ -15,5 +16,22 @@
   .items {
     display: flex;
     flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .section {
+    padding: 0px 5px;
+    justify-content: center;
+    align-items: center;
+
+    .heading {
+      font-size: 1.5em;
+    }
+
+    .items {
+      flex-wrap: none;
+      justify-content: center;
+    }
   }
 }
