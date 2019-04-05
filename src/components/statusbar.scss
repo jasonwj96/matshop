@@ -34,14 +34,14 @@ a {
 
 .expand {
   animation-name: expand;
-  animation-duration: 0.2s;
+  animation-duration: 0.1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
 
 .collapse {
   animation-name: collapse;
-  animation-duration: 0.2s;
+  animation-duration: 0.1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -152,6 +152,7 @@ a {
 
   @media only screen and (max-width: 600px) {
     #statusbar-container {
+      flex-flow: column-reverse;
       position: fixed;
       top: auto;
       margin-right: 10px;

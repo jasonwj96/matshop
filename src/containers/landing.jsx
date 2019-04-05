@@ -27,7 +27,8 @@ const Landing = () => {
       "./sunset_cover.png",
       "./night_cover.png"
     ];
-    const currentHour = new Date().getHours();
+    // const currentHour = new Date("").getHours();
+    const currentHour = new Date("April 29, 2019 19:37:25").getHours();
 
     //morning
     if (currentHour >= 0 && currentHour < 12) {
