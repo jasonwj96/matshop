@@ -49,6 +49,7 @@ a {
 .statusbar {
   box-sizing: border-box;
   #statusbar-container {
+    cursor: pointer;
     @include card();
     display: flex;
     box-sizing: border-box;
@@ -69,7 +70,7 @@ a {
     .profile-img {
       display: flex;
       width: 40px;
-      height: 40px;
+      min-height: 40px;
       margin: 10px;
       background-color: $profile-img-bg;
       border-radius: 50%;

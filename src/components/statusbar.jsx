@@ -55,16 +55,11 @@ const Statusbar = props => {
   const content = (
     <div className="statusbar">
       {userLoggedIn ? (
-        <div
-          id="statusbar-container"
-          onMouseEnter={toggle}
-          onMouseLeave={toggle}
-        >
-          <Link to="/profile">
-            <div className="profile-img">
-              <p>{firstName.substring(0, 1)}</p>
-            </div>
-          </Link>
+        <div id="statusbar-container" onClick={toggle} onClick={toggle}>
+          <div className="profile-img">
+            <p>{firstName.substring(0, 1)}</p>
+          </div>
+
           <Link to="/wishlist" className="wishlist-icon link">
             <i className="fas fa-shopping-bag" />
           </Link>
