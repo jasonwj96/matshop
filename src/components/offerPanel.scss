@@ -34,6 +34,17 @@
         color: #009900;
         font-size: 3em;
         font-weight: bold;
+
+        .former-price {
+          color: red;
+          text-decoration: line-through;
+          font-size: 0.6em;
+          margin-right: 20px;
+
+          span {
+            color: #525252;
+          }
+        }
       }
 
       p {
@@ -133,15 +144,29 @@
           margin: 5px 10px;
         }
         .price {
-          font-size: 2em;
+          display: flex;
+          align-self: center;
+          flex-flow: column;
+          font-size: 2.5em;
           text-align: center;
-          margin: 5px 10px;
+          margin: 20px 10px 0px 10px;
+
+          .former-price {
+            color: red;
+            text-decoration: line-through;
+            font-size: 0.6em;
+            margin-right: 0px;
+
+            span {
+              color: #525252;
+            }
+          }
         }
 
         p {
           font-size: 1em;
           text-align: center;
-          margin: 5px 10px;
+          margin: 30px 20px 0px 20px;
         }
 
         .timer {

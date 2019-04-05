@@ -46,7 +46,12 @@ const OfferPanel = props => {
         <div className="offer-data">
           <h2>TODAY'S OFFER</h2>
           <h3>{props.item.name}</h3>
-          <div className="price">{`$${props.item.price}`}</div>
+          <div className="price">
+            <span className="former-price">
+              <span>$1099.99</span>
+            </span>
+            <span>{`$${props.item.price}`}</span>
+          </div>
           <p>{props.item.description}</p>
           {timer ? (
             <p className="timer">{timer}</p>
