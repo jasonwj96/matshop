@@ -1,6 +1,6 @@
 .cover {
   box-sizing: border-box;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-position: center;
   background-size: cover;
@@ -8,9 +8,8 @@
 
   .overlay {
     display: flex;
-    padding: 20px;
     box-sizing: border-box;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     z-index: 1;
     background-image: linear-gradient(#00000021, #000000c7);

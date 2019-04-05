@@ -30,14 +30,13 @@
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-evenly;
-    padding: 20px;
     box-sizing: border-box;
     font-size: 0.9em;
 
     .linkSet {
       display: flex;
       flex-flow: column;
-      margin: 10px;
+      margin: 20px 0px;
 
       a {
         margin: 5px 0px;
@@ -52,7 +51,7 @@
     background-color: #1a2230;
     padding: 10px;
 
-    a {
+    .link {
       margin: 0px 20px;
       font-size: 0.8em;
     }
@@ -63,6 +62,53 @@
       color: #617db1;
       span {
         color: #8aa2ce;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footer {
+    .footer-links {
+      margin: 0 0 20px 0;
+      flex-flow: column;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .linkSet {
+        margin: 10px 10px;
+        text-align: center;
+        font-size: 1.2em;
+        a {
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      align-content: center;
+      justify-content: space-between;
+      background-color: #1a2230;
+      padding: 10px 10px 60px 10px;
+      height: 40px;
+
+      div {
+        display: flex;
+      }
+
+      .link {
+        margin: 0px 10px;
+        font-size: 0.8em;
+      }
+
+      p {
+        height: 10px;
+        font-size: 0.8em;
+        color: #617db1;
+
+        span {
+          color: #8aa2ce;
+        }
       }
     }
   }

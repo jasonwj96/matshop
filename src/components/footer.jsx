@@ -39,9 +39,12 @@ const Footer = props => {
       </div>
       <div className="bottom">
         <div>
-          <Link to="/">Back to top</Link>
-          <Link to="/">Help</Link>
-          <Link to="/">Privacy & Terms</Link>
+          <Link className="link" to="/">
+            Help
+          </Link>
+          <Link className="link" to="/">
+            Privacy & Terms
+          </Link>
         </div>
         <p>
           2019 Copyright &copy; <span> Matshop.com</span>
