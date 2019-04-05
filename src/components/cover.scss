@@ -7,15 +7,16 @@
   background-attachment: fixed;
 
   .overlay {
+    display: flex;
     padding: 20px;
     box-sizing: border-box;
     width: 100vw;
     height: 100vh;
     z-index: 1;
     background-image: linear-gradient(#00000021, #000000c7);
-    display: flex;
     flex-flow: column;
     align-items: center;
+    justify-content: center;
 
     .cover-section {
       .welcome-text {
@@ -59,14 +60,25 @@
   }
 
   @media only screen and (max-width: 360px) {
-    .cover {
-      .overlay {
-        padding: 0;
+    .overlay {
+      padding: 0px;
+      justify-content: center;
 
-        .cover-section {
-          margin-top: 30%;
-          padding: 0;
+      .cover-section {
+        align-self: center;
+        margin-top: -30%;
+
+        .welcome-text {
+          font-size: 1.8em;
         }
+
+        p {
+          font-size: 1.1em;
+        }
+      }
+
+      .scroll-msg {
+        font-size: 1em;
       }
     }
   }

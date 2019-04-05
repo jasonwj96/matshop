@@ -89,5 +89,4 @@ const Statusbar = props => {
 
   return content;
 };
-
 export default React.memo(Statusbar);

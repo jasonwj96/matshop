@@ -143,7 +143,7 @@ link {
   }
 
   //Responsive
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 500px) {
     @keyframes expand-nav {
       from {
         height: 275px;
@@ -165,9 +165,14 @@ link {
     }
 
     #navbar-container {
+      position: fixed;
+      left: 0;
+      top: 0;
       width: 100vw;
       border-radius: 0;
       margin: 0;
+      box-shadow: #00000056 0px 3px 3px 1px;
+
       .nav-menu {
         justify-content: center;
 

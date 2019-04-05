@@ -40,7 +40,7 @@ const Landing = () => {
       setCoverHeader("Good afternoon, Jason!");
     }
     //night
-    if (currentHour >= 19 && currentHour < 23) {
+    if (currentHour >= 19 && currentHour <= 23) {
       setCoverImg(urls[2]);
       setCoverHeader("Good night, Jason!");
     }

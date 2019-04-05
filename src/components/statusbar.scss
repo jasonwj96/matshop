@@ -147,4 +147,14 @@ a {
       }
     }
   }
+
+  @media only screen and (max-width: 500px) {
+    #statusbar-container {
+      position: fixed;
+      top: auto;
+      margin-right: 5px;
+      right: 0px;
+      bottom: 5px;
+    }
+  }
 }
