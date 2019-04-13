@@ -12,7 +12,7 @@ const Register = props => {
 
   useEffect(() => {
     document.title = "Matshop - Register";
-  });
+  }, []);
 
   const registerUser = () => {};
 
