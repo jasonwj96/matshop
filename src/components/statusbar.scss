@@ -10,13 +10,13 @@
   }
 
   to {
-    height: 230px;
+    height: 300px;
   }
 }
 
 @keyframes collapse {
   from {
-    height: 230px;
+    height: 300px;
   }
 
   to {
@@ -111,6 +111,19 @@ a {
         i {
           color: #fff;
         }
+      }
+    }
+
+    .user-icon {
+      align-self: center;
+
+      i {
+        color: $icon-color;
+        transition: 0.2s color ease-in-out;
+        cursor: pointer;
+        @include icon-size();
+
+        font-size: 1.5em;
       }
     }
 

@@ -9,7 +9,6 @@ const Login = props => {
     localStorage.getItem("userEmail") ? true : false
   );
   const [emailIsValid, setEmailIsValid] = useState(false);
-  // const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({

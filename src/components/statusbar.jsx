@@ -60,6 +60,9 @@ const Statusbar = props => {
             <p>{firstName.substring(0, 1)}</p>
           </div>
 
+          <Link to="/profile" className="user-icon link">
+            <i class="fas fa-user" />
+          </Link>
           <Link to="/wishlist" className="wishlist-icon link">
             <i className="fas fa-shopping-bag" />
           </Link>
@@ -84,4 +87,4 @@ const Statusbar = props => {
 
   return content;
 };
-export default React.memo(Statusbar);
+export default Statusbar;
