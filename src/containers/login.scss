@@ -154,11 +154,11 @@
     background-color: #ffffff;
 
     .login-panel {
+      padding-top: 100px;
       border-radius: 0px;
       margin: 0px;
       width: 100%;
       max-width: none;
-      max-height: 450px;
       height: 100%;
       box-shadow: none;
 
@@ -177,6 +177,19 @@
 
         p {
           font-size: 1em;
+        }
+      }
+
+      .login-footer {
+        button {
+          font-size: 1em;
+        }
+
+        p {
+          font-size: 0.9em;
+          .link {
+            margin-left: 5px;
+          }
         }
       }
     }

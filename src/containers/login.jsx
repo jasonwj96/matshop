@@ -194,7 +194,10 @@ const Login = props => {
                 </div>
               )}
               <p>
-                Need an account?<Link to="/register"> click here</Link>
+                Need an account?
+                <Link className="link" to="/register">
+                  click here
+                </Link>
               </p>
             </div>
           </div>
