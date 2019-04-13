@@ -1,7 +1,6 @@
 @import "../styles/styles";
 
 .login-container {
-  // background: url("../assets/img/cover.jpg");
   background-color: #e2e2e2;
   display: flex;
   align-items: center;
@@ -144,6 +143,40 @@
         a {
           color: #eb5d24;
           text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container {
+    background-color: #ffffff;
+
+    .login-panel {
+      border-radius: 0px;
+      margin: 0px;
+      width: 100%;
+      max-width: none;
+      max-height: 450px;
+      height: 100%;
+      box-shadow: none;
+
+      form {
+        .link {
+          font-size: 0.9em;
+        }
+
+        label {
+          font-size: 1em;
+        }
+
+        input {
+          font-size: 1em;
+        }
+
+        p {
+          font-size: 1em;
         }
       }
     }

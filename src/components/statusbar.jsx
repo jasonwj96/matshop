@@ -6,7 +6,6 @@ import configuration from "../config";
 const Statusbar = props => {
   const [userLoggedIn] = useState(
     localStorage.getItem("userEmail") ? true : false
-    // localStorage.getItem("userEmail") ? false : true
   );
   const [showMenu, setShowMenu] = useState(true);
   const [userEmail] = useState(localStorage.getItem("userEmail"));
@@ -56,7 +55,7 @@ const Statusbar = props => {
   const content = (
     <div className="statusbar">
       {userLoggedIn ? (
-        <div id="statusbar-container" onClick={toggle} onClick={toggle}>
+        <div id="statusbar-container" onClick={toggle}>
           <div className="profile-img">
             <p>{firstName.substring(0, 1)}</p>
           </div>

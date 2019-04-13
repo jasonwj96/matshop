@@ -159,7 +159,9 @@ const Login = props => {
                     onChange={handleEmailChange}
                     onClick={handleEmailChange}
                   />
-                  <Link to="/recovery"> Forgot your email?</Link>
+                  <Link className="link" to="/recovery">
+                    Forgot your email?
+                  </Link>
                 </div>
               ) : (
                 <div>
