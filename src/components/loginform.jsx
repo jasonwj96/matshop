@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import configuration from "../config";
 import Notification from "../components/notification";
 
 const LoginForm = props => {
-  const [userLoggedIn] = useState(
-    localStorage.getItem("userEmail") ? true : false
-  );
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -137,70 +134,66 @@ const LoginForm = props => {
 
   return (
     <div>
-      {userLoggedIn ? (
-        <Redirect to="/home" />
-      ) : (
-        <div className="login-container">
-          <div className="login-panel">
-            <div className="logo">Matshop</div>
-            <form onSubmit={e => e.preventDefault()}>
-              {!emailIsValid ? (
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <input
-                    id="emailInput"
-                    className={classNames.email}
-                    type="email"
-                    name="email"
-                    placeholder="brucewayne@gmail.com"
-                    value={email}
-                    onChange={handleEmailChange}
-                    onClick={handleEmailChange}
-                  />
-                  <Link className="link" to="/recovery">
-                    Forgot your email?
-                  </Link>
-                </div>
-              ) : (
-                <div>
-                  <label htmlFor="password">Password</label>
-                  <input
-                    id="passwordInput"
-                    className={classNames.password}
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={handlePasswordChange}
-                    onClick={handlePasswordChange}
-                  />
-                  <Link to="/"> Forgot your password?</Link>
-                </div>
-              )}
-            </form>
-
-            <div className="login-footer">
-              {!emailIsValid ? (
-                <div className="login-buttons">
-                  <button onClick={verifyEmail}>Next</button>
-                </div>
-              ) : (
-                <div className="login-buttons">
-                  <button className="back-btn" onClick={verifyEmail}>
-                    Back
-                  </button>
-                  <button onClick={loginUser}>Login</button>
-                </div>
-              )}
-              <p>
-                Need an account?
-                <Link className="link" to="/register">
-                  click here
+      <div className="login-container">
+        <div className="login-panel">
+          <div className="logo">Matshop</div>
+          <form onSubmit={e => e.preventDefault()}>
+            {!emailIsValid ? (
+              <div>
+                <label htmlFor="email">Email</label>
+                <input
+                  id="emailInput"
+                  className={classNames.email}
+                  type="email"
+                  name="email"
+                  placeholder="brucewayne@gmail.com"
+                  value={email}
+                  onChange={handleEmailChange}
+                  onClick={handleEmailChange}
+                />
+                <Link className="link" to="/recovery">
+                  Forgot your email?
                 </Link>
-              </p>
-            </div>
+              </div>
+            ) : (
+              <div>
+                <label htmlFor="password">Password</label>
+                <input
+                  id="passwordInput"
+                  className={classNames.password}
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  onClick={handlePasswordChange}
+                />
+                <Link to="/"> Forgot your password?</Link>
+              </div>
+            )}
+          </form>
+
+          <div className="login-footer">
+            {!emailIsValid ? (
+              <div className="login-buttons">
+                <button onClick={verifyEmail}>Next</button>
+              </div>
+            ) : (
+              <div className="login-buttons">
+                <button className="back-btn" onClick={verifyEmail}>
+                  Back
+                </button>
+                <button onClick={loginUser}>Login</button>
+              </div>
+            )}
+            <p>
+              Need an account?
+              <Link className="link" to="/register">
+                click here
+              </Link>
+            </p>
           </div>
         </div>
-      )}
+      </div>
       <Notification title={notificationTitle} message={notificationMessage} />
     </div>
   );
