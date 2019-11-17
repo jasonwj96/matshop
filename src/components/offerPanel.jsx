@@ -5,14 +5,14 @@ import "./offerPanel.scss";
 const OfferPanel = props => {
   const [timer, setTimer] = useState("");
 
-  const images = require.context("../assets/img", true);
+  const images = require.context("/assets/img/", true);
 
   useEffect(() => {
     coundown();
   }, []);
 
   const coundown = () => {
-    var countDownDate = new Date("April 29, 2019 15:37:25").getTime();
+    var countDownDate = new Date("December 25, 2019 15:37:25").getTime();
 
     const x = setInterval(() => {
       const now = new Date().getTime();
@@ -56,10 +56,10 @@ const OfferPanel = props => {
           {timer ? (
             <p className="timer">{timer}</p>
           ) : (
-            <div className="spinner">
-              <i className="fas fa-spinner" />
-            </div>
-          )}
+              <div className="spinner">
+                <i className="fas fa-spinner" />
+              </div>
+            )}
           <Link className="shop-btn" to="/">
             <button>Shop now</button>
           </Link>

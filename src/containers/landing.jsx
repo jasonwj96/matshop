@@ -2,60 +2,56 @@ import React, { useState, useEffect } from "react";
 import "./landing.scss";
 import ItemSection from "../components/itemSection";
 import configuration from "../config";
-import Navbar from "../components/navbar";
-import Statusbar from "../components/statusbar";
-import Footer from "../components/footer";
 import OfferPanel from "../components/offerPanel";
 import Cover from "../components/cover";
 
 const Landing = () => {
-  const [products, setProducts] = useState([]);
-  const [coverImg, setCoverImg] = useState("./morning_cover.jpg");
+  const [coverImg, setCoverImg] = useState(configuration.coverImageUrls.morning);
   const [coverHeader, setCoverHeader] = useState("");
-  const images = require.context("../assets/img", true);
-  // const { products, isLoading, error } = useHttp("/home");
+  const [products, setProducts] = useState([]);
+  const images = require.context("/assets/img/", true);
 
   useEffect(() => {
+    fetchProducts();
     updateCover();
     document.title = "Matshop - Home";
-    fetchProducts();
   }, []);
 
   const updateCover = () => {
-    const urls = [
-      "./morning_cover.jpg",
-      "./sunset_cover.png",
-      "./night_cover.png"
-    ];
+
     const currentHour = new Date().getHours();
 
     //morning
     if (currentHour >= 0 && currentHour < 12) {
-      setCoverImg(urls[0]);
+      setCoverImg(configuration.coverImageUrls.morning);
       setCoverHeader("Good morning, Jason!");
     }
     //afternoon
     if (currentHour >= 12 && currentHour < 19) {
-      setCoverImg(urls[1]);
+      setCoverImg(configuration.coverImageUrls.sunset);
       setCoverHeader("Good afternoon, Jason!");
     }
     //night
     if (currentHour >= 19 && currentHour <= 23) {
-      setCoverImg(urls[2]);
+      setCoverImg(configuration.coverImageUrls.night);
       setCoverHeader("Good night, Jason!");
     }
   };
 
   const fetchProducts = async () => {
-    try {
-      const response = await fetch(`${configuration.apiPath}/Home`);
-
-      if (!response.ok) throw new Error("The products are gone ¯\\_(ツ)_/¯.");
-
-      const products = await response.json();
-
-      setProducts(products);
-    } catch (err) {}
+    await fetch(`${configuration.apiPath}/Home`)
+      .then(
+        response =>
+          response.json()
+      )
+      .then(
+        json => {
+          setProducts(json)
+        }
+      )
+      .catch(
+        err => console.log(err)
+      );
   };
 
   const offerItem = {
@@ -69,8 +65,6 @@ const Landing = () => {
 
   const content = (
     <div>
-      <Navbar />
-      <Statusbar />
       <div className="landing">
         <Cover imageUrl={images(`${coverImg}`)} header={coverHeader} />
 
@@ -79,28 +73,26 @@ const Landing = () => {
             <i className="fas fa-spinner" />
           </div>
         ) : (
-          <ItemSection heading={"What's hot right now"} products={products} />
-        )}
+            <ItemSection heading={"What's hot right now"} products={products} />
+          )}
 
         <OfferPanel item={offerItem} />
+        {products.length === 0 ? (
+          <div className="spinner">
+            <i className="fas fa-spinner" />
+          </div>
+        ) : (
+            <ItemSection heading={"Men's clothing"} products={products} />
+          )}
 
         {products.length === 0 ? (
           <div className="spinner">
             <i className="fas fa-spinner" />
           </div>
         ) : (
-          <ItemSection heading={"Men's clothing"} products={products} />
-        )}
-
-        {products.length === 0 ? (
-          <div className="spinner">
-            <i className="fas fa-spinner" />
-          </div>
-        ) : (
-          <ItemSection heading={"Latest in tech"} products={products} />
-        )}
+            <ItemSection heading={"Latest in tech"} products={products} />
+          )}
       </div>
-      <Footer />
     </div>
   );
 

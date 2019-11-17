@@ -48,6 +48,7 @@ a {
 
 .statusbar {
   box-sizing: border-box;
+
   #statusbar-container {
     cursor: pointer;
     @include card();
@@ -55,7 +56,7 @@ a {
     box-sizing: border-box;
     flex-flow: column;
     margin: 15px 15px 0 0;
-    background-color: #fff;
+    background-color: $statusbar-bg;
     z-index: 3;
     height: 60px;
     width: auto;
@@ -108,6 +109,7 @@ a {
 
       &:hover {
         background-color: $icon-hover;
+
         i {
           color: #fff;
         }
@@ -142,6 +144,7 @@ a {
 
     .settings-icon {
       align-self: center;
+
       i {
         color: $icon-color;
         transition: 0.2s color ease-in-out;
@@ -153,6 +156,7 @@ a {
 
     .signout-icon {
       align-self: center;
+
       i {
         color: $icon-color;
         transition: 0.2s color ease-in-out;

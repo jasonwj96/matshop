@@ -1,10 +1,12 @@
+@import "../styles/styles";
+
 .offer-container {
   box-sizing: border-box;
   justify-content: space-between;
   display: flex;
   margin: 50px 0px 0px 0px;
   padding: 40px 50px 40px 100px;
-  background-color: #e7e7e7;
+  background-color: $offer-bg;
   width: 100%;
   height: auto;
   justify-content: center;
@@ -25,10 +27,13 @@
         font-weight: 400;
         margin: 10px 0;
       }
+
       h3 {
         margin: 0;
         font-size: 3em;
+        color: $offer-color;
       }
+
       .price {
         margin: 10px 0;
         color: #009900;
@@ -48,6 +53,7 @@
       }
 
       p {
+        color: $offer-color;
         margin-top: 20px 0;
         font-size: 1em;
         line-height: 30px;
@@ -102,7 +108,7 @@
           box-shadow: 0 2px 6px #0000007a;
 
           &:hover {
-            background-color: #c04f22;
+            background-color: $accent;
           }
         }
       }
@@ -138,12 +144,14 @@
           width: auto;
           margin: 5px 10px;
         }
+
         h3 {
           width: auto;
           font-size: 2em;
           text-align: center;
           margin: 5px 10px;
         }
+
         .price {
           display: flex;
           align-self: center;
@@ -177,8 +185,7 @@
         }
 
         .spinner {
-          .fa-spinner {
-          }
+          .fa-spinner {}
         }
 
         .shop-btn {

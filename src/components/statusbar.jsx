@@ -54,14 +54,14 @@ const Statusbar = props => {
 
   const content = (
     <div className="statusbar">
-      {userLoggedIn ? (
+      {!userLoggedIn ? ( //Change this condition
         <div id="statusbar-container" onClick={toggle}>
           <div className="profile-img">
             <p>{firstName.substring(0, 1)}</p>
           </div>
 
           <Link to="/profile" className="user-icon link">
-            <i class="fas fa-user" />
+            <i className="fas fa-user" />
           </Link>
           <Link to="/wishlist" className="wishlist-icon link">
             <i className="fas fa-shopping-bag" />
@@ -74,14 +74,14 @@ const Statusbar = props => {
           </Link>
         </div>
       ) : (
-        <div id="statusbar-container">
-          <Link to="/login">
-            <div className="profile-img">
-              <i className="fas fa-lock" />
-            </div>
-          </Link>
-        </div>
-      )}
+          <div id="statusbar-container">
+            <Link to="/login">
+              <div className="profile-img">
+                <i className="fas fa-lock" />
+              </div>
+            </Link>
+          </div>
+        )}
     </div>
   );
 

@@ -1,19 +1,25 @@
 //fonts
+$accent: #7000bb;
 
 // Navbar component
-$nav-menu-bg: #ffffff;
-$nav-menu-color: #000000;
+$nav-menu-bg: #1d1d1d;
+$nav-menu-color: #ffffff;
 
 @mixin card {
-  background-color: #ffffff;
+  // background-color: #ffffff;
   box-shadow: #0000004d 1px 1px 3px 1px;
   border-radius: 5px;
 }
 
 //Statusbar component
+$statusbar-bg: #1d1d1d;
 $profile-img-bg: #0066ff;
 $profile-img-bg-hover: #0045ac;
-$icon-color: #eb5d24;
-$icon-hover: #eb5d24;
+$icon-color: #ececec;
+$icon-hover: $accent;
 
 //Login component
+
+//Offer component
+$offer-bg: #080808;
+$offer-color: #fff;

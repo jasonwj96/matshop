@@ -9,12 +9,44 @@ const Register = props => {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [registerData, setRegisterData] = useState({});
 
   useEffect(() => {
     document.title = "Matshop - Register";
   }, []);
 
-  const registerUser = () => {};
+  useEffect(() => {
+    if (null !== registerData) {
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(registerData)
+      }
+
+      const url = 'localhost: /registerUser.php';
+
+      fetch(url, options)
+        .then(
+          (response => response.clone.text())
+        )
+        .then(
+          json => console.log(JSON.parse(json))
+        )
+    }
+  }, [registerData])
+
+
+
+  const registerUser = () => {
+    const data = {
+      firstName,
+      lastName,
+      email,
+      address,
+      password
+    }
+
+    setRegisterData(data);
+  };
 
   const handleFirstNameChange = event => {
     setFirstName(event.target.value);
