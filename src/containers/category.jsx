@@ -68,8 +68,6 @@ const Category = props => {
 
   const content = (
     <div className="category-container">
-      <Navbar />
-      <Statusbar />
       <div className="cover">
         <div className="overlay">
           <div className="cover-section">{header}</div>
@@ -80,10 +78,8 @@ const Category = props => {
           <i className="fas fa-spinner" />
         </div>
       ) : (
-        <ItemSection heading={"What's hot right now"} products={products} />
-      )}
-      <Footer />
-      <Notification title={notificationTitle} message={notificationMessage} />
+          <ItemSection heading={"What's hot right now"} products={products} />
+        )}
     </div>
   );
 

@@ -55,15 +55,15 @@ const Wishlist = props => {
               return <WishlistItem key={index} item={item} />;
             })
           ) : (
-            <p>No items in your wishlist</p>
-          )}
+              <p>No items in your wishlist</p>
+            )}
         </div>
         <div className="footer">
           <button onClick={checkoutItems}>Clear</button>
           <button onClick={checkoutItems}>Checkout</button>
         </div>
       </div>
-      <Footer />
+
     </div>
   );
   return content;

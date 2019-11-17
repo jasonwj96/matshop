@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./product.scss";
 import { Link } from "react-router-dom";
+import Configuration from "../config";
 
 const Product = props => {
   const [ratingThreshold] = useState(50);
-  const { imageUrl, title, description, alt, price, rating } = props.product;
+  const { url, title, desc, alt, price, rating } = props.product;
   const titleLength = 60;
 
-  const content = (
+  useEffect(() => {
+    console.table(props.product);
+  }, [props.product])
+
+  return (
     <div className="product">
       <div className="title">
         <Link className="link" to="/">
@@ -17,9 +22,9 @@ const Product = props => {
         </Link>
       </div>
       <div className="picture">
-        <img src={`/src/assets/img/${imageUrl}`} alt={alt} />
+        <img src={Configuration.imageRepositoryUrl + url} alt={alt} />
       </div>
-      <div className="description">{description.slice(0, 90) + "..."}</div>
+      <div className="desc">{`${desc.slice(0, 90)}...`}</div>
       <div className="productFooter">
         <div className="rating">
           {rating >= ratingThreshold ? (
@@ -32,9 +37,7 @@ const Product = props => {
         <div className="price">{`$${price}`}</div>
       </div>
     </div>
-  );
-
-  return content;
+  )
 };
 
 export default Product;

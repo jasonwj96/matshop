@@ -156,20 +156,20 @@ const LoginForm = props => {
                 </Link>
               </div>
             ) : (
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
-                  id="passwordInput"
-                  className={classNames.password}
-                  type="password"
-                  name="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  onClick={handlePasswordChange}
-                />
-                <Link to="/"> Forgot your password?</Link>
-              </div>
-            )}
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    id="passwordInput"
+                    className={classNames.password}
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    onClick={handlePasswordChange}
+                  />
+                  <Link to="/"> Forgot your password?</Link>
+                </div>
+              )}
           </form>
 
           <div className="login-footer">
@@ -178,13 +178,13 @@ const LoginForm = props => {
                 <button onClick={verifyEmail}>Next</button>
               </div>
             ) : (
-              <div className="login-buttons">
-                <button className="back-btn" onClick={verifyEmail}>
-                  Back
+                <div className="login-buttons">
+                  <button className="back-btn" onClick={verifyEmail}>
+                    Back
                 </button>
-                <button onClick={loginUser}>Login</button>
-              </div>
-            )}
+                  <button onClick={loginUser}>Login</button>
+                </div>
+              )}
             <p>
               Need an account?
               <Link className="link" to="/register">
@@ -194,7 +194,6 @@ const LoginForm = props => {
           </div>
         </div>
       </div>
-      <Notification title={notificationTitle} message={notificationMessage} />
     </div>
   );
 };

@@ -10,8 +10,20 @@ const Landing = () => {
   const [coverHeader, setCoverHeader] = useState("");
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetchProducts();
+  useEffect(async () => {
+    await fetch(`${configuration.apiPath}/Home`)
+      .then(
+        response =>
+          response.json()
+      )
+      .then(
+        json => {
+          setProducts(json)
+        }
+      )
+      .catch(
+        err => console.log(err)
+      );
     updateCover();
     document.title = "Matshop - Home";
   }, []);
@@ -37,21 +49,6 @@ const Landing = () => {
     }
   };
 
-  const fetchProducts = async () => {
-    await fetch(`${configuration.apiPath}/Home`)
-      .then(
-        response =>
-          response.json()
-      )
-      .then(
-        json => {
-          setProducts(json)
-        }
-      )
-      .catch(
-        err => console.log(err)
-      );
-  };
 
   const offerItem = {
     name: "Apple iPhone X, GSM Unlocked, 64GB - Silver",
