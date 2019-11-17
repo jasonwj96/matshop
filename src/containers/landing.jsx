@@ -6,10 +6,9 @@ import OfferPanel from "../components/offerPanel";
 import Cover from "../components/cover";
 
 const Landing = () => {
-  const [coverImg, setCoverImg] = useState(configuration.coverImageUrls.morning);
+  const [coverImg, setCoverImg] = useState(configuration.imageRepositoryUrl + configuration.coverImageUrls.morning);
   const [coverHeader, setCoverHeader] = useState("");
   const [products, setProducts] = useState([]);
-  const images = require.context("/assets/img/", true);
 
   useEffect(() => {
     fetchProducts();
@@ -23,17 +22,17 @@ const Landing = () => {
 
     //morning
     if (currentHour >= 0 && currentHour < 12) {
-      setCoverImg(configuration.coverImageUrls.morning);
+      setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.morning);
       setCoverHeader("Good morning, Jason!");
     }
     //afternoon
     if (currentHour >= 12 && currentHour < 19) {
-      setCoverImg(configuration.coverImageUrls.sunset);
+      setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.sunset);
       setCoverHeader("Good afternoon, Jason!");
     }
     //night
     if (currentHour >= 19 && currentHour <= 23) {
-      setCoverImg(configuration.coverImageUrls.night);
+      setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.night);
       setCoverHeader("Good night, Jason!");
     }
   };
@@ -66,7 +65,7 @@ const Landing = () => {
   const content = (
     <div>
       <div className="landing">
-        <Cover imageUrl={images(`${coverImg}`)} header={coverHeader} />
+        <Cover imageUrl={coverImg} header={coverHeader} />
 
         {products.length === 0 ? (
           <div className="spinner">

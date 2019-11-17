@@ -5,10 +5,11 @@ const configuration = {
   passwordRegex: /^(?=.*[0-9])(?=.{8,})/, //1 numeric, 8 minimum
   firstNameRegex: /^/, //
   lastNameRegex: /^/, //
+  imageRepositoryUrl: "../assets/img/",
   coverImageUrls: {
-    morning: "./morning_cover.jpg",
-    sunset: "./sunset_cover.png",
-    night: "./night_cover.png"
+    morning: "morning_cover.jpg",
+    sunset: "sunset_cover.png",
+    night: "night_cover.png"
   }
 };
 

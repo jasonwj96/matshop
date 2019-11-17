@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const Product = props => {
   const [ratingThreshold] = useState(50);
-  const images = require.context("../assets/img", true);
   const { imageUrl, title, description, alt, price, rating } = props.product;
   const titleLength = 60;
 
@@ -18,7 +17,7 @@ const Product = props => {
         </Link>
       </div>
       <div className="picture">
-        <img src={images(`${imageUrl}`)} alt={alt} />
+        <img src={`/src/assets/img/${imageUrl}`} alt={alt} />
       </div>
       <div className="description">{description.slice(0, 90) + "..."}</div>
       <div className="productFooter">
@@ -26,8 +25,8 @@ const Product = props => {
           {rating >= ratingThreshold ? (
             <i className="fas fa-heart" />
           ) : (
-            <i className="fas fa-heart-broken" />
-          )}
+              <i className="fas fa-heart-broken" />
+            )}
           {`${rating}%`}
         </div>
         <div className="price">{`$${price}`}</div>

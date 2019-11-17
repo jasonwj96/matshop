@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./offerPanel.scss";
+import Configuration from "../config";
 
 const OfferPanel = props => {
   const [timer, setTimer] = useState("");
-
-  const images = require.context("/assets/img/", true);
 
   useEffect(() => {
     coundown();
@@ -64,7 +63,7 @@ const OfferPanel = props => {
             <button>Shop now</button>
           </Link>
         </div>
-        <img src={images(props.item.imageUrl)} alt={props.item.alt} />
+        <img src={Configuration.imageRepositoryUrl + props.item.imageUrl} alt={props.item.alt} />
       </div>
     </div>
   );

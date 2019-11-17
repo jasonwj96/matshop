@@ -1,5 +1,6 @@
 import React from "react";
 import "./wishlistitem.scss";
+import Configuration from "../config";
 
 const WishlistItem = props => {
   const deleteItem = () => console.log("item deleted.");
@@ -10,7 +11,7 @@ const WishlistItem = props => {
   const content = (
     <div className="wishlistitem">
       <div className="image">
-        <img src={images(`${imageUrl}`)} alt={alt} />
+        <img src={Configuration.imageRepositoryUrl + imageUrl} alt={alt} />
       </div>
       <div className="title">
         <p>{title.length > 30 ? `${title.slice(0, 30)}...` : title}</p>
