@@ -3,7 +3,6 @@ import "./wishlist.scss";
 import Navbar from "../components/navbar";
 import WishlistItem from "../components/wishlistItem";
 import Statusbar from "../components/statusbar";
-import Footer from "../components/footer";
 
 const Wishlist = props => {
   const [items] = useState([

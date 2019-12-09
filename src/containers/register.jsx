@@ -15,24 +15,24 @@ const Register = props => {
     document.title = "Matshop - Register";
   }, []);
 
-  useEffect(() => {
-    if (null !== registerData) {
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(registerData)
-      }
+  // useEffect(() => {
+  //   if (null !== registerData) {
+  //     const options = {
+  //       method: 'POST',
+  //       body: JSON.stringify(registerData)
+  //     }
 
-      const url = 'localhost: /registerUser.php';
+  //     const url = 'localhost: /registerUser.php';
 
-      fetch(url, options)
-        .then(
-          (response => response.clone.text())
-        )
-        .then(
-          json => console.log(JSON.parse(json))
-        )
-    }
-  }, [registerData])
+  //     fetch(url, options)
+  //       .then(
+  //         (response => response.clone.text())
+  //       )
+  //       .then(
+  //         json => console.log(JSON.parse(json))
+  //       )
+  //   }
+  // }, [registerData])
 
 
 

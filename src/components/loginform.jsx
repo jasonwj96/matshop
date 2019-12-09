@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import configuration from "../config";
-import Notification from "../components/notification";
+import "./loginform.scss";
 
 const LoginForm = props => {
   const [emailIsValid, setEmailIsValid] = useState(false);
@@ -15,8 +15,6 @@ const LoginForm = props => {
     email: "pristine",
     password: "pristine"
   });
-  const [notificationMessage, setNotificationMessage] = useState("");
-  const [notificationTitle, setNotificationTitle] = useState("");
 
   useEffect(() => {
     document.title = "Matshop - Login";
@@ -48,51 +46,25 @@ const LoginForm = props => {
     setErrors({ ...errors, password: valid });
   }, [password]);
 
-  const displayNotification = (title, message) => {
-    const notification = document.getElementById("notification");
-    setNotificationTitle(title);
-    setNotificationMessage(message);
-    notification.style.opacity = 1;
-
-    setTimeout(() => {
-      notification.style.opacity = 0;
-    }, 5000);
-  };
 
   const loginUser = async () => {
-    if (configuration.passwordRegex.test(password)) {
-      try {
-        const response = await fetch(`${configuration.apiPath}/account/login`, {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          method: "POST",
-          body: JSON.stringify({ password: password })
-        });
+    // if (configuration.passwordRegex.test(password)) {
+    //   try {
+    //     const response = await fetch(`${configuration.apiPath}/account/login`, {
+    //       headers: {
+    //         "Content-Type": "application/json"
+    //       },
+    //       method: "POST",
+    //       body: JSON.stringify({ password: password })
+    //     });
 
-        const data = await response.json();
+    //     const data = await response.json();
+    //   } catch (error) {
 
-        if (data.userLoggedIn) {
-          localStorage.setItem("userEmail", email);
-          props.history.push("/home");
-        } else {
-          displayNotification(
-            "Invalid input",
-            "The email entered does not exist"
-          );
-        }
-      } catch (error) {
-        displayNotification(
-          "Password error",
-          "The password entered does not match the user email"
-        );
-      }
-    } else {
-      displayNotification(
-        "Invalid password",
-        "Please use a valid password format"
-      );
-    }
+    //   }
+    // } else {
+
+    // }
   };
 
   const verifyEmail = async () => {
@@ -117,10 +89,8 @@ const LoginForm = props => {
           throw new Error("The email doesn't exist");
         }
       } catch (error) {
-        displayNotification("Email error", "The email entered does not exist");
       }
     } else {
-      displayNotification("Invalid input", "Please use a valid email format");
     }
   };
 

@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./category.scss";
-import Navbar from "../components/navbar";
-import Statusbar from "../components/statusbar";
-import Footer from "../components/footer";
 import ItemSection from "../components/itemSection";
 import configuration from "../config";
-import Notification from "../components/notification";
 
 const Category = props => {
-  const [category, setCategory] = useState(props.match.params.c);
+  const [category, setCategory] = useState("pets");
   const [header, setHeader] = useState("");
   const [products, setProducts] = useState([]);
-  const [notificationTitle, setNotificationTitle] = useState("");
-  const [notificationMessage, setNotificationMessage] = useState("");
 
   useEffect(() => {
-    setCategory(props.match.params.c);
+    setCategory("pets");
     selectHeader();
     fetchProducts();
   });
@@ -36,8 +30,6 @@ const Category = props => {
 
   const displayNotification = (title, message) => {
     const notification = document.getElementById("notification");
-    setNotificationTitle(title);
-    setNotificationMessage(message);
     notification.style.opacity = 1;
 
     setTimeout(() => {
@@ -60,7 +52,7 @@ const Category = props => {
         setHeader("Cutting edge tech at the tip of your hands");
         break;
       default:
-        props.history.push("/");
+        // props.history.push("/");
         break;
     }
     return "";

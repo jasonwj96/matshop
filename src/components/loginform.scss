@@ -1,7 +1,7 @@
 @import "../styles/styles";
 
 .login-container {
-  background-color: #e2e2e2;
+  background-color: #111;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
     width: 100%;
     max-width: 400px;
     height: 450px;
-    background-color: #fff;
+    background-color: #1d1d1d;
     box-shadow: #00000052 1px 1px 2px 1px;
     justify-content: space-between;
     transition: 0.2s box-shadow ease-in-out;
@@ -32,7 +32,8 @@
       font-size: 1.2em;
       display: flex;
       align-items: center;
-      border: #111 3px solid;
+      border: #ffffff 3px solid;
+      color: #fff;
       height: 15px;
       padding: 10px;
       font-weight: bold;
@@ -46,19 +47,22 @@
       flex-flow: column;
       width: auto;
 
-      > div {
+      >div {
         display: flex;
         flex-flow: column;
       }
 
       label {
         font-size: 0.8em;
+        color: #fff;
       }
 
       input {
         width: auto;
         height: 40px;
-        border: #b6b6b6 2px solid;
+        color: #fff;
+        border: #5e5e5e 2px solid;
+        background-color: #111;
         margin: 10px 0px;
         border-radius: 5px;
         outline: none;
@@ -69,17 +73,17 @@
 
       a {
         text-decoration: none;
-        color: #111;
+        color: #fff;
         font-size: 0.8em;
         text-align: right;
 
         &:hover {
-          color: #eb5d24;
+          color: $accent-hover;
         }
       }
 
       .pristine {
-        border: #b6b6b6 2px solid;
+        border: #4e4e4e 2px solid;
       }
 
       .error {
@@ -99,7 +103,7 @@
       flex-flow: column;
       justify-content: center;
 
-      > div {
+      >div {
         display: flex;
       }
 
@@ -108,8 +112,8 @@
       }
 
       .back-btn {
-        background-color: #cfcfcf;
-        color: #000000;
+        background-color: #333;
+        color: #fff;
 
         &:hover {
           background-color: #a3a2a2;
@@ -128,21 +132,23 @@
         padding: 10px;
         font-weight: bold;
         transition: 0.2s background-color ease-in-out;
-        background-color: #eb5d24;
+        background-color: $accent;
         color: #fff;
 
         &:hover {
-          background-color: #c04f22;
+          background-color: $accent-hover;
         }
       }
 
       p {
         font-size: 0.8em;
         text-align: right;
+        color: #fff;
 
         a {
-          color: #eb5d24;
+          color: $accent;
           text-decoration: none;
+          margin-left: 5px;
         }
       }
     }
@@ -187,8 +193,12 @@
 
         p {
           font-size: 0.9em;
+          color: #fff;
+
           .link {
             margin-left: 5px;
+            color: #fff;
+
           }
         }
       }

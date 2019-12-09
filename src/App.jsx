@@ -1,10 +1,7 @@
 import React from "react";
 import "./App.scss";
-import { Router, Route, Switch } from "react-router-dom";
 import Landing from "./containers/landing";
-import { createBrowserHistory } from "history";
 import Login from "./containers/login";
-import NotFound from "./containers/notfound";
 import Wishlist from "./containers/wishlist";
 import Category from "./containers/category";
 import Register from "./containers/register";
@@ -12,23 +9,36 @@ import Notification from "./components/notification";
 import Navbar from "./components/navbar";
 import Statusbar from "./components/statusbar";
 import Footer from "./components/footer";
-
-
-const customHistory = createBrowserHistory();
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 const App = () => {
   return (
-    <Router history={customHistory}>
+    <Router>
       <Navbar />
       <Statusbar />
       <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/home" component={Landing} />
-        <Route path="/login" component={Login} />
-        <Route path="/wishlist" component={Wishlist} />
-        <Route path="/category/:c" component={Category} />
-        <Route path="/register" component={Register} />
-        <Route component={NotFound} />
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/home">
+          <Landing />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/wishlist">
+          <Wishlist />
+        </Route>
+        <Route path="/category">
+          <Category />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
       </Switch>
       <Footer />
       <Notification />
