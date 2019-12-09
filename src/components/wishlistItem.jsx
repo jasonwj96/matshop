@@ -5,7 +5,6 @@ import Configuration from "../config";
 const WishlistItem = props => {
   const deleteItem = () => console.log("item deleted.");
 
-  const images = require.context("../assets/img", true);
   const { imageUrl, title, quantity, alt, price } = props.item;
 
   const content = (
