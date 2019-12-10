@@ -8,24 +8,56 @@ import Cover from "../components/cover";
 const Landing = () => {
   const [coverImg, setCoverImg] = useState(configuration.imageRepositoryUrl + configuration.coverImageUrls.morning);
   const [coverHeader, setCoverHeader] = useState("");
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([
+    {
+      url: "product1.jpg",
+      title: "Lightweight Varsity Jacket",
+      desc:
+        "Mens Lightweight Varsity Letterman Jacket Made in USA. Available in 7 different colors",
+      alt: "Jacket",
+      rating: 89,
+      price: 19.99
+    },
 
-  useEffect(async () => {
-    await fetch(`${configuration.apiPath}/Home`)
-      .then(
-        response =>
-          response.json()
-      )
-      .then(
-        json => {
-          setProducts(json)
-        }
-      )
-      .catch(
-        err => console.log(err)
-      );
-    updateCover();
+    {
+      url: "product3.jpg",
+      title: "PlayStation 4 Slim 1TB Console",
+      desc: "All  lighter slimmer PS4. 1TB hard drive. All the greatest, games, TV, music and more",
+      alt: "Playstation 4",
+      rating: 73,
+      price: 299.99
+    },
+
+    {
+      url: "product1.jpg",
+      title: "Lightweight Varsity Jacket",
+      desc: "Mens Lightweight Varsity Letterman Jacket Made in USA. Available in 7 different colors",
+      alt: "Jacket",
+      rating: 89,
+      price: 19.99
+    }
+  ]
+
+  );
+
+  useEffect(() => {
     document.title = "Matshop - Home";
+    updateCover();
+    return () => {
+      fetch(`${configuration.apiPath}/Home`)
+        .then(
+          response =>
+            response.json()
+        )
+        .then(
+          json => {
+            setProducts(json)
+          }
+        )
+        .catch(
+          err => console.log(err)
+        );
+    }
   }, []);
 
   const updateCover = () => {
@@ -35,25 +67,24 @@ const Landing = () => {
     //morning
     if (currentHour >= 0 && currentHour < 12) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.morning);
-      setCoverHeader("Good morning, Jason!");
+      setCoverHeader("Good morning!");
     }
     //afternoon
     if (currentHour >= 12 && currentHour < 19) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.sunset);
-      setCoverHeader("Good afternoon, Jason!");
+      setCoverHeader("Good afternoon!");
     }
     //night
     if (currentHour >= 19 && currentHour <= 23) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.night);
-      setCoverHeader("Good night, Jason!");
+      setCoverHeader("Good night!");
     }
   };
 
 
   const offerItem = {
-    name: "Apple iPhone X, GSM Unlocked, 64GB - Silver",
-    description:
-      "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
+    name: "Apple iPhone 11 Pro",
+    description: "A transformative triple‑camera system that adds tons of capability without complexity. An unprecedented leap in battery life. And a mind‑blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.",
     imageUrl: "./product4.png",
     alt: "iPhone",
     price: 899.99

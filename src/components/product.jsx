@@ -9,7 +9,6 @@ const Product = props => {
   const titleLength = 60;
 
   useEffect(() => {
-    console.table(props.product);
   }, [props.product])
 
   return (

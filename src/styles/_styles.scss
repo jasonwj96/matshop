@@ -14,8 +14,8 @@ $nav-menu-color: #ffffff;
 
 //Statusbar component
 $statusbar-bg: #1d1d1d;
-$profile-img-bg: #0066ff;
-$profile-img-bg-hover: #0045ac;
+$profile-img-bg: $accent;
+$profile-img-bg-hover: $accent-hover;
 $icon-color: #ececec;
 $icon-hover: $accent;
 

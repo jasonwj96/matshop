@@ -9,7 +9,7 @@ const Register = props => {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [registerData, setRegisterData] = useState({});
+  const [setRegisterData] = useState({});
 
   useEffect(() => {
     document.title = "Matshop - Register";

@@ -8,8 +8,8 @@ const configuration = {
   imageRepositoryUrl: "../assets/img/",
   coverImageUrls: {
     morning: "morning_cover.jpg",
-    sunset: "sunset_cover.png",
-    night: "night_cover.png"
+    sunset: "sunset_cover.jpg",
+    night: "night_cover.jpg"
   }
 };
 

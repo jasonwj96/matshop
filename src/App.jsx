@@ -5,7 +5,7 @@ import Login from "./containers/login";
 import Wishlist from "./containers/wishlist";
 import Category from "./containers/category";
 import Register from "./containers/register";
-import Notification from "./components/notification";
+// import Notification from "./components/notification";
 import Navbar from "./components/navbar";
 import Statusbar from "./components/statusbar";
 import Footer from "./components/footer";
@@ -41,7 +41,7 @@ const App = () => {
         </Route>
       </Switch>
       <Footer />
-      <Notification />
+      {/* <Notification /> */}
     </Router>
   );
 };
