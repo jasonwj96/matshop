@@ -48,15 +48,7 @@ const Landing = () => {
       alt: "Yeezy",
       rating: 93,
       price: 340
-    },
-    // {
-    //   url: "",
-    //   title: "",
-    //   desc: "",
-    //   alt: "",
-    //   rating: ,
-    //   price: 
-    //     }
+    }
   ]
   );
 
@@ -168,6 +160,7 @@ const Landing = () => {
           )}
 
         <OfferPanel item={offerItem} />
+
         {hotProducts.length === 0 ? (
           <div className="spinner">
             <i className="fas fa-spinner" />

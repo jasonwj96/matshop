@@ -71,7 +71,7 @@ const LoginForm = props => {
     if (configuration.emailRegex.test(email)) {
       try {
         const response = await fetch(
-          `${configuration.apiPath}/account/validate`,
+          `${configuration.apiPath}/verifyEmail.php`,
           {
             headers: {
               "Content-Type": "application/json"

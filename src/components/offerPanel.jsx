@@ -43,7 +43,7 @@ const OfferPanel = props => {
     <div className="offer-container">
       <div className="offer">
         <div className="offer-data">
-          <h2>TODAY'S OFFER</h2>
+          <h2>CHRISTMAS OFFER</h2>
           <h3>{props.item.name}</h3>
           <div className="price">
             <span className="former-price">

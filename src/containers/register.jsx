@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./register.scss";
-// import Configuration from "../config";
+import Configuration from "../config";
 
 const Register = props => {
   const [firstName, setFirstName] = useState("");
@@ -9,32 +9,29 @@ const Register = props => {
   const [address, setAddress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [setRegisterData] = useState({});
+  const [registerData, setRegisterData] = useState({});
 
   useEffect(() => {
     document.title = "Matshop - Register";
   }, []);
 
-  // useEffect(() => {
-  //   if (null !== registerData) {
-  //     const options = {
-  //       method: 'POST',
-  //       body: JSON.stringify(registerData)
-  //     }
+  useEffect(() => {
+    if (null !== registerData) {
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(registerData)
+      }
+      const url = `${Configuration.apiPath}/registerUser.php`;
 
-  //     const url = 'localhost: /registerUser.php';
-
-  //     fetch(url, options)
-  //       .then(
-  //         (response => response.clone.text())
-  //       )
-  //       .then(
-  //         json => console.log(JSON.parse(json))
-  //       )
-  //   }
-  // }, [registerData])
-
-
+      fetch(url, options)
+        .then(
+          (response => response.clone.text())
+        )
+        .then(
+          json => console.log(JSON.parse(json))
+        )
+    }
+  }, [registerData])
 
   const registerUser = () => {
     const data = {

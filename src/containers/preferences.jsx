@@ -1,37 +1,65 @@
 import React, { useEffect, useState } from 'react';
 import './preferences.scss';
 import ProductMaintenanceItem from '../components/productMaintenanceItem';
+import Configuration from "../config";
 
 const Preferences = () => {
+  const [items, setItems] = useState([]);
 
-  const [items] = useState([
-    {
-      imageUrl: "./product1.jpg",
-      title: "Lightweight Varsity Jacket",
-      quantity: 5,
-      alt: "Jacket",
-      rating: 89,
-      price: 19.99
-    },
-    {
-      imageUrl: "./product2.jpg",
-      title: "Apple iPhone X, GSM Unlocked, 64GB - Silver (Refurbished)",
-      description:
-        "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
-      alt: "IPhone",
-      quantity: 5,
-      rating: 39,
-      price: 899.99
-    },
-    {
-      imageUrl: "./product3.jpg",
-      title: "PlayStation 4 Slim 1TB Console",
-      quantity: 9,
-      alt: "Playstation 4",
-      rating: 73,
-      price: 299.99
+  useEffect(() => {
+
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
     }
-  ]);
+
+
+    fetch(`${Configuration.apiPath}/getProducts.php`, options)
+      .then(
+        (response) => {
+          return response.clone().text();
+        }
+      )
+      .then(
+        (json) => {
+          console.table(JSON.parse(json));
+          setItems(JSON.parse(json));
+        }
+      )
+      .catch(
+        (err) => console.log(err)
+      )
+  }, [])
+  // const [items] = useState([
+  //   {
+  //     imageUrl: "./product1.jpg",
+  //     title: "Lightweight Varsity Jacket",
+  //     quantity: 5,
+  //     alt: "Jacket",
+  //     rating: 89,
+  //     price: 19.99
+  //   },
+  //   {
+  //     imageUrl: "./product2.jpg",
+  //     title: "Apple iPhone X, GSM Unlocked, 64GB - Silver (Refurbished)",
+  //     description:
+  //       "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
+  //     alt: "IPhone",
+  //     quantity: 5,
+  //     rating: 39,
+  //     price: 899.99
+  //   },
+  //   {
+  //     imageUrl: "./product3.jpg",
+  //     title: "PlayStation 4 Slim 1TB Console",
+  //     quantity: 9,
+  //     alt: "Playstation 4",
+  //     rating: 73,
+  //     price: 299.99
+  //   }
+  // ]);
 
   const addItem = () => {
 
@@ -60,6 +88,7 @@ const Preferences = () => {
                 <input className="input" type="text" placeholder="Product ID" />
                 <input className="input" type="text" placeholder="Description" />
                 <input className="input" type="text" placeholder="Price" />
+                <input className="input" type="text" placeholder="Rating" />
                 <input className="input" type="text" placeholder="Image name (with extension)" />
               </div>
             </form>

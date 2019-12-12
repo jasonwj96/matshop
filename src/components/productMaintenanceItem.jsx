@@ -4,16 +4,24 @@ import Configuration from "../config";
 
 const ProductMaintenanceItem = props => {
   const deleteItem = () => console.log("item deleted.");
+  const {
+    product_image_name: imageUrl,
+    product_id: id,
+    product_title: title,
+    product_price: price,
+  } = props.item;
 
-  const { imageUrl, title, quantity, alt, price } = props.item;
 
   const content = (
     <div className="productMaintenanceItem">
       <div className="image">
-        <img src={Configuration.imageRepositoryUrl + imageUrl} alt={alt} />
+        <img src={Configuration.imageRepositoryUrl + imageUrl} />
+      </div>
+      <div className="id">
+        {id}
       </div>
       <div className="title">
-        <p>{title.length > 30 ? `${title.slice(0, 30)}...` : title}</p>
+        <p>{title.length > 100 ? `${title.slice(0, 100)}...` : title}</p>
       </div>
       <div className="info">
         <div className="price">
