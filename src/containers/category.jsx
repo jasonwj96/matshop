@@ -24,18 +24,9 @@ const Category = props => {
 
       setProducts(products);
     } catch (err) {
-      displayNotification("Products couldn't be retrieved", err.message);
     }
   };
 
-  const displayNotification = (title, message) => {
-    const notification = document.getElementById("notification");
-    notification.style.opacity = 1;
-
-    setTimeout(() => {
-      notification.style.opacity = 0;
-    }, 5000);
-  };
 
   const selectHeader = () => {
     switch (category) {

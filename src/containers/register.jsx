@@ -151,7 +151,9 @@ const Register = props => {
           <div className="form-footer">
             <div>
               <div className="requiredDiv" />
-              Required field
+              <p id="requiredText">
+                Required field
+              </p>
             </div>
             <button onClick={registerUser}>Register</button>
           </div>

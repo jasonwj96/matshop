@@ -1,8 +1,11 @@
+@import "../styles/styles";
+
+
 @mixin input {
   font-family: "Poppins";
   width: auto;
   height: 40px;
-  border: #b6b6b6 2px solid;
+  border: #5e5e5e 2px solid;
   margin: 5px 0px 30px 0;
   border-radius: 5px;
   outline: none;
@@ -13,7 +16,7 @@
 }
 
 .register-container {
-  background-color: #e2e2e2;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +30,7 @@
     width: 450px;
     height: auto;
     padding: 20px 30px;
-    background-color: #fff;
+    background-color: #1d1d1d;
     flex-flow: column;
     border-radius: 5px;
     box-shadow: #00000052 1px 1px 2px 1px;
@@ -39,7 +42,8 @@
       font-size: 1.2em;
       display: flex;
       align-items: center;
-      border: #111 3px solid;
+      border: #fff 3px solid;
+      color: #fff;
       height: 15px;
       padding: 10px;
       font-weight: bold;
@@ -57,10 +61,12 @@
       font-size: 0.9em;
       display: flex;
       flex-flow: column;
+      color: #fff;
 
       div {
         display: flex;
         margin: 0;
+        color: #fff;
 
         .requiredDiv {
           width: 5px;
@@ -75,18 +81,24 @@
 
     input {
       @include input();
+      background-color: #111;
     }
 
     textarea {
       resize: none;
       @include input();
       height: 80px;
+      background-color: #111;
     }
 
     .form-footer {
       div {
         display: flex;
         font-size: 0.9em;
+
+        #requiredText {
+          color: #fff;
+        }
 
         .requiredDiv {
           width: 5px;
@@ -109,11 +121,11 @@
         border-radius: 3px;
         padding: 10px;
         transition: 0.2s background-color ease-in-out;
-        background-color: #eb5d24;
+        background-color: $accent;
         color: #fff;
 
         &:hover {
-          background-color: #c04f22;
+          background-color: $accent-hover;
         }
       }
     }

@@ -8,7 +8,27 @@ import Cover from "../components/cover";
 const Landing = () => {
   const [coverImg, setCoverImg] = useState(configuration.imageRepositoryUrl + configuration.coverImageUrls.morning);
   const [coverHeader, setCoverHeader] = useState("");
-  const [products, setProducts] = useState([
+  const [hotProducts, setHotProducts] = useState([
+    {
+      url: "uhdtv.jpg",
+      title: "Samsung 65-Inch 4K Smart TV",
+      desc: "ENHANCED DETAIL WITH HDR: 4K depth of detail with high dynamic range lets you see shades of color that reveal more detail than HDTV can deliver",
+      alt: "uhdtv",
+      rating: 23,
+      price: 597.99
+    },
+    {
+      url: "switch.jpg",
+      title: "Nintendo Switch with Neon Blue and Neon Red Joy‑Con",
+      desc: "Play your way with the Nintendo Switch gaming system. Whether you’re at home or on the go, solo or with friends, the Nintendo Switch system is designed to fit your life. Dock your Nintendo Switch to enjoy HD gaming on your TV. Heading out? Just undock your console and keep playing in handheld mode",
+      alt: "Nintendo Switch",
+      rating: 99,
+      price: 343.99
+    }
+  ]
+  );
+
+  const [menProducts, setMenProducts] = useState([
     {
       url: "product1.jpg",
       title: "Lightweight Varsity Jacket",
@@ -18,27 +38,40 @@ const Landing = () => {
       rating: 89,
       price: 19.99
     },
+    {
+      url: "gapjacket.jpg",
+      title: "Sherpa-Lined Icon Denim Jacket",
+      desc:
+        "Better denim. Better planet. This pair of denim is part of our water-saving Washwell™ program. Compared to conventional wash methods, Washwell™ has saved millions of liters of water since 2016.",
+      alt: "Sherpa-Lined Icon Denim Jacket",
+      rating: 76,
+      price: 128.00
+    },
+    {
+      url: "gapsocks.jpg",
+      title: "Colorblock Stripe Crew Socks",
+      desc:
+        "Soft knit. Ribbing at top. Reinforced toe and heel. Colorblock styling. Allover stripes.",
+      alt: "Colorblock Stripe Crew Socks",
+      rating: 95,
+      price: 7.95
+    },
+  ]
+  );
 
+
+  const [latestTech, setLatestTech] = useState([
     {
       url: "product3.jpg",
       title: "PlayStation 4 Slim 1TB Console",
-      desc: "All  lighter slimmer PS4. 1TB hard drive. All the greatest, games, TV, music and more",
+      desc: "All lighter slimmer PS4. 1TB hard drive. All the greatest, games, TV, music and more",
       alt: "Playstation 4",
       rating: 73,
       price: 299.99
-    },
-
-    {
-      url: "product1.jpg",
-      title: "Lightweight Varsity Jacket",
-      desc: "Mens Lightweight Varsity Letterman Jacket Made in USA. Available in 7 different colors",
-      alt: "Jacket",
-      rating: 89,
-      price: 19.99
     }
   ]
-
   );
+
 
   useEffect(() => {
     document.title = "Matshop - Home";
@@ -51,7 +84,7 @@ const Landing = () => {
         )
         .then(
           json => {
-            setProducts(json)
+            setHotProducts(json)
           }
         )
         .catch(
@@ -95,29 +128,29 @@ const Landing = () => {
       <div className="landing">
         <Cover imageUrl={coverImg} header={coverHeader} />
 
-        {products.length === 0 ? (
+        {hotProducts.length === 0 ? (
           <div className="spinner">
             <i className="fas fa-spinner" />
           </div>
         ) : (
-            <ItemSection heading={"What's hot right now"} products={products} />
+            <ItemSection heading={"What's hot right now"} products={hotProducts} />
           )}
 
         <OfferPanel item={offerItem} />
-        {products.length === 0 ? (
+        {hotProducts.length === 0 ? (
           <div className="spinner">
             <i className="fas fa-spinner" />
           </div>
         ) : (
-            <ItemSection heading={"Men's clothing"} products={products} />
+            <ItemSection heading={"Men's clothing"} products={menProducts} />
           )}
 
-        {products.length === 0 ? (
+        {hotProducts.length === 0 ? (
           <div className="spinner">
             <i className="fas fa-spinner" />
           </div>
         ) : (
-            <ItemSection heading={"Latest in tech"} products={products} />
+            <ItemSection heading={"Latest in tech"} products={latestTech} />
           )}
       </div>
     </div>

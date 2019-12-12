@@ -42,8 +42,6 @@ const Wishlist = props => {
 
   const content = (
     <div className="wishlist-container">
-      <Navbar />
-      <Statusbar />
       <div className="wishlist">
         <div className="header">
           <p>My wishlist items</p>
