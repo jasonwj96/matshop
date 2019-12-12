@@ -77,6 +77,7 @@ a {
       border-radius: 50%;
       justify-content: center;
       align-items: center;
+      font-weight: bold;
       transition: 0.2s background-color ease-in-out;
 
       i {
@@ -84,9 +85,14 @@ a {
       }
 
       p {
-        margin: 0;
+        display: flex;
+        margin: 5px;
         padding: 0;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
         color: #fff;
+        font-size: 1.2em;
         text-decoration: none;
       }
 

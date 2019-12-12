@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import Landing from "./containers/landing";
 import Login from "./containers/login";
@@ -18,11 +18,13 @@ import Preferences from "./containers/preferences";
 
 const App = () => {
 
-  return localStorage.getItem("user_logged_in") ?
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("user_logged_in"));
+
+  return loggedIn ?
     (
       <Router>
         <Navbar />
-        <Statusbar />
+        <Statusbar setLoggedIn={setLoggedIn} />
         <Switch>
           <Route exact path="/">
             <Landing />
@@ -30,11 +32,11 @@ const App = () => {
           <Route exact path="/home">
             <Landing />
           </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
           <Route path="/wishlist">
             <Wishlist />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/category">
             <Category />
@@ -44,6 +46,9 @@ const App = () => {
           </Route>
           <Route path="/preferences">
             <Preferences />
+          </Route>
+          <Route path="**">
+            <Redirect to="/home" />
           </Route>
         </Switch>
         <Footer />

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import configuration from "../config";
 import "./loginform.scss";
+import { useHistory } from "react-router-dom";
+
 
 const LoginForm = props => {
   const [emailIsValid, setEmailIsValid] = useState(false);
@@ -15,6 +17,7 @@ const LoginForm = props => {
     email: "pristine",
     password: "pristine"
   });
+  const history = useHistory();
 
   useEffect(() => {
     document.title = "Matshop - Login";
@@ -48,23 +51,34 @@ const LoginForm = props => {
 
 
   const loginUser = async () => {
-    // if (configuration.passwordRegex.test(password)) {
-    //   try {
-    //     const response = await fetch(`${configuration.apiPath}/account/login`, {
-    //       headers: {
-    //         "Content-Type": "application/json"
-    //       },
-    //       method: "POST",
-    //       body: JSON.stringify({ password: password })
-    //     });
+    if (configuration.emailRegex.test(email) && configuration.passwordRegex.test(password)) {
+      const options = {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({ email, password })
+      };
 
-    //     const data = await response.json();
-    //   } catch (error) {
+      await fetch(`${configuration.apiPath}/loginUser.php`, options)
+        .then(
+          (response) => response.clone().text()
+        )
+        .then(
+          (json) => {
+            const response = JSON.parse(json);
+            if (response[0].user_email === email) {
+              localStorage.setItem("user_logged_in", true);
+              localStorage.setItem("user_email", email);
+              history.push("/home");
+            }
+          }
+        )
+        .catch(
+          (err) => console.log(err)
+        )
 
-    //   }
-    // } else {
-
-    // }
+    }
   };
 
   const verifyEmail = async () => {
@@ -89,7 +103,6 @@ const LoginForm = props => {
             console.log(response[0].user_email);
             setEmailIsValid(!emailIsValid);
             setEmail(response[0].user_email);
-            localStorage.setItem("user_email", response.user_email);
           }
         )
         .catch(

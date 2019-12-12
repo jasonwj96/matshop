@@ -2,42 +2,21 @@ import React, { useState, useEffect } from "react";
 import "./statusbar.scss";
 import { Link } from "react-router-dom";
 import configuration from "../config";
+import { useHistory } from "react-router-dom";
+
 
 const Statusbar = props => {
-  const [userLoggedIn] = useState(
-    localStorage.getItem("userEmail") ? true : false
-  );
+  const [userLoggedIn] = useState(localStorage.getItem("user_logged_in"));
   const [showMenu, setShowMenu] = useState(true);
-  const [userEmail] = useState(localStorage.getItem("userEmail"));
-  const [firstName, setFirstName] = useState("");
+  const [firstLetter, setFirstLetter] = useState("");
+  const history = useHistory();
+
 
   useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchUserData = async () => {
-    if (userLoggedIn) {
-      try {
-        const response = await fetch(`${configuration.apiPath}/Home/userdata`, {
-          headers: {
-            "Content-Type": "application/json"
-          },
-          method: "POST",
-          body: JSON.stringify({ userEmail: userEmail })
-        });
-
-        const data = await response.json();
-
-        if (data.firstName) {
-          setFirstName(data.firstName);
-        } else {
-          throw new Error("Error while fetching user data");
-        }
-      } catch (error) {
-        console.log(error);
-      }
+    if (localStorage.getItem("user_email") && localStorage.getItem("user_logged_in")) {
+      setFirstLetter(localStorage.getItem("user_email"));
     }
-  };
+  }, []);
 
   const toggle = () => {
     const container = document.getElementById("statusbar-container");
@@ -49,15 +28,18 @@ const Statusbar = props => {
   };
 
   const logOutUser = () => {
-    localStorage.removeItem("userEmail");
+    localStorage.removeItem("user_logged_in");
+    localStorage.removeItem("user_email");
+    props.setLoggedIn(false);
+    history.push("/login");
   };
 
   const content = (
     <div className="statusbar">
-      {!userLoggedIn ? ( //Change this condition
+      {userLoggedIn ? ( //Change this condition
         <div id="statusbar-container" onClick={toggle}>
           <div className="profile-img">
-            <p>{firstName.substring(0, 1)}</p>
+            <p>{firstLetter.substring(0, 1).toUpperCase()}</p>
           </div>
           {/* <Link to="/profile" className="user-icon link">
             <i className="fas fa-user" />
