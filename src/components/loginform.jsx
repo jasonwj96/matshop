@@ -69,29 +69,34 @@ const LoginForm = props => {
 
   const verifyEmail = async () => {
     if (configuration.emailRegex.test(email)) {
-      try {
-        const response = await fetch(
-          `${configuration.apiPath}/verifyEmail.php`,
-          {
-            headers: {
-              "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify({ email })
+      const options = {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({ email })
+      };
+
+      await fetch(`${configuration.apiPath}/verifyEmail.php`, options)
+        .then(
+          (response) => {
+            return response.clone().text();
           }
-        );
-
-        const data = await response.json();
-
-        if (data.accountExists) {
-          setEmailIsValid(!emailIsValid);
-        } else {
-          throw new Error("The email doesn't exist");
-        }
-      } catch (error) {
-      }
-    } else {
+        )
+        .then(
+          (json) => {
+            const response = JSON.parse(json);
+            console.log(response[0].user_email);
+            setEmailIsValid(!emailIsValid);
+            setEmail(response[0].user_email);
+            localStorage.setItem("user_email", response.user_email);
+          }
+        )
+        .catch(
+          () => alert('Error: el email introducido no existe.')
+        )
     }
+
   };
 
   const handleEmailChange = event => {
@@ -149,7 +154,7 @@ const LoginForm = props => {
               </div>
             ) : (
                 <div className="login-buttons">
-                  <button className="back-btn" onClick={verifyEmail}>
+                  <button className="back-btn" onClick={() => setEmailIsValid(!emailIsValid)}>
                     Back
                 </button>
                   <button onClick={loginUser}>Login</button>
@@ -164,7 +169,7 @@ const LoginForm = props => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

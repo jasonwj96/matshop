@@ -11,41 +11,61 @@ import Footer from "./components/footer";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import Preferences from "./containers/preferences";
 
 const App = () => {
-  return (
-    <Router>
-      <Navbar />
-      <Statusbar />
-      <Switch>
-        <Route exact path="/">
-          <Landing />
-        </Route>
-        <Route exact path="/home">
-          <Landing />
-        </Route>
-        <Route path="/login">
+
+  return localStorage.getItem("user_logged_in") ?
+    (
+      <Router>
+        <Navbar />
+        <Statusbar />
+        <Switch>
+          <Route exact path="/">
+            <Landing />
+          </Route>
+          <Route exact path="/home">
+            <Landing />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/wishlist">
+            <Wishlist />
+          </Route>
+          <Route path="/category">
+            <Category />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/preferences">
+            <Preferences />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
+    )
+    :
+    (
+      <Router>
+        <Route path="/" exact>
           <Login />
         </Route>
-        <Route path="/wishlist">
-          <Wishlist />
+        <Route path="/login" exact>
+          <Login />
         </Route>
-        <Route path="/category">
-          <Category />
-        </Route>
-        <Route path="/register">
+        <Route path="/register" exact>
           <Register />
         </Route>
-        <Route path="/preferences">
-          <Preferences />
+        <Route path="**">
+          <Redirect to="/login" />
         </Route>
-      </Switch>
-      <Footer />
-    </Router>
-  );
+      </Router>
+    )
 };
 
 export default App;
