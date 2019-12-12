@@ -3,7 +3,7 @@ $accent: #00b37d;
 $accent-hover: #017e58;
 
 // Navbar component
-$nav-menu-bg: #1d1d1d;
+$nav-menu-bg: #111;
 $nav-menu-color: #ffffff;
 
 @mixin card {
@@ -13,7 +13,7 @@ $nav-menu-color: #ffffff;
 }
 
 //Statusbar component
-$statusbar-bg: #1d1d1d;
+$statusbar-bg: #111;
 $profile-img-bg: $accent;
 $profile-img-bg-hover: $accent-hover;
 $icon-color: #ececec;
