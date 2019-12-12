@@ -24,7 +24,39 @@ const Landing = () => {
       alt: "Nintendo Switch",
       rating: 99,
       price: 343.99
-    }
+    },
+    {
+      url: "fitbit.jpg",
+      title: "Fitbit Versa Smart Watch, Black/Black Aluminium",
+      desc: "Track your all day activity, 24/7 heart rate, & sleep stages, all with a 4 plus day battery life (varies with use and other factors) , Charge time (0 to 100 percent): Two hours . Slim, comfortable design with a lightweight, anodized aluminum watch body",
+      alt: "Fitbit Versa",
+      rating: 87,
+      price: 129.99
+    },
+    {
+      url: "cyberpunk.jpg",
+      title: "Cyberpunk 2077 - PC",
+      desc: "Become a cyberpunk an urban mercenary equipped with cybernetic enhancements and build your legend on the streets of Night City",
+      alt: "Cyberpunk 2077",
+      rating: 100,
+      price: 59.99
+    },
+    {
+      url: "yeezy.jpg",
+      title: "YEEZY BOOST 350 V2 BLACK NON-REFLECTIVE",
+      desc: "Through evolved design elements and advanced technology, the adidas Yeezy Boost 350 V2 lives up to its cults appeal.",
+      alt: "Yeezy",
+      rating: 93,
+      price: 340
+    },
+    // {
+    //   url: "",
+    //   title: "",
+    //   desc: "",
+    //   alt: "",
+    //   rating: ,
+    //   price: 
+    //     }
   ]
   );
 
@@ -71,7 +103,6 @@ const Landing = () => {
     }
   ]
   );
-
 
   useEffect(() => {
     document.title = "Matshop - Home";

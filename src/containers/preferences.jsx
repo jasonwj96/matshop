@@ -50,17 +50,17 @@ const Preferences = () => {
                 return <ProductMaintenanceItem key={index} item={item} />;
               })
             ) : (
-                <p>No items in your wishlist</p>
+                <p id="empty-msg">There are no products in the database</p>
               )}
           </div>
           <div id="editPanel">
             <form>
               <div>
-                <p id="editpanel-title">Add item</p>
-                <input className="input" type="text" placeholder="Product Id" />
+                <p id="editpanel-title">Add product</p>
+                <input className="input" type="text" placeholder="Product ID" />
                 <input className="input" type="text" placeholder="Description" />
                 <input className="input" type="text" placeholder="Price" />
-                <input className="input" type="text" placeholder="Image url" />
+                <input className="input" type="text" placeholder="Image name (with extension)" />
               </div>
             </form>
           </div>

@@ -59,10 +59,9 @@ const Statusbar = props => {
           <div className="profile-img">
             <p>{firstName.substring(0, 1)}</p>
           </div>
-
-          <Link to="/profile" className="user-icon link">
+          {/* <Link to="/profile" className="user-icon link">
             <i className="fas fa-user" />
-          </Link>
+          </Link> */}
           <Link to="/wishlist" className="wishlist-icon link">
             <i className="fas fa-shopping-bag" />
           </Link>
