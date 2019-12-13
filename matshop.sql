@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2019 a las 03:45:08
+-- Tiempo de generación: 13-12-2019 a las 12:43:48
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -46,7 +46,7 @@ SELECT user_email FROM accounts
 WHERE user_password = loginPass
 AND user_email = loginEmail$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_register_user` (IN `newId` TEXT, IN `newEmail` TEXT, IN `newPassword` TEXT, IN `newAddress` TEXT, IN `newFirstName` TEXT, IN `newLastName` TEXT)  MODIFIES SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_register_user` (IN `newId` TEXT, IN `newFirstName` TEXT, IN `newLastName` TEXT, IN `newEmail` TEXT, IN `newAddress` TEXT, IN `newPassword` TEXT)  MODIFIES SQL DATA
 BEGIN
     START TRANSACTION;
 
@@ -215,18 +215,8 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Id`, `user_id`, `user_email`, `user_password`) VALUES
-(2, '4FX3J9', 'jasonwj96@gmail.com', 'pass1234');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `offer_dates`
---
-
-CREATE TABLE `offer_dates` (
-  `Id` int(11) NOT NULL,
-  `date` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(2, '4FX3J9', 'jasonwj96@gmail.com', 'pass1234'),
+(8, 'WLIZQR', 'notbatman@gmail.com', 'batman123');
 
 -- --------------------------------------------------------
 
@@ -284,7 +274,8 @@ CREATE TABLE `user_info` (
 --
 
 INSERT INTO `user_info` (`id`, `user_id`, `first_name`, `last_name`, `user_email`, `user_address`, `user_password`) VALUES
-(0, '4FX3J9', 'Jason', 'Wedderburn', 'jasonwj96@gmail.com', 'Ciudad Belen, Tocumen', 'pass123');
+(1, '4FX3J9', 'Jason', 'Wedderburn', 'jasonwj96@gmail.com', 'Ciudad Belen, Tocumen', 'pass123'),
+(2, 'WLIZQR', 'Bruce', 'Wayne', 'notbatman@gmail.com', 'Wayne Manor', 'batman123');
 
 --
 -- Índices para tablas volcadas
@@ -294,12 +285,6 @@ INSERT INTO `user_info` (`id`, `user_id`, `first_name`, `last_name`, `user_email
 -- Indices de la tabla `accounts`
 --
 ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `offer_dates`
---
-ALTER TABLE `offer_dates`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -322,19 +307,19 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT de la tabla `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `offer_dates`
---
-ALTER TABLE `offer_dates`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT de la tabla `user_info`
+--
+ALTER TABLE `user_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

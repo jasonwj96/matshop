@@ -37,4 +37,17 @@ class Login
       echo "Error al ejecutar el comando: " . $command;
     }
   }
+
+  public function registerUser($userId, $firstName, $lastName, $userEmail, $userAddress, $userPassword)
+  {
+    $command = "CALL sp_register_user('$userId','$firstName','$lastName','$userEmail','$userAddress','$userPassword')";
+    $pdo = $this->_db->getConnection();
+    $stmt = $pdo->prepare($command);
+    if ($stmt->execute()) {
+      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $results;
+    } else {
+      echo "Error al ejecutar el comando: " . $command;
+    }
+  }
 }

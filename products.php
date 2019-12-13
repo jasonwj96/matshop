@@ -47,4 +47,17 @@ class Products
       echo "Error al ejecutar el comando: " . $command;
     }
   }
+
+  public function deleteProduct($product_id)
+  {
+    $command = "CALL sp_delete_product('$product_id')";
+    $pdo = $this->_db->getConnection();
+    $stmt = $pdo->prepare($command);
+    if ($stmt->execute()) {
+      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $results;
+    } else {
+      echo "Error al ejecutar el comando: " . $command;
+    }
+  }
 }
