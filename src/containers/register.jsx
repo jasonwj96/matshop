@@ -164,4 +164,4 @@ const Register = props => {
   );
 };
 
-export default React.memo(Register);
+export default Register;
