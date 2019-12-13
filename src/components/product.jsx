@@ -5,7 +5,12 @@ import Configuration from "../config";
 
 const Product = props => {
   const [ratingThreshold] = useState(50);
-  const { url, title, desc, alt, price, rating } = props.product;
+  const {
+    product_image_name: url,
+    product_title: title,
+    product_description: desc,
+    product_price: price,
+    product_rating: rating } = props.product;
   const titleLength = 60;
 
   useEffect(() => {
@@ -21,7 +26,7 @@ const Product = props => {
         </Link>
       </div>
       <div className="picture">
-        <img src={Configuration.imageRepositoryUrl + url} alt={alt} />
+        <img src={Configuration.imageRepositoryUrl + url} />
       </div>
       <div className="desc">{`${desc.slice(0, 90)}...`}</div>
       <div className="productFooter">

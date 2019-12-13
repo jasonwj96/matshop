@@ -5,16 +5,22 @@ import Configuration from "../config";
 
 const Preferences = () => {
   const [items, setItems] = useState([]);
+  const [newId, setNewId] = useState("");
+  const [newTitle, setNewTitle] = useState("");
+  const [newDesc, setNewDesc] = useState("");
+  const [newPrice, setNewPrice] = useState("");
+  const [newRating, setNewRating] = useState("");
+  const [newImageName, setNewImageName] = useState("");
+  const [newCategory, setNewCategory] = useState("");
+
 
   useEffect(() => {
-
     const options = {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
     }
-
 
     fetch(`${Configuration.apiPath}/getProducts.php`, options)
       .then(
@@ -32,37 +38,60 @@ const Preferences = () => {
         (err) => console.log(err)
       )
   }, [])
-  // const [items] = useState([
-  //   {
-  //     imageUrl: "./product1.jpg",
-  //     title: "Lightweight Varsity Jacket",
-  //     quantity: 5,
-  //     alt: "Jacket",
-  //     rating: 89,
-  //     price: 19.99
-  //   },
-  //   {
-  //     imageUrl: "./product2.jpg",
-  //     title: "Apple iPhone X, GSM Unlocked, 64GB - Silver (Refurbished)",
-  //     description:
-  //       "All-screen design. Longest battery life ever in an iPhone. Fastest performance. Water and splash resistant. Studio-quality photos and 4K video. More secure with Face ID. The new iPhone XR. It’s a brilliant upgrade.",
-  //     alt: "IPhone",
-  //     quantity: 5,
-  //     rating: 39,
-  //     price: 899.99
-  //   },
-  //   {
-  //     imageUrl: "./product3.jpg",
-  //     title: "PlayStation 4 Slim 1TB Console",
-  //     quantity: 9,
-  //     alt: "Playstation 4",
-  //     rating: 73,
-  //     price: 299.99
-  //   }
-  // ]);
 
   const addItem = () => {
+    if (
+      newId !== "" &&
+      newTitle !== "" &&
+      newDesc !== "" &&
+      newPrice !== 0 &&
+      newRating !== 0 &&
+      newImageName !== "",
+      newCategory !== ""
+    ) {
+      const newProduct = {
+        newId,
+        newTitle,
+        newDesc,
+        newPrice,
+        newRating,
+        newImageName,
+        newCategory
+      }
 
+      if (window.confirm("Do you want to add this product to the database?")) {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newProduct)
+        };
+
+        fetch(`${Configuration.apiPath}/addProduct.php`, options)
+          .then(
+            (response) => {
+              if (response.ok) {
+                alert("Product added successfully");
+                setNewId("");
+                setNewTitle("")
+                setNewDesc("");
+                setNewPrice("");
+                setNewRating("");
+                setNewImageName("");
+                setNewCategory("");
+              }
+              else
+                alert("Product couldn't be added");
+            }
+          )
+          .catch(
+            (err) => console.log(err)
+          );
+      }
+    } else {
+      alert("Error debe llenar todos los campos");
+    }
   }
 
   return (
@@ -85,11 +114,13 @@ const Preferences = () => {
             <form>
               <div>
                 <p id="editpanel-title">Add product</p>
-                <input className="input" type="text" placeholder="Product ID" />
-                <input className="input" type="text" placeholder="Description" />
-                <input className="input" type="text" placeholder="Price" />
-                <input className="input" type="text" placeholder="Rating" />
-                <input className="input" type="text" placeholder="Image name (with extension)" />
+                <input value={newId} onChange={(event) => { setNewId(event.target.value) }} className="input" type="text" placeholder="ID" />
+                <input value={newTitle} onChange={(event) => { setNewTitle(event.target.value) }} className="input" type="text" placeholder="Title" />
+                <input value={newDesc} onChange={(event) => { setNewDesc(event.target.value) }} className="input" type="text" placeholder="Description" />
+                <input value={newPrice} onChange={(event) => { setNewPrice(event.target.value) }} className="input" type="text" placeholder="Price" min="1" max="100" />
+                <input value={newRating} onChange={(event) => { setNewRating(event.target.value) }} className="input" type="number" placeholder="Rating" />
+                <input value={newImageName} onChange={(event) => { setNewImageName(event.target.value) }} className="input" type="text" placeholder="Image name (with extension)" />
+                <input value={newCategory} onChange={(event) => { setNewCategory(event.target.value) }} className="input" type="text" placeholder="Category" />
               </div>
             </form>
           </div>

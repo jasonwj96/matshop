@@ -9,6 +9,8 @@ const ProductMaintenanceItem = props => {
     product_id: id,
     product_title: title,
     product_price: price,
+    product_category: category,
+    product_rating: rating
   } = props.item;
 
 
@@ -20,6 +22,12 @@ const ProductMaintenanceItem = props => {
       <div className="id">
         {id}
       </div>
+      <div className="category">
+        {category}
+      </div>
+      <div className="rating">
+        {rating}
+      </div>
       <div className="title">
         <p>{title.length > 100 ? `${title.slice(0, 100)}...` : title}</p>
       </div>
@@ -27,7 +35,6 @@ const ProductMaintenanceItem = props => {
         <div className="price">
           <p>{`$${price}`}</p>
         </div>
-
         <div className="delete-btn">
           <button onClick={deleteItem}>
             <i className="fas fa-times-circle" />

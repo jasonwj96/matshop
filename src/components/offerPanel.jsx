@@ -44,14 +44,14 @@ const OfferPanel = props => {
       <div className="offer">
         <div className="offer-data">
           <h2>CHRISTMAS OFFER</h2>
-          <h3>{props.item.name}</h3>
+          <h3>{props.item.product_title}</h3>
           <div className="price">
             <span className="former-price">
               <span>$999.99</span>
             </span>
-            <span>{`$${props.item.price}`}</span>
+            <span>{`$${props.item.product_price}`}</span>
           </div>
-          <p>{props.item.description}</p>
+          <p>{props.item.product_description}</p>
           {timer ? (
             <p className="timer">{timer}</p>
           ) : (
@@ -63,7 +63,7 @@ const OfferPanel = props => {
             <button>Shop now</button>
           </Link>
         </div>
-        <img src={Configuration.imageRepositoryUrl + props.item.imageUrl} alt={props.item.alt} />
+        <img src={Configuration.imageRepositoryUrl + props.item.product_image_name} />
       </div>
     </div>
   );
