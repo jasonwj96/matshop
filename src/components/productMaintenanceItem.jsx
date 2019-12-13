@@ -65,9 +65,6 @@ const ProductMaintenanceItem = props => {
           <p>{`$${price}`}</p>
         </div>
         <div className="controls">
-          <button className="edit-btn" onClick={editItem}>
-            <i className="fas fa-edit" />
-          </button>
           <button className="delete-btn" onClick={deleteItem}>
             <i className="fas fa-times-circle" />
           </button>
