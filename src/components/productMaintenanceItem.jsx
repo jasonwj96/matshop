@@ -3,7 +3,36 @@ import "./productMaintenanceItem.scss";
 import Configuration from "../config";
 
 const ProductMaintenanceItem = props => {
-  const deleteItem = () => console.log("item deleted.");
+  const deleteItem = (event) => {
+
+    if (window.confirm("Do you wish to delete this product?")) {
+      const values = event.target.parentNode.parentNode.parentNode.parentNode.childNodes;
+      const productId = values[1].innerHTML;
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(productId)
+      }
+
+      fetch(`${Configuration.apiPath}/deleteProduct.php`, options)
+        .then(
+          (response) => {
+            window.alert("Product deleted successfully");
+          }
+        )
+        .catch(
+          (err) => console.log(err)
+        )
+    }
+  }
+
+  const editItem = (event) => {
+
+  }
+
   const {
     product_image_name: imageUrl,
     product_id: id,
@@ -35,8 +64,11 @@ const ProductMaintenanceItem = props => {
         <div className="price">
           <p>{`$${price}`}</p>
         </div>
-        <div className="delete-btn">
-          <button onClick={deleteItem}>
+        <div className="controls">
+          <button className="edit-btn" onClick={editItem}>
+            <i className="fas fa-edit" />
+          </button>
+          <button className="delete-btn" onClick={deleteItem}>
             <i className="fas fa-times-circle" />
           </button>
         </div>

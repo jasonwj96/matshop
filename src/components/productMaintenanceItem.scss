@@ -95,7 +95,7 @@
       color: #fff;
     }
 
-    .delete-btn {
+    .controls {
       display: flex;
       align-items: center;
 
@@ -106,11 +106,24 @@
         cursor: pointer;
       }
 
-      i {
-        font-size: 1.5em;
-        width: 20px;
-        height: 20px;
-        color: #ff0000;
+      .edit-btn {
+        margin-right: 20px;
+
+        i {
+          font-size: 2em;
+          width: 20px;
+          height: 20px;
+          color: #ffd900;
+        }
+      }
+
+      .delete-btn {
+        i {
+          font-size: 2em;
+          width: 20px;
+          height: 20px;
+          color: #ff0000;
+        }
       }
     }
   }

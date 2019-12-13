@@ -30,7 +30,6 @@ const Preferences = () => {
       )
       .then(
         (json) => {
-          console.table(JSON.parse(json));
           setItems(JSON.parse(json));
         }
       )
@@ -39,7 +38,7 @@ const Preferences = () => {
       )
   }, [])
 
-  const addItem = () => {
+  const addProduct = () => {
     if (
       newId !== "" &&
       newTitle !== "" &&
@@ -94,6 +93,7 @@ const Preferences = () => {
     }
   }
 
+
   return (
     <div id="preferences-container">
       <div className="productlist-container">
@@ -125,7 +125,7 @@ const Preferences = () => {
             </form>
           </div>
           <div className="footer">
-            <button onClick={addItem}>Add</button>
+            <button onClick={addProduct}>Add</button>
           </div>
         </div>
       </div>

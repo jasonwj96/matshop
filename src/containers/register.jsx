@@ -3,6 +3,7 @@ import "./register.scss";
 import Configuration from "../config";
 
 const Register = props => {
+  const [userId, setUserId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +16,17 @@ const Register = props => {
     document.title = "Matshop - Register";
   }, []);
 
-  useEffect(() => {
-    if (null !== registerData) {
+  const registerUser = () => {
+    const data = {
+      userId: Math.random().toString(36).slice(2).substring(0, 6).toUpperCase(),
+      firstName,
+      lastName,
+      email,
+      address,
+      password
+    }
+
+    if (registerData !== null && window.confirm("Are you sure you want to register?")) {
       const options = {
         method: 'POST',
         body: JSON.stringify(registerData)
@@ -25,21 +35,15 @@ const Register = props => {
 
       fetch(url, options)
         .then(
-          (response => response.clone.text())
+          response => response.clone().text()
         )
         .then(
-          json => console.log(JSON.parse(json))
+          json => alert("User registered successfully")
         )
-    }
-  }, [registerData])
-
-  const registerUser = () => {
-    const data = {
-      firstName,
-      lastName,
-      email,
-      address,
-      password
+        .catch
+        (
+          err => console.log(err)
+        )
     }
 
     setRegisterData(data);
