@@ -10,9 +10,10 @@ const Cover = props => {
     <div className="cover" style={style}>
       <div className="overlay">
         <div className="cover-section">
-          <p className="welcome-text">{props.header}</p>
-          <p>You have 3 notifications</p>
-          <p>We have 7 new offers for you</p>
+          <p className="welcome-text">{props.header} </p>
+          <p className="welcome-text"> {localStorage.getItem("user_email").split("@")[0]}!</p>
+          {/* <p>You have 3 notifications</p>
+          <p>We have 7 new offers for you</p> */}
         </div>
         <div className="scroll-msg">
           <p>Scroll down</p>

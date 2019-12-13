@@ -11,7 +11,7 @@ const Product = props => {
     product_description: desc,
     product_price: price,
     product_rating: rating } = props.product;
-  const titleLength = 60;
+  const titleLength = 40;
 
   useEffect(() => {
   }, [props.product])

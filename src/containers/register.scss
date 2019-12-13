@@ -82,6 +82,7 @@
     input {
       @include input();
       background-color: #111;
+      color: #fff;
     }
 
     textarea {
@@ -89,6 +90,7 @@
       @include input();
       height: 80px;
       background-color: #111;
+      color: #fff;
     }
 
     .form-footer {

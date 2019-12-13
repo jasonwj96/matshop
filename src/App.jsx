@@ -35,9 +35,9 @@ const App = () => {
           <Route path="/wishlist">
             <Wishlist />
           </Route>
-          <Route path="/login">
+          {/* <Route path="/login">
             <Login />
-          </Route>
+          </Route> */}
           <Route path="/category">
             <Category />
           </Route>

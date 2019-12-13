@@ -44,9 +44,9 @@ const Statusbar = props => {
           {/* <Link to="/profile" className="user-icon link">
             <i className="fas fa-user" />
           </Link> */}
-          <Link to="/wishlist" className="wishlist-icon link">
+          {/* <Link to="/wishlist" className="wishlist-icon link">
             <i className="fas fa-shopping-bag" />
-          </Link>
+          </Link> */}
           <Link to="/preferences" className="settings-icon link">
             <i className="fas fa-cog" />
           </Link>

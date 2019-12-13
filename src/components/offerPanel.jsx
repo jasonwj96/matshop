@@ -46,9 +46,9 @@ const OfferPanel = props => {
           <h2>CHRISTMAS OFFER</h2>
           <h3>{props.item.product_title}</h3>
           <div className="price">
-            <span className="former-price">
+            {/* <span className="former-price">
               <span>$999.99</span>
-            </span>
+            </span> */}
             <span>{`$${props.item.product_price}`}</span>
           </div>
           <p>{props.item.product_description}</p>

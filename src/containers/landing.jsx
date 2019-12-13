@@ -113,21 +113,20 @@ const Landing = () => {
   const updateCover = () => {
 
     const currentHour = new Date().getHours();
-
     //morning
     if (currentHour >= 0 && currentHour < 12) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.morning);
-      setCoverHeader("Good morning!");
+      setCoverHeader("Good morning");
     }
     //afternoon
     if (currentHour >= 12 && currentHour < 19) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.sunset);
-      setCoverHeader("Good afternoon!");
+      setCoverHeader("Good afternoon");
     }
     //night
     if (currentHour >= 19 && currentHour <= 23) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.night);
-      setCoverHeader("Good night!");
+      setCoverHeader("Good night");
     }
   };
 
