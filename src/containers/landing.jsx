@@ -126,7 +126,7 @@ const Landing = () => {
     //night
     if (currentHour >= 19 && currentHour <= 23) {
       setCoverImg(configuration.imageRepositoryUrl + configuration.coverImageUrls.night);
-      setCoverHeader("Good night");
+      setCoverHeader("Good evening");
     }
   };
 
